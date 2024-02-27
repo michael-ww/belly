@@ -1,5 +1,7 @@
 namespace Algorithm
 {
+    using System.Collections.Generic;
+
     public class CombinationSum
     {
         public IList<List<int>> Process(int[] nums, int target)

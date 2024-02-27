@@ -1,52 +1,55 @@
-namespace Algorithm.Tests;
-
-public class AddTwoNumbersTest
+namespace Algorithm.Tests
 {
-    [Fact]
-    public void AddTwoNumbers_NullInput_ThrowException()
+    using System;
+
+    public class AddTwoNumbersTest
     {
-        //Arrage
-        AddTwoNumbers.ListNode l1 = null;
-        AddTwoNumbers.ListNode l2 = null;
+        [Fact]
+        public void AddTwoNumbers_NullInput_ThrowException()
+        {
+            //Arrage
+            ListNode l1 = null;
+            ListNode l2 = null;
 
-        //Act
-        AddTwoNumbers addTwoNumbers = new AddTwoNumbers();
+            //Act
+            AddTwoNumbers addTwoNumbers = new();
 
-        //Assert
-        Assert.Throws<ArgumentException>(() => addTwoNumbers.AddTwoNums(l1, l2));
+            //Assert
+            Assert.Throws<ArgumentException>(() => addTwoNumbers.AddTwoNums(l1, l2));
+        }
+
+        [Fact]
+        public void AddTwoNumbers_PartValidInput_ReturnHeadNode()
+        {
+            //Arrange
+            ListNode l1 = new(1, null);
+            ListNode l2 = null;
+
+            //Act
+            AddTwoNumbers addTwoNumbers = new();
+            ListNode result = addTwoNumbers.AddTwoNums(l1, l2);
+
+            //Assert
+            Assert.Equal(l1.Value, result.Value);
+        }
+
+        [Fact]
+        public void AddTowNumbers_ValidInput_ReturnHeadNode()
+        {
+            //Arrange
+        ListNode l11 = new(6, null);
+            ListNode l1 = new(9, l11);
+            ListNode l22 = new(5, null);
+            ListNode l2 = new(2, l22);
+
+            //Act
+            AddTwoNumbers addTwoNumbers = new();
+            ListNode result = addTwoNumbers.AddTwoNums(l1, l2);
+
+            //Assert
+            Assert.Equal(1, result.Value);
+            Assert.Equal(2, result.Next.Value);
+        }
+
     }
-
-    [Fact]
-    public void AddTwoNumbers_PartValidInput_ReturnHeadNode()
-    {
-        //Arrange
-        AddTwoNumbers.ListNode l1 = new AddTwoNumbers.ListNode(1, null);
-        AddTwoNumbers.ListNode l2 = null;
-
-        //Act
-        AddTwoNumbers addTwoNumbers = new AddTwoNumbers();
-        AddTwoNumbers.ListNode result = addTwoNumbers.AddTwoNums(l1, l2);
-
-        //Assert
-        Assert.Equal(l1.Value, result.Value);
-    }
-
-    [Fact]
-    public void AddTowNumbers_ValidInput_ReturnHeadNode()
-    {
-        //Arrange
-        AddTwoNumbers.ListNode l11 = new AddTwoNumbers.ListNode(6, null);
-        AddTwoNumbers.ListNode l1 = new AddTwoNumbers.ListNode(9, l11);
-        AddTwoNumbers.ListNode l22 = new AddTwoNumbers.ListNode(5, null);
-        AddTwoNumbers.ListNode l2 = new AddTwoNumbers.ListNode(2, l22);
-
-        //Act
-        AddTwoNumbers addTwoNumbers = new AddTwoNumbers();
-        AddTwoNumbers.ListNode result = addTwoNumbers.AddTwoNums(l1, l2);
-
-        //Assert
-        Assert.Equal(1, result.Value);
-        Assert.Equal(2, result.Next.Value);
-    }
-
 }

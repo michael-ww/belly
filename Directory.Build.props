@@ -1,0 +1,22 @@
+<Project>
+  <PropertyGroup>
+    <Company>MNJ</Company>
+    <Authors>Michael</Authors>
+    <ProjectName>Belly</ProjectName>
+    <AssemblyName>$(ProjectName).$(MSBuildProjectName)</AssemblyName>
+    <RootNamespace>$(ProjectName).$(MSBuildProjectName)</RootNamespace>
+    <TargetFramework>net6.0</TargetFramework>
+    <LangVersion>12.0</LangVersion>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageVersionOverrideEnabled>false</CentralPackageVersionOverrideEnabled>
+    <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
+  </PropertyGroup>
+
+  <ItemGroup>
+
+  </ItemGroup>
+</Project>

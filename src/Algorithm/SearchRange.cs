@@ -1,5 +1,7 @@
 namespace Algorithm
 {
+    using System;
+
     public class SearchRange
     {
         public Tuple<int, int> Process(int[] nums, int target)
