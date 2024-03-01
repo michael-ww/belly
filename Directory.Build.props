@@ -11,5 +11,15 @@
     <Nullable>disable</Nullable>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageVersionOverrideEnabled>false</CentralPackageVersionOverrideEnabled>
+    <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <MicrosoftNETTestSdkVersion>17.1.0</MicrosoftNETTestSdkVersion>
+    <XunitVersion>2.4.1</XunitVersion>
+    <XunitRunnerVisualStudioVersion>2.4.3</XunitRunnerVisualStudioVersion>
+    <CoverletCollectorVersion>3.1.2</CoverletCollectorVersion>
   </PropertyGroup>
 </Project>
