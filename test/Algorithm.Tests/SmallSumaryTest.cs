@@ -11,7 +11,7 @@ public class SmallSumaryTest
 
         //Act
         SmallSumary smallSumary = new SmallSumary();
-        int result = smallSumary.Calculate(array);
+        int result = smallSumary.Process(array);
 
         //Assert
         Assert.Equal(73, result);

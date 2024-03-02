@@ -7,7 +7,9 @@ namespace Algorithm
             if (head1 == null || head2 == null)
             {
                 return null;
-            } 
+            }
+            return null;
+            //TODO:
         }
     }
 }

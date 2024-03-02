@@ -175,19 +175,8 @@ namespace Algorithm
                     }
                 }
             }
-        }
 
-        private int FindKthElement(int[] nums1, int nums1Index, int[] nums2, int nums2Index, int kth)
-        {
-            if (nums1Index >= nums1.Length)
-            {
-                return nums2[nums2Index + kth - 1];
-            }
-            if (nums2Index >= nums2.Length)
-            {
-                return nums1[nums1Index + kth - 1];
-            }
-               
+            return 0;
         }
     }
 }
