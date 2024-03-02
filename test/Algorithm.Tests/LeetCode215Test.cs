@@ -8,7 +8,7 @@ namespace Algorithm.Tests
         public void FindKthLargest1_InValidInput_ThrowException()
         {
             //Arrange
-            int[]? nums1 = null;
+            int[] nums1 = null;
             int[] nums2 = Array.Empty<int>();
             int[] nums3 = new int[] { 3, 8, 4, 1, 6 };
             int kth = 8;
@@ -48,7 +48,7 @@ namespace Algorithm.Tests
         public void FindKthLargest2_InValidInput_ThrowException()
         {
             //Arrange
-            int[]? nums1 = null;
+            int[] nums1 = null;
             int[] nums2 = Array.Empty<int>();
             int[] nums3 = new int[] { 3, 8, 4, 1, 6 };
             int kth = 8;

@@ -8,8 +8,8 @@ namespace Algorithm.Tests
         public void MergeSort_NullInput_ThrowException()
         {
             //Arrange
-            int[]? array1 = null;
-            int[]? array2 = null;
+            int[] array1 = null;
+            int[] array2 = null;
 
             //Act
             SortedArrayMedian median = new();
@@ -23,7 +23,7 @@ namespace Algorithm.Tests
         {
             //Arrange
             int[] array1 = Array.Empty<int>();
-            int[]? array2 = null;
+            int[] array2 = null;
 
             //Act
             SortedArrayMedian median = new();
@@ -38,7 +38,7 @@ namespace Algorithm.Tests
         {
             //Arrange
             int[] array1 = new int[] { 1, 2, 3 };
-            int[]? array2 = null;
+            int[] array2 = null;
 
             //Act
             SortedArrayMedian median = new();
@@ -55,7 +55,7 @@ namespace Algorithm.Tests
         {
             //Arrange
             int[] array1 = new int[] { 1, 2, 3, 4 };
-            int[]? array2 = null;
+            int[] array2 = null;
 
             //Act
             SortedArrayMedian median = new();
@@ -202,8 +202,8 @@ namespace Algorithm.Tests
         public void BinarySearch_NullInput_ThrowException()
         {
             //Arrange
-            int[]? array1 = null;
-            int[]? array2 = null;
+            int[] array1 = null;
+            int[] array2 = null;
 
             //Act
             SortedArrayMedian median = new();
@@ -217,7 +217,7 @@ namespace Algorithm.Tests
         {
             //Arrange
             int[] array1 = Array.Empty<int>();
-            int[]? array2 = null;
+            int[] array2 = null;
 
             //Act
             SortedArrayMedian median = new();
@@ -232,7 +232,7 @@ namespace Algorithm.Tests
         {
             //Arrange
             int[] array1 = new int[] { 1, 2, 3 };
-            int[]? array2 = null;
+            int[] array2 = null;
 
             //Act
             SortedArrayMedian median = new();
@@ -249,7 +249,7 @@ namespace Algorithm.Tests
         {
             //Arrange
             int[] array1 = new int[] { 1, 2, 3, 4 };
-            int[]? array2 = null;
+            int[] array2 = null;
 
             //Act
             SortedArrayMedian median = new();
