@@ -1,42 +1,45 @@
-namespace Algorithm;
-
-public class ValidParentheses
+namespace Algorithm
 {
-    public bool IsValid(string s)
+    using System.Collections.Generic;
+
+    public class ValidParentheses
     {
-        if (s == null || s.Trim().Length < 2)
+        public bool IsValid(string s)
         {
-            return false;
-        }
-
-        Stack<char> parentheses = new();
-        for (int i = 0; i < s.Length; i++)
-        {
-            if (s[i] == '(' || s[i] == '[' || s[i] == '{')
+            if (s == null || s.Trim().Length < 2)
             {
-                parentheses.Push(s[i]);
+                return false;
             }
-            else
-            {
-                if (parentheses.Count <= 0)
-                {
-                    return false;
-                }
-                else if (s[i] == ')' && parentheses.Pop() != '(')
-                {
-                    return false;
-                }
-                else if (s[i] == ']' && parentheses.Pop() != '[')
-                {
-                    return false;
-                }
-                else if (s[i] == '}' && parentheses.Pop() != '{')
-                {
-                    return false;
-                }
-            }
-        }
 
-        return true;
+            Stack<char> parentheses = new();
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (s[i] == '(' || s[i] == '[' || s[i] == '{')
+                {
+                    parentheses.Push(s[i]);
+                }
+                else
+                {
+                    if (parentheses.Count <= 0)
+                    {
+                        return false;
+                    }
+                    else if (s[i] == ')' && parentheses.Pop() != '(')
+                    {
+                        return false;
+                    }
+                    else if (s[i] == ']' && parentheses.Pop() != '[')
+                    {
+                        return false;
+                    }
+                    else if (s[i] == '}' && parentheses.Pop() != '{')
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
     }
 }

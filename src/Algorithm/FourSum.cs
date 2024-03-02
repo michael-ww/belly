@@ -1,63 +1,67 @@
-namespace Algorithm;
-
-public class FourSum
+namespace Algorithm
 {
-    public IList<Tuple<int, int, int, int>> Process(int[] nums, int target)
+    using System;
+    using System.Collections.Generic;
+
+    public class FourSum
     {
-        if (nums == null || nums.Length < 4)
+        public IList<Tuple<int, int, int, int>> Process(int[] nums, int target)
         {
-            throw new ArgumentException();
-        }
-        Array.Sort(nums);
-        List<Tuple<int, int, int, int>> answer = new();
-        if (nums[0] + nums[1] + nums[2] + nums[3] > target)
-        {
-            return answer;
-        }
-        for (int i = 0; i < nums.Length; i++)
-        {
-            if (i > 0 && nums[i] == nums[i - 1])
+            if (nums == null || nums.Length < 4)
             {
-                continue;
+                throw new ArgumentException();
             }
-            for (int j = i + 1; j < nums.Length; j++)
+            Array.Sort(nums);
+            List<Tuple<int, int, int, int>> answer = new();
+            if (nums[0] + nums[1] + nums[2] + nums[3] > target)
             {
-                if (j > i + 1 && nums[j] == nums[j - 1])
+                return answer;
+            }
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (i > 0 && nums[i] == nums[i - 1])
                 {
                     continue;
                 }
-                int leftIndex = j + 1, rightIndex = nums.Length - 1;
-                while (leftIndex < rightIndex)
+                for (int j = i + 1; j < nums.Length; j++)
                 {
-                    if (leftIndex > j + 1 && nums[leftIndex] == nums[leftIndex - 1])
+                    if (j > i + 1 && nums[j] == nums[j - 1])
                     {
-                        leftIndex++;
                         continue;
                     }
-                    if (rightIndex - 1 > leftIndex && nums[rightIndex] == nums[rightIndex - 1])
+                    int leftIndex = j + 1, rightIndex = nums.Length - 1;
+                    while (leftIndex < rightIndex)
                     {
-                        rightIndex--;
-                        continue;
-                    }
-                    int sum = nums[i] + nums[j] + nums[leftIndex] + nums[rightIndex];
-                    if (sum > target)
-                    {
-                        rightIndex--;
-                    }
-                    else if (sum < target)
-                    {
-                        leftIndex++;
-                    }
-                    else
-                    {
-                        answer.Add(Tuple.Create(nums[i], nums[j], nums[leftIndex], nums[rightIndex]));
-                        rightIndex--;
-                        leftIndex++;
+                        if (leftIndex > j + 1 && nums[leftIndex] == nums[leftIndex - 1])
+                        {
+                            leftIndex++;
+                            continue;
+                        }
+                        if (rightIndex - 1 > leftIndex && nums[rightIndex] == nums[rightIndex - 1])
+                        {
+                            rightIndex--;
+                            continue;
+                        }
+                        int sum = nums[i] + nums[j] + nums[leftIndex] + nums[rightIndex];
+                        if (sum > target)
+                        {
+                            rightIndex--;
+                        }
+                        else if (sum < target)
+                        {
+                            leftIndex++;
+                        }
+                        else
+                        {
+                            answer.Add(Tuple.Create(nums[i], nums[j], nums[leftIndex], nums[rightIndex]));
+                            rightIndex--;
+                            leftIndex++;
+                        }
                     }
                 }
             }
-        }
 
-        return answer;
+            return answer;
+        }
     }
 }

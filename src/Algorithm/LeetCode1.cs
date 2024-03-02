@@ -1,75 +1,80 @@
-﻿namespace Algorithm
+namespace Algorithm
 {
     using System;
     using System.Collections.Generic;
 
-    public class TwoSum
+    public class LeetCode1
     {
-        public int[] TwoSumFor(int[] nums, int target)
+        public (int, int) TwoSum1(int[] nums, int target)
         {
             if (nums == null || nums.Length < 2)
             {
-                throw new ArgumentException();
+                return (-1, -1);
             }
+
             for (int i = 0; i < nums.Length; i++)
             {
                 for (int j = i + 1; j < nums.Length; j++)
                 {
                     if (nums[i] + nums[j] == target)
                     {
-                        return new int[] { i, j };
+                        return (i, j);
                     }
                 }
             }
-            return null;
+            return (-1, -1);
         }
 
-        public int[] TwoSumCache(int[] nums, int target)
+        public (int, int) TwoSum2(int[] nums, int target)
         {
             if (nums == null || nums.Length < 2)
             {
-                throw new ArgumentException();
+                return (-1, -1);
             }
 
-            Dictionary<int, int> dictionary = new Dictionary<int, int>();
+            Dictionary<int, int> cache = new();
+
             for (int i = 0; i < nums.Length; i++)
             {
-                if (dictionary.ContainsKey(target - nums[i]))
+                if (cache.ContainsKey(target - nums[i]))
                 {
-                    return new int[] { dictionary[target - nums[i]], i };
+                    return (cache[target - nums[i]], i);
                 }
                 else
                 {
-                    dictionary.Add(nums[i], i);
+                    cache.Add(nums[i], i);
                 }
             }
-            return null;
+
+            return (-1, -1);
         }
 
-        public int[] TwoSumForSortedArray(int[] nums, int target)
+        public (int, int) TowSum3(int[] nums, int target)
         {
             if (nums == null || nums.Length < 2)
             {
-                throw new ArgumentException();
+                return (-1, -1);
             }
 
+            Array.Sort(nums);
             int leftIndex = 0, rightIndex = nums.Length - 1;
             while (leftIndex < rightIndex)
             {
-                if (nums[leftIndex] + nums[rightIndex] > target)
+                if (nums[leftIndex] + nums[rightIndex] == target)
+                {
+                    return (leftIndex, rightIndex);
+                }
+                else if (nums[leftIndex] + nums[rightIndex] > target)
                 {
                     rightIndex--;
                 }
-                else if (nums[leftIndex] + nums[rightIndex] < target)
+                else
                 {
                     leftIndex++;
                 }
-                else
-                {
-                    return new int[] { leftIndex, rightIndex };
-                }
             }
-            return null;
+
+            return (-1, -1);
         }
     }
 }

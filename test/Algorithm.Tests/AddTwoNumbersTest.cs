@@ -1,7 +1,7 @@
-namespace Algorithm.Tests;
-
-public class AddTwoNumbersTest
+namespace Algorithm.Tests
 {
+    using System;
+
     [Fact]
     public void AddTwoNumbers_NullInput_ThrowException()
     {
@@ -16,8 +16,7 @@ public class AddTwoNumbersTest
         Assert.Throws<ArgumentException>(() => addTwoNumbers.AddTwoNums(l1, l2));
     }
 
-    [Fact]
-    public void AddTwoNumbers_PartValidInput_ReturnHeadNode()
+    public class AddTwoNumbersTest
     {
         //Arrange
         ListNode l1 = new(1, null);

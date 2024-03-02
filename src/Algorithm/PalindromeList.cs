@@ -1,66 +1,69 @@
-namespace Algorithm;
-
-public class PalindromeList
+namespace Algorithm
 {
-    public bool IsPalindrome1(ListNode head)
+    using System.Collections.Generic;
+
+    public class PalindromeList
     {
-        if (head == null)
+        public bool IsPalindrome1(ListNode head)
         {
-            return false;
-        }
-        if (head.Next == null)
-        {
-            return true;
-        }
-
-        Stack<ListNode> stack = new();
-        ListNode current = head;
-        while (current != null)
-        {
-            stack.Push(current);
-            current = current.Next;
-        }
-
-        while (head != null)
-        {
-            if (head.Value != stack.Pop().Value)
+            if (head == null)
             {
                 return false;
             }
-            head = head.Next;
-        }
-        return true;
-    }
+            if (head.Next == null)
+            {
+                return true;
+            }
 
-    public bool IsPalindrome2(ListNode head)
-    {
-        if (head == null)
-        {
-            return false;
-        }
-        if (head.Next == null)
-        {
+            Stack<ListNode> stack = new();
+            ListNode current = head;
+            while (current != null)
+            {
+                stack.Push(current);
+                current = current.Next;
+            }
+
+            while (head != null)
+            {
+                if (head.Value != stack.Pop().Value)
+                {
+                    return false;
+                }
+                head = head.Next;
+            }
             return true;
         }
 
-        ListNode fastNode = head;
-        ListNode slowNode = head;
-        while (fastNode.Next != null && fastNode.Next.Next != null)
+        public bool IsPalindrome2(ListNode head)
         {
-            slowNode = slowNode.Next;
-            fastNode = fastNode.Next.Next;
-        }
+            if (head == null)
+            {
+                return false;
+            }
+            if (head.Next == null)
+            {
+                return true;
+            }
 
-        fastNode = slowNode.Next;
-        slowNode.Next = null;
-        ListNode ln = null;
-        while (fastNode != null)
-        {
-            ln = fastNode.Next;
-            fastNode.Next = slowNode;
-            slowNode = fastNode;
-            fastNode = ln;
+            ListNode fastNode = head;
+            ListNode slowNode = head;
+            while (fastNode.Next != null && fastNode.Next.Next != null)
+            {
+                slowNode = slowNode.Next;
+                fastNode = fastNode.Next.Next;
+            }
+
+            fastNode = slowNode.Next;
+            slowNode.Next = null;
+            ListNode ln = null;
+            while (fastNode != null)
+            {
+                ln = fastNode.Next;
+                fastNode.Next = slowNode;
+                slowNode = fastNode;
+                fastNode = ln;
+            }
+            return true;
         }
-        return true;
     }
 }

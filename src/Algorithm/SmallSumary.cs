@@ -1,77 +1,145 @@
-namespace Algorithm;
-
-public class SmallSumary
+namespace Algorithm
 {
-    public int Calculate(int[] array)
+    public class SmallSumary
     {
-        if (array == null || array.Length <= 0)
-        {
-            throw new ArgumentException();
-        }
-        return this.Process(array, 0, array.Length - 1);
-    }
 
-    private int Process(int[] array, int leftIndex, int rightIndex)
-    {
-        if (leftIndex == rightIndex)
+        public int Process(int[] nums)
         {
-            return 0;
-        }
-        int middleIndex = leftIndex + ((rightIndex - leftIndex) >> 1);
-        int leftSum = Process(array, leftIndex, middleIndex);
-        int rightSum = Process(array, middleIndex + 1, rightIndex);
-        int mergeSum = Merge(array, leftIndex, middleIndex, rightIndex);
-        return leftSum + rightSum + mergeSum;
-
-    }
-
-    private int Merge(int[] array, int leftIndex, int middleIndex, int rightIndex)
-    {
-        int[] orderedArray = new int[rightIndex - leftIndex + 1];
-        int orderedArrayIndex = 0, leftHelpIndex = leftIndex, rightHelpIndex = middleIndex + 1, smallSum = 0;
-        while (leftHelpIndex <= middleIndex || rightHelpIndex <= rightIndex)
-        {
-            if (leftHelpIndex <= middleIndex && rightHelpIndex <= rightIndex)
+            if (nums == null || nums.Length <= 0)
             {
-                if (array[leftHelpIndex] > array[rightHelpIndex])
+                return 0;
+            }
+            return this.Process(nums, 0, nums.Length - 1);
+        }
+
+
+        public int Process(int[] nums, int leftIndex, int rightIndex)
+        {
+            if (leftIndex == rightIndex)
+            {
+                return 0;
+            }
+
+            int middleIndex = leftIndex + ((rightIndex - leftIndex) >> 1);
+            int leftSumary = this.Process(nums, leftIndex, middleIndex);
+            int rightSumary = this.Process(nums, middleIndex + 1, rightIndex);
+            int mergeSumary = this.Merge(nums, leftIndex, middleIndex, rightIndex);
+            return leftSumary + rightSumary + mergeSumary;
+        }
+
+        public int Merge(int[] nums, int leftIndex, int middleIndex, int rightIndex)
+        {
+            int[] helpArray = new int[rightIndex - leftIndex + 1];
+            int helpArrayIndex = 0, leftHelpIndex = leftIndex, rightHelpIndex = middleIndex + 1, samllSumary = 0;
+            while (leftHelpIndex <= middleIndex && rightHelpIndex <= rightIndex)
+            {
+                if (nums[leftHelpIndex] < nums[rightHelpIndex])
                 {
-                    orderedArray[orderedArrayIndex] = array[rightHelpIndex];
-                    orderedArrayIndex++;
-                    rightHelpIndex++;
-                }
-                else if (array[leftHelpIndex] < array[rightHelpIndex])
-                {
-                    smallSum += array[leftHelpIndex] * (rightIndex - rightHelpIndex + 1);
-                    orderedArray[orderedArrayIndex] = array[leftHelpIndex];
-                    orderedArrayIndex++;
+                    samllSumary += nums[leftHelpIndex] * (rightIndex - rightHelpIndex + 1);
+                    helpArray[helpArrayIndex] = nums[leftHelpIndex];
+                    helpArrayIndex++;
                     leftHelpIndex++;
                 }
                 else
                 {
-                    orderedArray[orderedArrayIndex] = array[rightHelpIndex];
-                    orderedArrayIndex++;
+                    helpArray[helpArrayIndex] = nums[rightHelpIndex];
+                    helpArrayIndex++;
                     rightHelpIndex++;
                 }
             }
-            else if (leftHelpIndex > middleIndex)
+
+            while (leftHelpIndex <= middleIndex)
             {
-                orderedArray[orderedArrayIndex] = array[rightHelpIndex];
-                orderedArrayIndex++;
-                rightHelpIndex++;
-            }
-            else if (rightHelpIndex > rightIndex)
-            {
-                orderedArray[orderedArrayIndex] = array[leftHelpIndex];
-                orderedArrayIndex++;
+                helpArray[helpArrayIndex] = nums[leftHelpIndex];
+                helpArrayIndex++;
                 leftHelpIndex++;
             }
-        }
 
-        for (int i = 0; i < orderedArray.Length; i++)
-        {
-            array[leftIndex + i] = orderedArray[i];
-        }
+            while (rightHelpIndex <= rightIndex)
+            {
+                helpArray[helpArrayIndex] = nums[rightHelpIndex];
+                helpArrayIndex++;
+                rightHelpIndex++;
+            }
 
-        return smallSum;
+            for (int i = 0; i < helpArray.Length; i++)
+            {
+                nums[leftIndex + i] = helpArray[i];
+            }
+
+            return samllSumary;
+        }
+        // public int Calculate(int[] array)
+        // {
+        //     if (array == null || array.Length <= 0)
+        //     {
+        //         throw new ArgumentException();
+        //     }
+        //     return this.Process(array, 0, array.Length - 1);
+        // }
+
+        // private int Process(int[] array, int leftIndex, int rightIndex)
+        // {
+        //     if (leftIndex == rightIndex)
+        //     {
+        //         return 0;
+        //     }
+        //     int middleIndex = leftIndex + ((rightIndex - leftIndex) >> 1);
+        //     int leftSum = Process(array, leftIndex, middleIndex);
+        //     int rightSum = Process(array, middleIndex + 1, rightIndex);
+        //     int mergeSum = Merge(array, leftIndex, middleIndex, rightIndex);
+        //     return leftSum + rightSum + mergeSum;
+
+        // }
+
+        // private int Merge(int[] array, int leftIndex, int middleIndex, int rightIndex)
+        // {
+        //     int[] orderedArray = new int[rightIndex - leftIndex + 1];
+        //     int orderedArrayIndex = 0, leftHelpIndex = leftIndex, rightHelpIndex = middleIndex + 1, smallSum = 0;
+        //     while (leftHelpIndex <= middleIndex || rightHelpIndex <= rightIndex)
+        //     {
+        //         if (leftHelpIndex <= middleIndex && rightHelpIndex <= rightIndex)
+        //         {
+        //             if (array[leftHelpIndex] > array[rightHelpIndex])
+        //             {
+        //                 orderedArray[orderedArrayIndex] = array[rightHelpIndex];
+        //                 orderedArrayIndex++;
+        //                 rightHelpIndex++;
+        //             }
+        //             else if (array[leftHelpIndex] < array[rightHelpIndex])
+        //             {
+        //                 smallSum += array[leftHelpIndex] * (rightIndex - rightHelpIndex + 1);
+        //                 orderedArray[orderedArrayIndex] = array[leftHelpIndex];
+        //                 orderedArrayIndex++;
+        //                 leftHelpIndex++;
+        //             }
+        //             else
+        //             {
+        //                 orderedArray[orderedArrayIndex] = array[rightHelpIndex];
+        //                 orderedArrayIndex++;
+        //                 rightHelpIndex++;
+        //             }
+        //         }
+        //         else if (leftHelpIndex > middleIndex)
+        //         {
+        //             orderedArray[orderedArrayIndex] = array[rightHelpIndex];
+        //             orderedArrayIndex++;
+        //             rightHelpIndex++;
+        //         }
+        //         else if (rightHelpIndex > rightIndex)
+        //         {
+        //             orderedArray[orderedArrayIndex] = array[leftHelpIndex];
+        //             orderedArrayIndex++;
+        //             leftHelpIndex++;
+        //         }
+        //     }
+
+        //     for (int i = 0; i < orderedArray.Length; i++)
+        //     {
+        //         array[leftIndex + i] = orderedArray[i];
+        //     }
+
+        //     return smallSum;
+        // }
     }
 }
