@@ -20,34 +20,14 @@ namespace Algorithm
                 {
                     k--;
                 }
-                this.Swap(nums, i, k);
-                this.Reverse(nums, i + 1, nums.Length - 1);
+                Utility.Swap(nums, i, k);
+                Utility.ReverseArray(nums, i + 1, nums.Length - 1);
             }
             else
             {
-                this.Reverse(nums, 0, nums.Length - 1);
+                Utility.ReverseArray(nums, 0, nums.Length - 1);
             }
 
-        }
-        private void Swap(int[] nums, int i, int j)
-        {
-            (nums[i], nums[j]) = (nums[j], nums[i]);
-        }
-
-        private void Reverse(int[] nums, int startIndex, int endIndex)
-        {
-            if (startIndex >= endIndex)
-            {
-                return;
-            }
-            startIndex = startIndex < 0 ? 0 : startIndex;
-            endIndex = endIndex > nums.Length - 1 ? nums.Length - 1 : endIndex;
-            while (startIndex < endIndex)
-            {
-                this.Swap(nums, startIndex, endIndex);
-                startIndex++;
-                endIndex--;
-            }
         }
     }
 }

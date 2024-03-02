@@ -143,7 +143,7 @@ public class Sorting
         if (leftIndex < rightIndex)
         {
             int randomIndex = leftIndex + Random.Shared.Next(rightIndex - leftIndex + 1);
-            this.Swap(array, randomIndex, rightIndex);
+            Utility.Swap(array, randomIndex, rightIndex);
             int[] indexes = this.Partition(array, leftIndex, rightIndex);
             this.QuickSort(array, leftIndex, indexes[0] - 1);
             this.QuickSort(array, indexes[1] + 1, rightIndex);
@@ -159,28 +159,21 @@ public class Sorting
             if (array[leftIndex] < array[rightIndex])
             {
                 less++;
-                this.Swap(array, less, leftIndex);
+                Utility.Swap(array, less, leftIndex);
                 leftIndex++;
             }
             else if (array[leftIndex] > array[rightIndex])
             {
                 more--;
-                this.Swap(array, more, leftIndex);
+                Utility.Swap(array, more, leftIndex);
             }
             else
             {
                 leftIndex++;
             }
         }
-        this.Swap(array, more, rightIndex);
+        Utility.Swap(array, more, rightIndex);
         return new int[] { less + 1, more };
-    }
-
-    public void Swap(int[] array, int leftIndex, int rightIndex)
-    {
-        int temp = array[leftIndex];
-        array[leftIndex] = array[rightIndex];
-        array[rightIndex] = temp;
     }
 
     public void HeapSort(int[] array)
@@ -194,11 +187,11 @@ public class Sorting
             this.HeapInsert(array, i);
         }
         int heapSize = array.Length;
-        this.Swap(array, 0, --heapSize);
+        Utility.Swap(array, 0, --heapSize);
         while (heapSize > 0)
         {
             this.Heapify(array, 0, heapSize);
-            this.Swap(array, 0, --heapSize);
+            Utility.Swap(array, 0, --heapSize);
         }
     }
 
@@ -206,7 +199,7 @@ public class Sorting
     {
         while (index >= 0 && array[index] > array[(index - 1) / 2])
         {
-            Swap(array, index, (index - 1) / 2);
+            Utility.Swap(array, index, (index - 1) / 2);
             index = (index - 1) / 2;
         }
     }
@@ -222,7 +215,7 @@ public class Sorting
             {
                 break;
             }
-            this.Swap(array, largest, index);
+            Utility.Swap(array, largest, index);
             index = largest;
             leftIndex = (index * 2) + 1;
         }
