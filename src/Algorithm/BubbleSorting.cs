@@ -1,5 +1,7 @@
 namespace Algorithm
 {
+    //Time Complexity : O(N*N)
+    //Space Complexity : O(1)
     public class BubbleSorting
     {
         public void Process(int[] nums)

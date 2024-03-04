@@ -46,29 +46,21 @@ namespace Algorithm
                 if (nums[leftHelpIndex] > nums[rightHelpIndex])
                 {
                     inversePairs.Add((nums[leftHelpIndex], nums[rightHelpIndex]));
-                    orderedArray[orderedArrayIndex] = nums[rightHelpIndex];
-                    orderedArrayIndex++;
-                    rightHelpIndex++;
+                    orderedArray[orderedArrayIndex++] = nums[rightHelpIndex++];
                 }
                 else
                 {
-                    orderedArray[orderedArrayIndex] = nums[leftHelpIndex];
-                    orderedArrayIndex++;
-                    leftHelpIndex++;
+                    orderedArray[orderedArrayIndex++] = nums[leftHelpIndex++];
                 }
             }
 
             while (leftHelpIndex <= middleIndex)
             {
-                orderedArray[orderedArrayIndex] = nums[leftHelpIndex];
-                orderedArrayIndex++;
-                leftHelpIndex++;
+                orderedArray[orderedArrayIndex++] = nums[leftHelpIndex++];
             }
             while (rightHelpIndex <= rightIndex)
             {
-                orderedArray[orderedArrayIndex] = nums[rightHelpIndex];
-                orderedArrayIndex++;
-                rightHelpIndex++;
+                orderedArray[orderedArrayIndex++] = nums[rightHelpIndex++];
             }
 
             for (int i = 0; i < orderedArray.Length; i++)
