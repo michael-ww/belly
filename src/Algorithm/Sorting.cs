@@ -235,11 +235,12 @@ namespace Algorithm
 
         public void RadixSort(int[] array, int leftIndex, int rightIndex, int digit)
         {
-            int radix = 10, i = 0, j = 0;
+            int radix = 10;
             int[] bucket = new int[rightIndex - leftIndex + 1];
             for (int d = 1; d <= digit; d++)
             {
                 int[] count = new int[radix];
+                int i, j;
                 for (i = leftIndex; i <= rightIndex; i++)
                 {
                     j = this.GetDigit(array[i], d);
