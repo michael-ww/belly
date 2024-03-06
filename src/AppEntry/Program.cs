@@ -1,8 +1,7 @@
-﻿using System;
-using System.Text;
-
-namespace AppEntry
+﻿namespace AppEntry
 {
+    using System;
+
     class Program
     {
         static void Main(string[] args)

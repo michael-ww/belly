@@ -21,11 +21,11 @@ namespace Algorithm
                     k--;
                 }
                 Utility.Swap(nums, i, k);
-                Utility.ReverseArray(nums, i + 1, nums.Length - 1);
+                Utility.Reverse(nums, i + 1, nums.Length - 1);
             }
             else
             {
-                Utility.ReverseArray(nums, 0, nums.Length - 1);
+                Utility.Reverse(nums, 0, nums.Length - 1);
             }
 
         }

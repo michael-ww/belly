@@ -2,12 +2,12 @@ namespace Algorithm;
 
 public static class Utility
 {
-    public static void Swap(int[] nums, int i, int j)
+    public static void Swap<T>(T[] nums, int i, int j)
     {
         (nums[i], nums[j]) = (nums[j], nums[i]);
     }
 
-    public static void ReverseArray(int[] nums, int startIndex, int endIndex)
+    public static void Reverse(int[] nums, int startIndex, int endIndex)
     {
         if (startIndex >= endIndex)
         {
@@ -21,5 +21,23 @@ public static class Utility
             startIndex++;
             endIndex--;
         }
+    }
+
+    public static ListNode Reverse(ListNode head)
+    {
+        if (head == null || head.Next == null)
+        {
+            return head;
+        }
+
+        ListNode current = head, previous = null;
+        while (current != null)
+        {
+            ListNode temp = current.Next;
+            current.Next = previous;
+            previous = current;
+            current = temp;
+        }
+        return previous;
     }
 }

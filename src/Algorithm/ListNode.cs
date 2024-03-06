@@ -1,14 +1,15 @@
-namespace Algorithm;
-
-public class ListNode
+namespace Algorithm
 {
-    public int Value { get; }
-
-    public ListNode Next { get; set; }
-
-    public ListNode(int val = 0, ListNode next = null)
+    public class ListNode
     {
-        this.Value = val;
-        this.Next = next;
+        public int Value { get; }
+
+        public ListNode Next { get; set; }
+
+        public ListNode(int value = 0, ListNode next = null)
+        {
+            this.Value = value;
+            this.Next = next;
+        }
     }
 }

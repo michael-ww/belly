@@ -1,5 +1,7 @@
 namespace Algorithm
 {
+    //Time Complexity : O(N)
+    //Space Complexity: O(1)
     public class LeetCode206
     {
         public ListNode ReverseList(ListNode head)
@@ -8,17 +10,14 @@ namespace Algorithm
             {
                 return head;
             }
-
-            ListNode previous = null;
-            ListNode current = head;
+            ListNode previous = null, current = head;
             while (current != null)
             {
-                ListNode temp = current.Next;
+                ListNode currentNext = current.Next;
                 current.Next = previous;
                 previous = current;
-                current = temp;
+                current = currentNext;
             }
-
             return previous;
         }
     }
