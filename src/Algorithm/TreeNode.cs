@@ -5,6 +5,6 @@ namespace Algorithm
         public int Value { get; }
         public TreeNode Left { get; set; }
         public TreeNode Right { get; set; }
-        public TreeNode(int x) { this.Value = x; }
+        public TreeNode(int value) { this.Value = value; }
     }
 }
