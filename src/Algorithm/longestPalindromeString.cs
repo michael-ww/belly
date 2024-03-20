@@ -3,20 +3,20 @@ namespace Algorithm
     using System;
     using System.Linq;
 
-    public class longestPalindromeString
+    public class LongestPalindromeString
     {
-        public string Getlongest(string s)
+        public string Getlongest(string text)
         {
-            if (s == null || s.Length <= 1)
+            if (text == null || text.Length <= 1)
             {
-                return s;
+                return text;
             }
 
             int startIndex = 0, endIndex = 0;
-            for (int i = 0; i < s.Length; i++)
+            for (int i = 0; i < text.Length; i++)
             {
-                int length1 = this.ExpandAroundCenter(s, i, i);
-                int length2 = this.ExpandAroundCenter(s, i, i + 1);
+                int length1 = this.ExpandAroundCenter(text, i, i);
+                int length2 = this.ExpandAroundCenter(text, i, i + 1);
                 int length = Math.Max(length1, length2);
                 if (length > endIndex - startIndex)
                 {
@@ -25,7 +25,7 @@ namespace Algorithm
                 }
             }
 
-            return s.Substring(startIndex, endIndex - startIndex + 1);
+            return text.Substring(startIndex, endIndex - startIndex + 1);
         }
 
         private int ExpandAroundCenter(string s, int leftIndex, int rightIndex)

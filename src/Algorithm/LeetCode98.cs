@@ -13,7 +13,7 @@ namespace Algorithm
             return this.IsValidBST(root, int.MinValue);
         }
 
-        public bool IsValidBST(TreeNode root, int previousValue)
+        private bool IsValidBST(TreeNode root, int previousValue)
         {
             if (root == null)
             {
@@ -45,7 +45,7 @@ namespace Algorithm
             Stack<TreeNode> stack = new();
             int previousValue = int.MinValue;
             if (stack.Count > 0 || root != null)
-            {
+            { 
                 if (root == null)
                 {
                     root = stack.Pop();
@@ -64,6 +64,47 @@ namespace Algorithm
                     stack.Push(root.Left);
                     root = root.Left;
                 }
+            }
+
+            return true;
+        }
+
+        public bool IsBST3(TreeNode root)
+        {
+            if (root == null)
+            {
+                return false;
+            }
+
+            int previousValue = int.MinValue;
+            TreeNode current = root;
+            TreeNode mostRight = null;
+            while (current != null)
+            {
+                mostRight = current.Left;
+                if (mostRight != null)
+                {
+                    while (mostRight.Right != null && mostRight.Right != current)
+                    {
+                        mostRight = mostRight.Right;
+                    }
+                    if (mostRight.Right == null)
+                    {
+                        mostRight.Right = current;
+                        current = current.Left;
+                        continue;
+                    }
+                    else if (mostRight.Right == current)
+                    {
+                        mostRight.Right = null;
+                    }
+                }
+                if (current.Value <= previousValue)
+                {
+                    return false;
+                }
+                previousValue = current.Value;
+                current = current.Right;
             }
 
             return true;

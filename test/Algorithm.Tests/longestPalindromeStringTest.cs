@@ -9,7 +9,7 @@ public class longestPalindromeStringTest
         string s = "abababa";
 
         //Act
-        longestPalindromeString palindrome = new();
+        LongestPalindromeString palindrome = new();
         string result = palindrome.Getlongest(s);
 
         //Assert

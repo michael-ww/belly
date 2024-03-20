@@ -15,7 +15,7 @@ namespace Algorithm
             return answer;
         }
 
-        public void InorderTraversal(IList<int> list, TreeNode root)
+        private void InorderTraversal(IList<int> list, TreeNode root)
         {
             if (root == null)
             {
@@ -59,6 +59,32 @@ namespace Algorithm
             if (root == null)
             {
                 return answer;
+            }
+
+            TreeNode current = root;
+            TreeNode mostRight = null;
+            while (current != null)
+            {
+                mostRight = current.Left;
+                if (mostRight != null)
+                {
+                    while (mostRight.Right != null && mostRight.Right != current)
+                    {
+                        mostRight = mostRight.Right;
+                    }
+                    if (mostRight.Right == null)
+                    {
+                        mostRight.Right = current;
+                        current = current.Left;
+                        continue;
+                    }
+                    else
+                    {
+                        mostRight.Right = null;
+                    }
+                }
+                answer.Add(current.Value);
+                current = current.Right;
             }
 
             return answer;

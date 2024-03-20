@@ -15,7 +15,7 @@ namespace Algorithm
             return answer;
         }
 
-        public void PreorderTraversal(IList<int> list, TreeNode root)
+        private void PreorderTraversal(IList<int> list, TreeNode root)
         {
             if (root == null)
             {
@@ -58,8 +58,34 @@ namespace Algorithm
             {
                 return answer;
             }
-
-
+            TreeNode current = root;
+            while (current != null)
+            {
+                TreeNode mostRight = root.Left;
+                if (mostRight == null)
+                {
+                    answer.Add(current.Value);
+                }
+                else
+                {
+                    while (mostRight.Right != null && mostRight.Right != current)
+                    {
+                        mostRight = mostRight.Right;
+                    }
+                    if (mostRight.Right == null)
+                    {
+                        answer.Add(current.Value);
+                        mostRight.Right = current;
+                        current = current.Left;
+                        continue;
+                    }
+                    else
+                    {
+                        mostRight.Right = null;
+                    }
+                }
+                current = current.Right;
+            }
             return answer;
         }
     }

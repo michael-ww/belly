@@ -15,7 +15,7 @@ namespace Algorithm
             return answer;
         }
 
-        public void PostorderTraversal(IList<int> list, TreeNode root)
+        private void PostorderTraversal(IList<int> list, TreeNode root)
         {
             if (root == null)
             {
@@ -68,7 +68,58 @@ namespace Algorithm
                 return answer;
             }
 
+            TreeNode current = root;
+            TreeNode mostRight = null;
+            while (current != null)
+            {
+                mostRight = current.Left;
+                if (mostRight != null)
+                {
+                    while (mostRight.Right != null && mostRight.Right != current)
+                    {
+                        mostRight = mostRight.Right;
+                    }
+                    if (mostRight.Right == null)
+                    {
+                        mostRight.Right = current;
+                        current = current.Left;
+                        continue;
+                    }
+                    else if (mostRight.Right == current)
+                    {
+                        mostRight.Right = null;
+                        this.PrintReversingRightEdge(current.Left, answer);
+                    }
+                }
+                current = current.Right;
+            }
+            this.PrintReversingRightEdge(root, answer);
             return answer;
+        }
+
+        private void PrintReversingRightEdge(TreeNode from, IList<int> answer)
+        {
+            TreeNode tail = this.ReverseRightEdge(from);
+            TreeNode current = tail;
+            while (current != null)
+            {
+                answer.Add(current.Value);
+                current = current.Right;
+            }
+            this.ReverseRightEdge(tail);
+        }
+
+        private TreeNode ReverseRightEdge(TreeNode from)
+        {
+            TreeNode previous = null, next = null;
+            while (from != null)
+            {
+                next = from.Right;
+                from.Right = previous;
+                previous = from;
+                from = next;
+            }
+            return previous;
         }
     }
 }
