@@ -5,8 +5,8 @@
     <ProjectName>Belly</ProjectName>
     <AssemblyName>$(ProjectName).$(MSBuildProjectName)</AssemblyName>
     <RootNamespace>$(ProjectName).$(MSBuildProjectName)</RootNamespace>
-    <TargetFramework>net6.0</TargetFramework>
-    <LangVersion>10</LangVersion>
+    <TargetFramework>net8.0</TargetFramework>
+    <LangVersion>12</LangVersion>
     <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>disable</Nullable>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>

@@ -1,14 +1,13 @@
 namespace Algorithm
 {
-    using System;
 
-    public class AddTwoNumbers
+    public class LeetCode2
     {
-        public ListNode AddTwoNums(ListNode l1, ListNode l2)
+        public ListNode AddTwoNumbers(ListNode l1, ListNode l2)
         {
             if (l1 == null && l2 == null)
             {
-                throw new ArgumentException();
+                return null;
             }
             if (l1 == null)
             {
@@ -18,32 +17,28 @@ namespace Algorithm
             {
                 return l1;
             }
-            ListNode head = new ListNode(0, null);
-            ListNode current = head;
+
+            ListNode answer = new ListNode(0, null);
+            ListNode current = answer;
             int carryNumber = 0;
             while (l1 != null || l2 != null)
             {
                 int x = l1 == null ? 0 : l1.Value;
                 int y = l2 == null ? 0 : l2.Value;
                 int z = x + y + carryNumber;
-                current.Next = new ListNode(z % 10, null);
-                current = current.Next;
+                current.Next = new(z % 10, null);
                 carryNumber = z / 10;
-                if (l1 != null)
-                {
-                    l1 = l1.Next;
-                }
-                if (l2 != null)
-                {
-                    l2 = l2.Next;
-                }
+                l1 = l1?.Next;
+                l2 = l2?.Next;
+                current = current.Next;
             }
 
             if (carryNumber > 0)
             {
-                current = new ListNode(carryNumber, null);
+                current.Next = new(carryNumber, null);
             }
-            return head.Next;
+
+            return answer.Next;
         }
     }
 }

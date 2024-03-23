@@ -176,7 +176,33 @@ namespace Algorithm
                 }
             }
 
-            return 0;
+            (int median, int previousMedian) = this.FindKthElement(nums1, nums2, (nums1.Length + nums2.Length) / 2);
+            return (nums1.Length + nums2.Length) % 2 == 0 ? (median + previousMedian) / 2d : median;
+        }
+
+        public (int, int) FindKthElement(int[] nums1, int[] nums2, int kth)
+        {
+            ArgumentNullException.ThrowIfNull(nums1);
+            ArgumentNullException.ThrowIfNull(nums2);
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(kth, nums1.Length + nums2.Length);
+            int previousMedian = 0, median = 0, nums1Index = 0, nums2Index = 0;
+            while (nums1Index < nums1.Length && nums2Index < nums2.Length)
+            {
+                previousMedian = median;
+                if (nums1[nums1Index] > nums2[nums2Index])
+                {
+                    median = nums2[nums2Index];
+                    nums2Index = (nums2Index + (kth / 2 - 1)) >= nums2.Length ? nums2.Length - 1 : nums2Index + (kth / 2 - 1);
+                }
+                else
+                {
+                    median = nums1[nums1Index];
+                    nums1Index = (nums1Index + (kth / 2 - 1)) >= nums1.Length ? nums1.Length - 1 : nums1Index + (kth / 2 - 1);
+                }
+
+            }
+
+            return (median, previousMedian);
         }
     }
 }
