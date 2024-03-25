@@ -1,4 +1,4 @@
-namespace Algorithm
+namespace Belly.Algorithm
 {
     public class QuickSortingTest
     {

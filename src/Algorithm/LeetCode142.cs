@@ -1,4 +1,4 @@
-namespace Algorithm
+namespace Belly.Algorithm
 {
     using System.Collections.Generic;
 
@@ -45,7 +45,7 @@ namespace Algorithm
                 fast = fast.Next.Next;
                 slow = slow.Next;
             }
-            
+
             fast = head;
             while (!fast.Equals(slow))
             {

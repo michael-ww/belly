@@ -1,4 +1,4 @@
-namespace Algorithm
+namespace Belly.Algorithm
 {
     using System.Collections.Generic;
     using System.Linq;

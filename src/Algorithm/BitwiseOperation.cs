@@ -1,5 +1,5 @@
-namespace Algorithm
-{    
+namespace Belly.Algorithm
+{
     public class BitwiseOperation
     {
         public int Flip(int n)

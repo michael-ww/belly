@@ -1,14 +1,14 @@
-namespace Algorithm.Tests
+namespace Belly.Algorithm.Tests
 {
     public class LeetCode102Test
-    { 
+    {
         [Fact]
         public void LevelOrder1_ValidInput_ReturnList()
         {
             // Given
-        
+
             // When
-        
+
             // Then
         }
 

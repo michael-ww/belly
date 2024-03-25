@@ -1,6 +1,6 @@
-namespace Algorithm
+namespace Belly.Algorithm
 {
-using System.Collections.Generic;
+    using System.Collections.Generic;
 
     public class Dijkstra
     {

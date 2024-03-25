@@ -1,4 +1,4 @@
-namespace Algorithm.Tests
+namespace Belly.Algorithm.Tests
 {
     public class LeetCode295Test
     {
@@ -8,7 +8,7 @@ namespace Algorithm.Tests
             // Given
 
             // When
-        
+
             // Then
         }
     }

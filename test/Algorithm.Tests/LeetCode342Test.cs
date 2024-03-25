@@ -1,14 +1,14 @@
-namespace Algorithm.Tests
+namespace Belly.Algorithm.Tests
 {
     public class LeetCode342Test
-    { 
+    {
         [Fact]
         public void IsPowerOfFour_ValidInput_ReturnBoolean()
         {
             // Given
-        
+
             // When
-        
+
             // Then
         }
     }

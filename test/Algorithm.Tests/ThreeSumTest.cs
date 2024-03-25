@@ -1,4 +1,4 @@
-namespace Algorithm.Tests
+namespace Belly.Algorithm.Tests
 {
     using System;
     using System.Collections.Generic;

@@ -1,4 +1,4 @@
-namespace Algorithm
+namespace Belly.Algorithm
 {
     public class LeetCode337Test
     {
@@ -6,9 +6,9 @@ namespace Algorithm
         public void Rob_ValidInput_ReturnMaxCash()
         {
             // Given
-        
+
             // When
-        
+
             // Then
         }
     }

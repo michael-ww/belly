@@ -1,4 +1,4 @@
-namespace Algorithm
+namespace Belly.Algorithm
 {
     //Time Complexity : O(N) string matching
     public class KMP

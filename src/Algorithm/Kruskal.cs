@@ -1,7 +1,7 @@
-namespace Algorithm
+namespace Belly.Algorithm
 {
     public class Kruskal
-    { 
-        
+    {
+
     }
 }

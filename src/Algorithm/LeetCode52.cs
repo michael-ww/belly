@@ -1,4 +1,4 @@
-namespace Algorithm
+namespace Belly.Algorithm
 {
     public class LeetCode52
     {
@@ -22,8 +22,8 @@ namespace Algorithm
 
             int answer = 0;
             for (int j = 0; j < limit; j++)
-            { 
-                
+            {
+
             }
 
             return answer;

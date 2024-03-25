@@ -1,4 +1,4 @@
-namespace Algorithm
+namespace Belly.Algorithm
 {
     using System.Collections.Generic;
 
@@ -45,7 +45,7 @@ namespace Algorithm
             Stack<TreeNode> stack = new();
             int previousValue = int.MinValue;
             if (stack.Count > 0 || root != null)
-            { 
+            {
                 if (root == null)
                 {
                     root = stack.Pop();

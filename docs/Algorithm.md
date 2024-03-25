@@ -48,3 +48,9 @@ SHA1:0~2^128-1，32个字符，16进制
     a 如果MostRight的右指针指向null，让其指向Current，然后Current向左移动(Current=Current.Left)；
     b 如果MostRight的右指针指向Current，让其指向null，然后Current向右移动(Current=Current.Right)；
 3 Current为空时遍历停止；
+
+## 有序表 O(logN)
+1.红黑树，AVL树，Size-Balance Tree，跳表
+2.平衡搜索二叉树系列，上面前三,搜索二叉树上默认无重复值；
+3.删除节点，然后用左树最右的节点或者右树最左的节点替代；
+4.平衡树，任何一个节点，左树和右树的高度差不大于1；
