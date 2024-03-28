@@ -12,14 +12,14 @@ namespace Belly.Algorithm.Tests
 
             // When
             LeetCode3 leetCode3 = new();
-            int length1 = leetCode3.LengthOfLongestSubstring(s1);
-            int length2 = leetCode3.LengthOfLongestSubstring(s2);
-            int length3 = leetCode3.LengthOfLongestSubstring(s3);
+            string answer1 = leetCode3.LongestDistinctSubstring(s1);
+            string answer2 = leetCode3.LongestDistinctSubstring(s2);
+            string answer3 = leetCode3.LongestDistinctSubstring(s3);
 
             // Then
-            Assert.Equal(3, length1);
-            Assert.Equal(1, length2);
-            Assert.Equal(3, length3);
+            Assert.Equal("abc", answer1);
+            Assert.Equal("b", answer2);
+            Assert.Equal("wke", answer3);
         }
     }
 }
