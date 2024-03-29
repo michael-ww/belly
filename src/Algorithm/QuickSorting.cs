@@ -27,25 +27,25 @@ namespace Belly.Algorithm
 
         public (int, int) Partition(int[] nums, int leftIndex, int rightIndex)
         {
-            int lessPosition = leftIndex - 1;
-            int morePosition = rightIndex;
-            while (leftIndex < morePosition)
+            int lessIndex = leftIndex - 1;
+            int moreIndex = rightIndex;
+            while (leftIndex < moreIndex)
             {
                 if (nums[leftIndex] > nums[rightIndex])
                 {
-                    Utility.Swap(nums, leftIndex, --morePosition);
+                    Utility.Swap(nums, leftIndex, --moreIndex);
                 }
                 else if (nums[leftIndex] < nums[rightIndex])
                 {
-                    Utility.Swap(nums, leftIndex++, ++lessPosition);
+                    Utility.Swap(nums, leftIndex++, ++lessIndex);
                 }
                 else
                 {
                     leftIndex++;
                 }
             }
-            Utility.Swap(nums, rightIndex, morePosition);
-            return (lessPosition + 1, morePosition);
+            Utility.Swap(nums, rightIndex, moreIndex);
+            return (lessIndex + 1, moreIndex);
         }
     }
 }
