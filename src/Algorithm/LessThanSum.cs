@@ -1,6 +1,6 @@
 namespace Belly.Algorithm
 {
-    public class SmallSumary
+    public class LessThanSum
     {
 
         public int Process(int[] nums)

@@ -1,17 +1,17 @@
 namespace Belly.Algorithm.Tests;
 
-public class SmallSumaryTest
+public class LessThanSumTest
 {
     [Fact]
-    public void Calculate_ValidInput_ReturnSmallSumary()
+    public void Calculate_ValidInput_ReturnSum()
     {
         //Arrage
         int[] array = { 1, 6, 2, 8, 3, 7, 4, 9, 5 };
 
 
         //Act
-        SmallSumary smallSumary = new SmallSumary();
-        int result = smallSumary.Process(array);
+        LessThanSum lessThanSum = new();
+        int result = lessThanSum.Process(array);
 
         //Assert
         Assert.Equal(73, result);
