@@ -1,7 +1,6 @@
 namespace Belly.Algorithm
 {
     using System;
-    using System.Collections.Generic;
 
     public class LeetCode215
     {
@@ -53,7 +52,7 @@ namespace Belly.Algorithm
             }
         }
 
-        public (int, int) Partition(int[] nums, int leftIndex, int rightIndex)
+        private (int, int) Partition(int[] nums, int leftIndex, int rightIndex)
         {
             int lessPosition = leftIndex - 1;
             int morePosition = rightIndex;
@@ -79,6 +78,56 @@ namespace Belly.Algorithm
             }
             Utility.Swap(nums, morePosition, rightIndex);
             return (lessPosition + 1, morePosition);
+        }
+
+        public int FindKthLargest3(int[] nums, int k)
+        {
+            if (nums == null || nums.Length <= 0 || k > nums.Length)
+            {
+                throw new ArgumentException("nums is null or the length of nums is less then zero or the k is more than the length of nums");
+            }
+
+            for (int i = 0; i < nums.Length; i++)
+            {
+                this.HeapInsert(nums, i);
+            }
+            int kthNumber = nums[0];
+            int heapSize = nums.Length;
+            while (k > 0)
+            {
+                k--;
+                kthNumber = nums[0];
+                Utility.Swap(nums, 0, --heapSize);
+                this.Heapify(nums, 0, heapSize);
+            }
+
+            return kthNumber;
+        }
+
+        private void HeapInsert(int[] nums, int index)
+        {
+            while (nums[index] > nums[(index - 1) / 2])
+            {
+                Utility.Swap(nums, index, (index - 1) / 2);
+                index = (index - 1) / 2;
+            }
+        }
+
+        private void Heapify(int[] nums, int index, int heapSize)
+        {
+            int left = 2 * index + 1;
+            while (left < heapSize)
+            {
+                int largest = left + 1 < heapSize && nums[left] < nums[left + 1] ? left + 1 : left;
+                largest = nums[index] > nums[largest] ? index : largest;
+                if (largest == index)
+                {
+                    break;
+                }
+                Utility.Swap(nums, index, largest);
+                index = largest;
+                left = 2 * index + 1;
+            }
         }
     }
 }

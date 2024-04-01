@@ -15,11 +15,10 @@ namespace Belly.Algorithm
                 this.HeapInsert(nums, i);
             }
             int heapSize = nums.Length;
-            Utility.Swap(nums, 0, --heapSize);
             while (heapSize > 0)
             {
-                this.Heapify(nums, 0, heapSize);
                 Utility.Swap(nums, 0, --heapSize);
+                this.Heapify(nums, 0, heapSize);
             }
         }
 
