@@ -13,14 +13,13 @@ namespace Belly.Algorithm
             this.Process(nums, 0, nums.Length - 1, this.GetMaxBits(nums));
         }
 
-        public void Process(int[] nums, int leftIndex, int rightIndex, int digit)
+        private void Process(int[] nums, int leftIndex, int rightIndex, int digit)
         {
-            int radix = 10;
+            int radix = 10, i, j;
             int[] bucket = new int[rightIndex - leftIndex + 1];
             for (int d = 1; d <= digit; d++)
             {
                 int[] count = new int[radix];
-                int i, j;
                 for (i = leftIndex; i <= rightIndex; i++)
                 {
                     j = this.GetDigit(nums[i], d);

@@ -2,44 +2,44 @@ namespace Belly.Algorithm
 {
     using System.Collections.Generic;
 
-    public class ValidParentheses
+    public class LeetCode20
     {
         public bool IsValid(string s)
         {
-            if (s == null || s.Trim().Length < 2)
+            if (string.IsNullOrWhiteSpace(s) || s.Length <= 0 || s.Length % 2 != 0)
             {
                 return false;
             }
 
-            Stack<char> parentheses = new();
+            Stack<char> stack = new();
             for (int i = 0; i < s.Length; i++)
             {
-                if (s[i] == '(' || s[i] == '[' || s[i] == '{')
+                if (s[i] == '{' || s[i] == '[' || s[i] == '(')
                 {
-                    parentheses.Push(s[i]);
+                    stack.Push(s[i]);
                 }
                 else
                 {
-                    if (parentheses.Count <= 0)
+                    if (stack.Count <= 0)
                     {
                         return false;
                     }
-                    else if (s[i] == ')' && parentheses.Pop() != '(')
+                    else if (s[i] == '}' && stack.Pop() != '{')
                     {
                         return false;
                     }
-                    else if (s[i] == ']' && parentheses.Pop() != '[')
+                    else if (s[i] == ']' && stack.Pop() != '[')
                     {
                         return false;
                     }
-                    else if (s[i] == '}' && parentheses.Pop() != '{')
+                    else if (s[i] == ')' && stack.Pop() != '(')
                     {
                         return false;
                     }
                 }
             }
 
-            return true;
+            return stack.Count == 0;
         }
     }
 }

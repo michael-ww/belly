@@ -1,7 +1,10 @@
 namespace Belly.Algorithm
 {
-    //Time Complexity : O(NlogN)
-    //Space Complexity : O(1)
+    using System;
+    using System.Collections.Generic;
+    // Time Complexity : O(NlogN)
+    // Space Complexity : O(1)
+    // Expansion : O(logN)
     public class HeapSorting
     {
         public void Process(int[] nums)
@@ -45,6 +48,30 @@ namespace Belly.Algorithm
                 Utility.Swap(nums, index, largestIndex);
                 index = largestIndex;
                 leftIndex = index * 2 + 1;
+            }
+        }
+
+        public void DistanceLessK(int[] nums, int k)
+        {
+            if (nums == null || nums.Length < 2 || k <= 0)
+            {
+                return;
+            }
+            PriorityQueue<int, int> pq = new();
+            int index1 = 0;
+            for (; index1 <= Math.Min(nums.Length - 1, k); index1++)
+            {
+                pq.Enqueue(nums[index1], nums[index1]);
+            }
+
+            int index2 = 0;
+            for (; index2 < nums.Length; index2++, index1++)
+            {
+                nums[index2] = pq.Dequeue();
+                if (index1 < nums.Length)
+                {
+                    pq.Enqueue(nums[index1], nums[index1]);
+                }
             }
         }
     }
