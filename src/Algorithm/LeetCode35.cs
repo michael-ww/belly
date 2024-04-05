@@ -1,10 +1,10 @@
 namespace Belly.Algorithm
 {
-    public class SearchInsert
+    public class LeetCode35
     {
-        public int Process(int[] nums, int target)
+        public int SearchInsert(int[] nums, int target)
         {
-            if (nums == null || nums.Length <= 0)
+            if (nums == null)
             {
                 return -1;
             }
@@ -12,8 +12,8 @@ namespace Belly.Algorithm
             int leftIndex = 0, rightIndex = nums.Length - 1;
             while (leftIndex <= rightIndex)
             {
-                int middleIndex = leftIndex + ((rightIndex - leftIndex) >> 1);
-                if (nums[middleIndex] <= target)
+                int middleIndex = leftIndex + (rightIndex - leftIndex) / 2;
+                if (nums[middleIndex] < target)
                 {
                     leftIndex = middleIndex + 1;
                 }

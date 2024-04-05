@@ -6,11 +6,10 @@ namespace Belly.Algorithm
     {
         public bool IsBalanced(TreeNode root)
         {
-            (bool isBalanced, int height) = this.Process(root);
-            return isBalanced;
+            return this.Process(root).Item1;
         }
 
-        public (bool, int) Process(TreeNode root)
+        private (bool, int) Process(TreeNode root)
         {
             if (root == null)
             {
