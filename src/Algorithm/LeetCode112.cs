@@ -8,10 +8,6 @@ namespace Belly.Algorithm
             {
                 return false;
             }
-            if (root.Value > target)
-            {
-                return false;
-            }
             if (root.Left == null && root.Right == null)
             {
                 return root.Value == target;

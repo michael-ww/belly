@@ -62,10 +62,9 @@ namespace Belly.Algorithm
             }
 
             TreeNode current = root;
-            TreeNode mostRight = null;
             while (current != null)
             {
-                mostRight = current.Left;
+                TreeNode mostRight = current.Left;
                 if (mostRight != null)
                 {
                     while (mostRight.Right != null && mostRight.Right != current)

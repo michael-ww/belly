@@ -1,9 +1,9 @@
 namespace Belly.Algorithm.Tests
 {
-    public class LeetCode160Test
+    public class LeetCode118Test
     { 
         [Fact]
-        public void GetIntersectionNode_ValidInput_ReturnNode()
+        public void Generate_ValidInput_ReturnList()
         {
             // Given
         

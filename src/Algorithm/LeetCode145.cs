@@ -69,10 +69,9 @@ namespace Belly.Algorithm
             }
 
             TreeNode current = root;
-            TreeNode mostRight = null;
             while (current != null)
             {
-                mostRight = current.Left;
+                TreeNode mostRight = current.Left;
                 if (mostRight != null)
                 {
                     while (mostRight.Right != null && mostRight.Right != current)
@@ -85,7 +84,7 @@ namespace Belly.Algorithm
                         current = current.Left;
                         continue;
                     }
-                    else if (mostRight.Right == current)
+                    else
                     {
                         mostRight.Right = null;
                         this.PrintReversingRightEdge(current.Left, answer);

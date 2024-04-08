@@ -100,7 +100,7 @@ namespace Belly.Algorithm
                 currentA = nodeCount > 0 ? headA : headB;
                 currentB = currentA == headA ? headB : headA;
                 nodeCount = Math.Abs(nodeCount);
-                while (nodeCount != 0)
+                while (nodeCount > 0)
                 {
                     nodeCount--;
                     currentA = currentA.Next;
