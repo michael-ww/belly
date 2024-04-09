@@ -10,13 +10,13 @@ namespace Belly.Algorithm
             {
                 return head;
             }
-            ListNode previous = null, current = head;
+            ListNode previous = null, current = head, next = null;
             while (current != null)
             {
-                ListNode currentNext = current.Next;
+                next = current.Next;
                 current.Next = previous;
                 previous = current;
-                current = currentNext;
+                current = next;
             }
             return previous;
         }
