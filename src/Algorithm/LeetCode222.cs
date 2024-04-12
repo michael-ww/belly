@@ -48,7 +48,21 @@ namespace Belly.Algorithm
 
         private bool Exists(TreeNode tn, int height, int count)
         {
-            return true;
+            int bits = 1 << (height - 1);
+            TreeNode node = tn;
+            while (node != null && bits > 0)
+            {
+                if ((bits & count) == 0)
+                {
+                    node = node.Left;
+                }
+                else
+                {
+                    node = node.Right;
+                }
+                bits >>= 1;
+            }
+            return node != null;
         }
     }
 }
