@@ -1,8 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System;
-    using System.Collections.Generic;
-
     public class FourSum
     {
         public IList<Tuple<int, int, int, int>> Process(int[] nums, int target)

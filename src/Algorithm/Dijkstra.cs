@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System.Collections.Generic;
-
     public class Dijkstra
     {
         public IDictionary<Node, int> Calculate(Node head)

@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System;
-
     public class LeetCode121
     {
         public int MaxProfit1(int[] prices)

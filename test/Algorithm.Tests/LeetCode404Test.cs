@@ -1,9 +1,9 @@
 namespace Belly.Algorithm.Tests
 {
-    public class LeetCode144Test
+    public class LeetCode404Test
     {
         [Fact]
-        public void PreorderTraversal3_ValidInput_ReturnAscendingArray()
+        public void SumOfLeftLeaves_ValidInput_ReturnSum()
         {
             // Given
             TreeNode seven = new(7);
@@ -26,18 +26,14 @@ namespace Belly.Algorithm.Tests
                 Right = three
             };
 
-
             // When
-            LeetCode144 leetCode144 = new();
-            IList<int> answer1 = leetCode144.PreorderTraversal1(one);
-            IList<int> answer2 = leetCode144.PreorderTraversal1(one);
-            IList<int> answer3 = leetCode144.PreorderTraversal1(one);
+            LeetCode404 leetCode404 = new();
+            int answer1 = leetCode404.SumOfLeftLeaves1(one);
+            int answer2 = leetCode404.SumOfLeftLeaves2(one);
 
             // Then
-            List<int> expected = new() { 1, 2, 4, 5, 3, 6, 7 };
-            Assert.Equal(expected, answer1);
-            Assert.Equal(expected, answer2);
-            Assert.Equal(expected, answer3);
+            Assert.Equal(10, answer1);
+            Assert.Equal(10, answer2);
         }
     }
 }

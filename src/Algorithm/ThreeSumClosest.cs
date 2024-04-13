@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System;
-
     public class ThreeSumClosest
     {
         public int Process(int[] nums, int target)

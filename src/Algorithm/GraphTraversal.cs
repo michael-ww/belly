@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System.Collections.Generic;
-
     public class GraphTraversal
     {
         public void BFS(Node node)

@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System.Collections.Generic;
-
     public class LeetCode98
     {
         public bool IsValidBST1(TreeNode root)

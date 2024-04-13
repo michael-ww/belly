@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System;
-
     public class LeetCode124
     {
         public int MaxPathSum(TreeNode root)
@@ -16,10 +14,10 @@ namespace Belly.Algorithm
                 return (0, 0);
             }
 
-            (int leftMaxDistance, int leftHeight) = this.Process(root.Left);
-            (int rightMaxDistance, int rightHeight) = this.Process(root.Right);
-            int rootMaxDistance = leftHeight + rightHeight + 1;
-            int distance = Math.Max(rootMaxDistance, Math.Max(leftMaxDistance, rightMaxDistance));
+            (int leftDistance, int leftHeight) = this.Process(root.Left);
+            (int rightDistance, int rightHeight) = this.Process(root.Right);
+            int rootDistance = leftHeight + rightHeight + 1;
+            int distance = Math.Max(rootDistance, Math.Max(leftDistance, rightDistance));
             int height = Math.Max(leftHeight, rightHeight) + 1;
             return (distance, height);
         }

@@ -1,7 +1,5 @@
 namespace Belly.Algorithm.Tests
 {
-    using System;
-
     public class SortedArrayMedianTest
     {
         [Fact]

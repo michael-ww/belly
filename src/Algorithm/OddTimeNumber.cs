@@ -1,6 +1,6 @@
 namespace Belly.Algorithm
 {
-    using System;
+
 
     public class OddTimeNumber
     {

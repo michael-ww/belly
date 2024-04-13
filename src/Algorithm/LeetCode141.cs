@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System.Collections.Generic;
-
     public class LeetCode141
     {
         public bool HasCycle1(ListNode head)

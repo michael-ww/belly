@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System.Collections.Generic;
-
     public class LeetCode118
     {
         public IList<IList<int>> Generate(int numRows)

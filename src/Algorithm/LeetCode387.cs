@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System.Collections.Generic;
-
     public class LeetCode387
     {
         public int FirstUniqChar(string s)

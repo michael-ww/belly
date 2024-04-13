@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System.Collections.Generic;
-
     public class LeetCode958
     {
         public bool IsCompleteBinaryTree(TreeNode root)

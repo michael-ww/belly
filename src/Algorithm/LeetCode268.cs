@@ -1,8 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System;
-    using System.Collections.Generic;
-
     public class LeetCode268
     {
         public int MissingNumber1(int[] nums)

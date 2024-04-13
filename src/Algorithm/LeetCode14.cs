@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System;
-
     public class LeetCode14
     {
         public string LongestCommonPrefix(string[] strs)

@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System.Collections.Generic;
-
     public class LeetCode101
     {
         public bool IsSymmetric1(TreeNode root)

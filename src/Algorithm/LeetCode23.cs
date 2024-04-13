@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System.Collections.Generic;
-
     public class LeetCode23
     {
         public ListNode MergeKLists(ListNode[] lists)

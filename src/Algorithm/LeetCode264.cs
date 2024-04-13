@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System;
-
     public class LeetCode264
     {
         public int NthUglyNumber(int n)

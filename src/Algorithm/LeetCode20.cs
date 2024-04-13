@@ -1,6 +1,6 @@
 namespace Belly.Algorithm
 {
-    using System.Collections.Generic;
+
 
     public class LeetCode20
     {

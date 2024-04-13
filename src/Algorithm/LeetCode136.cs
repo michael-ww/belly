@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System;
-
     public class LeetCode136
     {
         public int SingleNumber(int[] nums)

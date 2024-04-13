@@ -1,7 +1,4 @@
 namespace Belly.Algorithm;
-
-using System;
-
 public class SortedArrayMedian
 {
     public double MergeSort(int[] array1, int[] array2)

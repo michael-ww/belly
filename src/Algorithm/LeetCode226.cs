@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System.Collections.Generic;
-
     public class LeetCode226
     {
         public TreeNode InvertTree1(TreeNode root)

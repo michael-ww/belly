@@ -1,7 +1,5 @@
 namespace Belly.Algorithm.Tests
 {
-    using System.Collections.Generic;
-
     public class LeetCode15Test
     {
         [Fact]

@@ -1,8 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System;
-    using System.Collections.Generic;
-
     public class BinaryTreeTraversal
     {
         // recurring order (first print second print third print)

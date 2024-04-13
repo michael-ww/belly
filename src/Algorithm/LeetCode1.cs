@@ -1,8 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System;
-    using System.Collections.Generic;
-
     public class LeetCode1
     {
         public (int, int) TwoSum1(int[] nums, int target)

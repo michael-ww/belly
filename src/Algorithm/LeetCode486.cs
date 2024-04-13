@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System;
-
     public class LeetCode486
     {
         public bool PredictTheWinner1(int[] nums)

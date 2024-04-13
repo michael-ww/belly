@@ -1,8 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System;
-    using System.Collections.Generic;
-
     public class LeetCode290
     {
         public bool WordPattern(string pattern, string s)

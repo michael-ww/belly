@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System;
-
     public class LeetCode215
     {
         public int FindKthLargest1(int[] nums, int k)

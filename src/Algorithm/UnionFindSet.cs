@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System.Collections.Generic;
-
     public class UnionFindSet<T>
     {
         public Dictionary<T, Element<T>> elementMap { get; }

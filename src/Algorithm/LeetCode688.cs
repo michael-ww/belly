@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System;
-
     public class LeetCode688
     {
         public double KnightProbability1(int n, int k, int row, int column)

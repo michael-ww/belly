@@ -1,6 +1,6 @@
 namespace Belly.Algorithm
 {
-    using System;
+
     using System.Linq;
 
     public class LongestPalindromeString

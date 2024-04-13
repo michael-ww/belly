@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System;
-
     public class LeetCode160
     {
         public ListNode GetIntersectionNode(ListNode headA, ListNode headB)

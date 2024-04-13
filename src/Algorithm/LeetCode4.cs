@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System;
-
     public class LeetCode4
     {
         public double FindMedianSortedArrays1(int[] nums1, int[] nums2)

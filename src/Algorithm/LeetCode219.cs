@@ -1,8 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System;
-    using System.Collections.Generic;
-
     public class LeetCode219
     {
         public bool ContainsNearbyDuplicate1(int[] nums, int k)

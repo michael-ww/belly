@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System.Collections.Generic;
-
     public class LeetCode257
     {
         public IList<string> BinaryTreePaths(TreeNode root)

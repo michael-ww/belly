@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System.Collections.Generic;
-
     public class LeetCode100
     {
         public bool IsSameTree1(TreeNode p, TreeNode q)

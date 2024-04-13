@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System.Collections.Generic;
-
     public class LeetCode234
     {
         public bool IsPalindrome1(ListNode head)

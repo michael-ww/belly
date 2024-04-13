@@ -1,8 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System;
-    using System.Collections.Generic;
-
     public class LeetCode242
     {
         public bool IsAnagram1(string s, string t)

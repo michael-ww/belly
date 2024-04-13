@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System.Collections.Generic;
-
     public class LeetCode102
     {
         public IList<IList<int>> LevelOrder1(TreeNode root)

@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System.Collections.Generic;
-
     public class LeetCode94
     {
         public IList<int> InorderTraversal1(TreeNode root)

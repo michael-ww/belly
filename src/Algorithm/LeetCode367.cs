@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System;
-
     public class LeetCode367
     {
         public bool IsPerfectSquare1(int num)

@@ -1,8 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System;
-    using System.Collections.Generic;
-
     public class LeetCode350
     {
         public int[] Intersect(int[] nums1, int[] nums2)

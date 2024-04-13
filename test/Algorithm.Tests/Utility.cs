@@ -1,8 +1,5 @@
 namespace Belly.Algorithm.Tests
 {
-    using System;
-    using System.Collections.Generic;
-
     public static class Utility
     {
         public static int[] GenerateArray(int length, int maxValue = int.MaxValue, bool distinct = true, bool includeNegative = false)

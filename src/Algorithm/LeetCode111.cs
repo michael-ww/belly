@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System;
-
     public class LeetCode111
     {
         public int MinDepth(TreeNode root)

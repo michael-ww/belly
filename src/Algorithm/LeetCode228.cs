@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System.Collections.Generic;
-
     public class LeetCode228
     {
         public IList<string> SummaryRanges(int[] nums)

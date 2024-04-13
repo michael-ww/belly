@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System.Collections.Generic;
-
     public class LeetCode347
     {
         public int[] TopKFrequent(int[] nums, int k)

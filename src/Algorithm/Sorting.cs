@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System;
-
     public class Sorting
     {
         public void SelectionSort(int[] array)

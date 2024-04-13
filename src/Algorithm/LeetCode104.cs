@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System;
-
     public class LeetCode104
     {
         public int MaxDepth(TreeNode root)

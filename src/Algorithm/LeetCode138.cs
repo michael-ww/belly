@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System.Collections.Generic;
-
     public class LeetCode138
     {
         public RandomListNode CopyRandomList1(RandomListNode head)

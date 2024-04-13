@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System.Collections.Generic;
-
     public class LeetCode83
     {
         public ListNode DeleteDuplicates1(ListNode head)

@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System;
-
     public class TwoOddTimeNumber
     {
         public (int, int) Process(int[] nums)

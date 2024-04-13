@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System;
-
     public class LeetCode140
     {
         public bool IsBalanced(TreeNode root)
