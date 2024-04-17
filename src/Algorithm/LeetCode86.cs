@@ -1,13 +1,10 @@
 namespace Belly.Algorithm
 {
-    public class LinkedListPartition
+    public class LeetCode86
     {
-        public ListNode Process1(ListNode head, int pivot)
+        public ListNode Partition1(ListNode head, int pivot)
         {
-            if (head == null || head.Next == null)
-            {
-                return head;
-            }
+            ArgumentNullException.ThrowIfNull(head);
 
             ListNode lessHead = null, lessTail = null;
             ListNode equalHead = null, equalTail = null;
@@ -15,20 +12,7 @@ namespace Belly.Algorithm
             ListNode current = head;
             while (current != null)
             {
-                if (current.Value == pivot)
-                {
-                    if (equalHead == null)
-                    {
-                        equalHead = current;
-                        equalTail = current;
-                    }
-                    else
-                    {
-                        equalTail.Next = current;
-                        equalTail = current;
-                    }
-                }
-                else if (current.Value > pivot)
+                if (current.Value > pivot)
                 {
                     if (moreHead == null)
                     {
@@ -39,6 +23,19 @@ namespace Belly.Algorithm
                     {
                         moreTail.Next = current;
                         moreTail = current;
+                    }
+                }
+                else if (current.Value == pivot)
+                {
+                    if (equalHead == null)
+                    {
+                        equalHead = current;
+                        equalTail = current;
+                    }
+                    else
+                    {
+                        equalTail.Next = current;
+                        equalTail = current;
                     }
                 }
                 else
@@ -59,8 +56,10 @@ namespace Belly.Algorithm
 
             if (lessTail != null)
             {
-                lessTail.Next = equalHead ?? moreHead;
+                lessTail.Next = equalHead;
+                equalTail = equalTail ?? lessTail;
             }
+
             if (equalTail != null)
             {
                 equalTail.Next = moreHead;
@@ -69,7 +68,7 @@ namespace Belly.Algorithm
             return lessHead ?? equalHead ?? moreHead;
         }
 
-        public ListNode Process2(ListNode head, int pivot)
+        public ListNode Partition2(ListNode head, int pivot)
         {
             if (head == null || head.Next == null)
             {

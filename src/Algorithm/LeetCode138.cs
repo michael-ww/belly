@@ -2,17 +2,17 @@ namespace Belly.Algorithm
 {
     public class LeetCode138
     {
-        public RandomListNode CopyRandomList1(RandomListNode head)
+        public RdmListNode CopyRandomList1(RdmListNode head)
         {
             if (head == null)
             {
                 return null;
             }
-            Dictionary<RandomListNode, RandomListNode> dictionary = new();
-            RandomListNode current = head;
+            Dictionary<RdmListNode, RdmListNode> dictionary = new();
+            RdmListNode current = head;
             while (current != null)
             {
-                dictionary.Add(current, new RandomListNode(current.Value));
+                dictionary.Add(current, new RdmListNode(current.Value));
                 current = current.Next;
             }
             current = head;
@@ -26,17 +26,17 @@ namespace Belly.Algorithm
             return dictionary[head];
         }
 
-        public RandomListNode CopyRandomList2(RandomListNode head)
+        public RdmListNode CopyRandomList2(RdmListNode head)
         {
             if (head == null)
             {
                 return null;
             }
-            RandomListNode current = head;
+            RdmListNode current = head;
             while (current != null)
             {
-                RandomListNode next = current.Next;
-                current.Next = new RandomListNode(current.Value); ;
+                RdmListNode next = current.Next;
+                current.Next = new RdmListNode(current.Value); ;
                 current.Next.Next = next;
                 current = next;
             }
@@ -48,12 +48,12 @@ namespace Belly.Algorithm
                 current = current.Next?.Next;
             }
 
-            RandomListNode answer = head.Next;
+            RdmListNode answer = head.Next;
             current = head;
             while (current != null)
             {
-                RandomListNode next = current.Next.Next;
-                RandomListNode copy = current.Next;
+                RdmListNode next = current.Next.Next;
+                RdmListNode copy = current.Next;
                 current.Next = next;
                 copy.Next = next.Next;
                 current = next;
