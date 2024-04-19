@@ -48,7 +48,7 @@ namespace Belly.Algorithm
                 currentB = currentB.Next;
             }
 
-            if (!currentA.Equals(currentB))
+            if (currentA != currentB)
             {
                 return null;
             }
@@ -62,7 +62,7 @@ namespace Belly.Algorithm
                 currentA = currentA.Next;
             }
 
-            while (!currentA.Equals(currentB))
+            while (currentA != currentB)
             {
                 currentA = currentA.Next;
                 currentB = currentB.Next;
@@ -135,7 +135,7 @@ namespace Belly.Algorithm
             }
 
             ListNode fast = head.Next.Next, slow = head.Next;
-            while (!fast.Equals(slow))
+            while (fast != slow)
             {
                 if (fast.Next == null || fast.Next.Next == null)
                 {
@@ -146,7 +146,7 @@ namespace Belly.Algorithm
             }
 
             fast = head;
-            while (!fast.Equals(slow))
+            while (fast != slow)
             {
                 fast = fast.Next;
                 slow = slow.Next;

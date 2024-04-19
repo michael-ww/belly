@@ -8,16 +8,17 @@ namespace Belly.Algorithm
             {
                 return false;
             }
-            return this.IsValidBST(root, int.MinValue);
+            int minValue = int.MinValue;
+            return this.IsValidBST(root, ref minValue);
         }
 
-        private bool IsValidBST(TreeNode root, int previousValue)
+        private bool IsValidBST(TreeNode root, ref int previousValue)
         {
             if (root == null)
             {
                 return true;
             }
-            bool isLeftValidBST = this.IsValidBST(root.Left, previousValue);
+            bool isLeftValidBST = this.IsValidBST(root.Left, ref previousValue);
             if (!isLeftValidBST)
             {
                 return false;
@@ -30,7 +31,7 @@ namespace Belly.Algorithm
             {
                 previousValue = root.Value;
             }
-            return this.IsValidBST(root.Right, previousValue);
+            return this.IsValidBST(root.Right, ref previousValue);
         }
 
         public bool IsValidBST2(TreeNode root)
@@ -42,7 +43,7 @@ namespace Belly.Algorithm
 
             Stack<TreeNode> stack = new();
             int previousValue = int.MinValue;
-            if (stack.Count > 0 || root != null)
+            while (stack.Count > 0 || root != null)
             {
                 if (root == null)
                 {
@@ -59,7 +60,7 @@ namespace Belly.Algorithm
                 }
                 else
                 {
-                    stack.Push(root.Left);
+                    stack.Push(root);
                     root = root.Left;
                 }
             }
@@ -67,19 +68,18 @@ namespace Belly.Algorithm
             return true;
         }
 
-        public bool IsBST3(TreeNode root)
+        public bool IsValidBST3(TreeNode root)
         {
             if (root == null)
             {
                 return false;
             }
 
-            int previousValue = int.MinValue;
+            int previous = int.MinValue;
             TreeNode current = root;
-            TreeNode mostRight = null;
             while (current != null)
             {
-                mostRight = current.Left;
+                TreeNode mostRight = current.Left;
                 if (mostRight != null)
                 {
                     while (mostRight.Right != null && mostRight.Right != current)
@@ -97,11 +97,11 @@ namespace Belly.Algorithm
                         mostRight.Right = null;
                     }
                 }
-                if (current.Value <= previousValue)
+                if (current.Value <= previous)
                 {
                     return false;
                 }
-                previousValue = current.Value;
+                previous = current.Value;
                 current = current.Right;
             }
 
