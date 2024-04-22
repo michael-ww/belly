@@ -47,26 +47,30 @@ namespace Belly.Algorithm
                 {
                     return false;
                 }
-                if (ptn.Left == null)
-                {
-                    return qtn.Left == null;
-                }
-                if (qtn.Left == null)
+                if ((ptn.Left == null && qtn.Left != null) || (ptn.Left != null && qtn.Left == null))
                 {
                     return false;
                 }
-                if (ptn.Right == null)
-                {
-                    return qtn.Right == null;
-                }
-                if (qtn.Right == null)
+                if ((ptn.Right == null && qtn.Right != null) || (ptn.Right != null && qtn.Right == null))
                 {
                     return false;
                 }
-                pQueue.Enqueue(ptn.Left);
-                pQueue.Enqueue(ptn.Right);
-                qQueue.Enqueue(qtn.Left);
-                qQueue.Enqueue(qtn.Right);
+                if (ptn.Left != null)
+                {
+                    pQueue.Enqueue(ptn.Left);
+                }
+                if (qtn.Left != null)
+                {
+                    qQueue.Enqueue(qtn.Left);
+                }
+                if (ptn.Right != null)
+                {
+                    pQueue.Enqueue(ptn.Right);
+                }
+                if (qtn.Right != null)
+                {
+                    qQueue.Enqueue(qtn.Right);
+                }
             }
 
             return pQueue.Count == 0 && qQueue.Count == 0;

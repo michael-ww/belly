@@ -1,21 +1,21 @@
 namespace Belly.Algorithm.Tests
 {
-    public class LeetCode104Test
+    public class LeetCode117Test
     {
         [Fact]
-        public void MaxDepth_ValidInput_ReturnHeight()
+        public void Connect_ValidInput_ReturnRoot()
         {
             // Given
-            TreeNode seven = new(4);
-            TreeNode six = new(5);
+            TreeNode seven = new(7);
+            TreeNode six = new(6);
             TreeNode five = new(5);
             TreeNode four = new(4);
             TreeNode three = new(3)
             {
-                Left = six,
+                Left = null,
                 Right = seven
             };
-            TreeNode two = new(3)
+            TreeNode two = new(2)
             {
                 Left = four,
                 Right = five
@@ -27,10 +27,10 @@ namespace Belly.Algorithm.Tests
             };
 
             // When
-            int answer = new LeetCode104().MaxDepth(one);
+            TreeNode answer = new LeetCode117().Connect(one);
 
             // Then
-            Assert.Equal(3, answer);
+            Assert.Equal(seven, answer.Left.Right.Next);
         }
     }
 }

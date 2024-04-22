@@ -4,22 +4,26 @@ namespace Belly.Algorithm
     {
         public int MaxPathSum(TreeNode root)
         {
-            return root == null ? 0 : this.Process(root).Item1;
+            if (root == null)
+            {
+                return 0;
+            }
+            int sum = int.MinValue;
+            this.MaxPathSum(root, ref sum);
+            return sum;
         }
 
-        private (int, int) Process(TreeNode root)
+        private int MaxPathSum(TreeNode root, ref int sum)
         {
             if (root == null)
             {
-                return (0, 0);
+                return 0;
             }
 
-            (int leftDistance, int leftHeight) = this.Process(root.Left);
-            (int rightDistance, int rightHeight) = this.Process(root.Right);
-            int rootDistance = leftHeight + rightHeight + 1;
-            int distance = Math.Max(rootDistance, Math.Max(leftDistance, rightDistance));
-            int height = Math.Max(leftHeight, rightHeight) + 1;
-            return (distance, height);
+            int left = Math.Max(this.MaxPathSum(root.Left, ref sum), 0);
+            int right = Math.Max(this.MaxPathSum(root.Right, ref sum), 0);
+            sum = Math.Max(sum, root.Value + left + right); // 当前节点的最大路径和
+            return root.Value + Math.Max(left, right); // 当前节点的最大贡献值
         }
     }
 }

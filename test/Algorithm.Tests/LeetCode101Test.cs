@@ -1,9 +1,9 @@
 namespace Belly.Algorithm.Tests
 {
-    public class LeetCode104Test
+    public class LeetCode101Test
     {
         [Fact]
-        public void MaxDepth_ValidInput_ReturnHeight()
+        public void IsSymmetric_ValidInput_ReturnBool()
         {
             // Given
             TreeNode seven = new(4);
@@ -27,10 +27,12 @@ namespace Belly.Algorithm.Tests
             };
 
             // When
-            int answer = new LeetCode104().MaxDepth(one);
+            bool answer1 = new LeetCode101().IsSymmetric1(one);
+            bool answer2 = new LeetCode101().IsSymmetric2(one);
 
             // Then
-            Assert.Equal(3, answer);
+            Assert.True(answer1);
+            Assert.True(answer2);
         }
     }
 }

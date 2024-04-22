@@ -11,7 +11,7 @@ namespace Belly.Algorithm
             return this.IsSymmetric(root.Left, root.Right);
         }
 
-        public bool IsSymmetric(TreeNode p, TreeNode q)
+        private bool IsSymmetric(TreeNode p, TreeNode q)
         {
             if (p == null && q == null)
             {
@@ -50,7 +50,10 @@ namespace Belly.Algorithm
                 }
                 else
                 {
-                    return false;
+                    if ((tn1.Left == null && tn2.Right != null) || (tn1.Left != null && tn2.Right == null))
+                    {
+                        return false;
+                    }
                 }
                 if (tn1.Right != null && tn2.Left != null)
                 {
@@ -59,7 +62,10 @@ namespace Belly.Algorithm
                 }
                 else
                 {
-                    return false;
+                    if ((tn1.Right == null && tn2.Left != null) || (tn1.Right != null && tn2.Left == null))
+                    {
+                        return false;
+                    }
                 }
             }
 
