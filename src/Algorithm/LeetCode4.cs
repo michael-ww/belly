@@ -182,7 +182,7 @@ namespace Belly.Algorithm
         {
             ArgumentNullException.ThrowIfNull(nums1);
             ArgumentNullException.ThrowIfNull(nums2);
-            ArgumentOutOfRangeException.ThrowIfGreaterThan(kth, nums1.Length + nums2.Length);
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(nums1.Length + nums2.Length, kth);
             int previousMedian = 0, median = 0, nums1Index = 0, nums2Index = 0;
             while (nums1Index < nums1.Length && nums2Index < nums2.Length)
             {

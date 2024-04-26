@@ -1,8 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System.Linq;
-    using System.Text;
-
     public class LeetCode125
     {
         public bool IsPalindrome1(string s)

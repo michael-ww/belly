@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System.Linq;
-
     public class LeetCode629
     {
         public int KInversePairs(int n, int k)

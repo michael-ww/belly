@@ -1,8 +1,6 @@
 namespace Belly.Algorithm
 {
     using System.Globalization;
-    using System.Text;
-
     public class LeetCode297
     {
         public string SerializeByPreorder(TreeNode root)

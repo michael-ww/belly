@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System.Linq;
-
     public class LeetCode169
     {
         public int MajorityElement1(int[] nums)

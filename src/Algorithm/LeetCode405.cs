@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System.Text;
-
     public class LeetCode405
     {
         public string ToHex(int num)

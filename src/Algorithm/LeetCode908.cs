@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System.Linq;
-
     public class LeetCode908
     {
         // Time Complexity: O(n)

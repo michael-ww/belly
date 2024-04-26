@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System.Text;
-
     public class PaperFolding
     {
         public string PrintCrease(int n)

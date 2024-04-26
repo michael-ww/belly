@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System.Linq;
-
     public class LeetCode349
     {
         public int[] Intersection1(int[] nums1, int[] nums2)

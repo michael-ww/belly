@@ -2,7 +2,7 @@ namespace Belly.Algorithm
 {
     public class LeetCode15
     {
-        public IList<(int, int, int)> ThreeSum(int[] nums)
+        public IList<(int, int, int)> ThreeSum1(int[] nums)
         {
             List<(int, int, int)> answer = new();
             if (nums == null || nums.Length <= 3)
@@ -34,7 +34,7 @@ namespace Belly.Algorithm
             return answer;
         }
 
-        public IList<(int, int, int)> ThreeSumary(int[] nums)
+        public IList<(int, int, int)> ThreeSum2(int[] nums)
         {
             List<(int, int, int)> answer = new();
             if (nums == null || nums.Length <= 3)

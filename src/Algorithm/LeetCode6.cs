@@ -1,8 +1,5 @@
 namespace Belly.Algorithm
 {
-    using System.Linq;
-    using System.Text;
-
     public class LeetCode6
     {
         public string Convert(string s, int numRows)

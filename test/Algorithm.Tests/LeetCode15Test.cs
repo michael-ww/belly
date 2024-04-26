@@ -6,12 +6,10 @@ namespace Belly.Algorithm.Tests
         public void ThreeSum_ValidInput_ReturnList()
         {
             //Arragne
-            int[] nums1 = new int[] { -1, 0, 1, 2, -1, -4 };
-            int[] nums = new int[] { 0, 1, 1 };
+            int[] nums = { -1, 0, 1, 2, -1, -4 };
 
             //Act
-            LeetCode15 leetCode15 = new();
-            IList<(int n1, int n2, int n3)> answer = leetCode15.ThreeSum(nums1);
+            IList<(int n1, int n2, int n3)> answer = new LeetCode15().ThreeSum1(nums);
 
             //Assert [[-1,-1,2],[-1,0,1]]
             Assert.Equal(-1, answer[0].n1);
@@ -23,12 +21,10 @@ namespace Belly.Algorithm.Tests
         public void ThreeSumary_ValidInput_ReturnList()
         {
             //Arragne
-            int[] nums1 = new int[] { -1, 0, 1, 2, -1, -4 };
-            int[] nums = new int[] { 0, 1, 1 };
+            int[] nums = { -1, 0, 1, 2, -1, -4 };
 
             //Act
-            LeetCode15 leetCode15 = new();
-            IList<(int n1, int n2, int n3)> answer = leetCode15.ThreeSumary(nums1);
+            IList<(int n1, int n2, int n3)> answer = new LeetCode15().ThreeSum2(nums);
 
             //Assert [[-1,-1,2],[-1,0,1]]
             Assert.Equal(-1, answer[0].n1);

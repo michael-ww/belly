@@ -1,17 +1,13 @@
 namespace Belly.Algorithm
 {
-    public class ThreeSumClosest
+    public class LeetCode16
     {
-        public int Process(int[] nums, int target)
+        public int ThreeSumClosest(int[] nums, int target)
         {
-            if (nums == null || nums.Length < 3)
-            {
-                throw new ArgumentException();
-            }
-
+            ArgumentNullException.ThrowIfNull(nums);
+            ArgumentOutOfRangeException.ThrowIfLessThan(nums.Length, 3);
             Array.Sort(nums);
-            int closetTarget = int.MaxValue;
-
+            int closetTarget = default;
             for (int i = 0; i < nums.Length; i++)
             {
                 if (i > 0 && nums[i] == nums[i - 1])
@@ -19,7 +15,7 @@ namespace Belly.Algorithm
                     continue;
                 }
                 int j = i + 1, k = nums.Length - 1;
-                while (j < nums.Length - 1 && j < k)
+                while (j < k)
                 {
                     if (j > i + 1 && nums[j] == nums[j - 1])
                     {
@@ -31,26 +27,21 @@ namespace Belly.Algorithm
                         k--;
                         continue;
                     }
-                    int sum = nums[i] + nums[j] + nums[k];
-                    if (Math.Abs(sum - target) < Math.Abs(closetTarget - target))
+                    closetTarget = nums[i] + nums[j] + nums[k];
+                    if (target > closetTarget)
                     {
-                        closetTarget = sum;
+                        j++;
                     }
-                    if (sum == target)
-                    {
-                        return target;
-                    }
-                    else if (sum > target)
+                    else if (target < closetTarget)
                     {
                         k--;
                     }
                     else
                     {
-                        j++;
+                        return closetTarget;
                     }
                 }
             }
-
             return closetTarget;
         }
     }

@@ -41,11 +41,11 @@ namespace Belly.Algorithm
             }
 
             TreeNode currentEnd = root, nextEnd = null;
-            List<int> level = new();
             Queue<TreeNode> queue = new();
             queue.Enqueue(root);
             while (queue.Count > 0)
             {
+                List<int> level = new();
                 TreeNode node = queue.Dequeue();
                 level.Add(node.Value);
                 if (node.Left is not null)
@@ -62,7 +62,6 @@ namespace Belly.Algorithm
                 {
                     answer.Add(level);
                     currentEnd = nextEnd;
-                    level.Clear();
                 }
             }
 
