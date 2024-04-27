@@ -3,7 +3,7 @@ namespace Belly.Algorithm
     // Time Complexity : O(NlogN)
     // Space Complexity : O(1)
     // Expansion : O(logN)
-    public class HeapSorting
+    public class HeapSort
     {
         public void Process(int[] nums)
         {

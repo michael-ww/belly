@@ -6,11 +6,11 @@ namespace Belly.Algorithm.Tests
         public void RemoveElement_ValidInput_ReturnLength()
         {
             //Arrange
-            int[] nums1 = new int[] { 3, 2, 2, 3 };
+            int[] nums1 = { 3, 2, 2, 3 };
             int target1 = 3;
-            int[] nums2 = new int[] { 0, 1, 2, 2, 3, 0, 4, 2 };
+            int[] nums2 = { 0, 1, 2, 2, 3, 0, 4, 2 };
             int target2 = 2;
-            int[] nums3 = new int[] { 2, 2, 2, 2 };
+            int[] nums3 = { 2, 2, 2, 2 };
             int target3 = 2;
 
             //Act

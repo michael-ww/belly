@@ -1,6 +1,6 @@
 namespace Belly.Algorithm
 {
-    public class TopologySorting
+    public class TopologySort
     {
         public Node[] Process(Graph graph)
         {

@@ -2,7 +2,6 @@ namespace Belly.Algorithm
 {
     public class LeetCode25
     {
-
         public ListNode ReverseKGroup(ListNode head, int k)
         {
             if (head == null || head.Next == null || k < 2)
@@ -14,26 +13,24 @@ namespace Belly.Algorithm
             {
                 Next = head
             };
-            ListNode current = head, previous = dummy;
-            while (current != null)
+            ListNode previous = dummy;
+            while (head != null)
             {
-                int nodeCount = k;
-                ListNode start = current;
-                while (nodeCount > 0 && current != null)
+                ListNode tail = previous;
+                for (int i = 0; i < k; i++)
                 {
-                    nodeCount--;
-                    current = current.Next;
+                    tail = tail.Next;
+                    if (tail == null)
+                    {
+                        return dummy.Next;
+                    }
                 }
-                if (nodeCount > 0)
-                {
-                    break;
-                }
-                ListNode next = current.Next;
-                current.Next = null;
-                previous.Next = this.Reverse(start);
-                start.Next = next;
-                previous = start;
-                current = next;
+                ListNode next = tail.Next;
+                tail.Next = null;
+                previous.Next = this.Reverse(head);
+                head.Next = next;
+                previous = head;
+                head = next;
             }
 
             return dummy.Next;
@@ -41,13 +38,13 @@ namespace Belly.Algorithm
 
         private ListNode Reverse(ListNode head)
         {
-            ListNode previous = null, current = head;
-            while (current != null)
+            ListNode previous = null;
+            while (head != null)
             {
-                ListNode next = current.Next;
-                current.Next = previous;
-                previous = current;
-                current = next;
+                ListNode next = head.Next;
+                head.Next = previous;
+                previous = head;
+                head = next;
             }
 
             return previous;

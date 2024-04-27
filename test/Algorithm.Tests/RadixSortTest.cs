@@ -1,6 +1,6 @@
 namespace Belly.Algorithm.Tests
 {
-    public class RadixSortingTest
+    public class RadixSortTest
     {
         [Fact]
         public void Process_ValidInput_Succeed()
@@ -9,7 +9,7 @@ namespace Belly.Algorithm.Tests
             int[] nums = { 6, 3, -2, 8, 22, 1, -9 };
 
             //when
-            new RadixSorting().Process(nums);
+            new RadixSort().Process(nums);
 
             //then
             Assert.Equal(-9, nums[0]);
@@ -24,7 +24,7 @@ namespace Belly.Algorithm.Tests
                 int[] nums = Utility.GenerateArray(i + 1, 1000, false, true);
                 int[] copy = new int[nums.Length];
                 Array.Copy(nums, copy, nums.Length);
-                new RadixSorting().Process(nums);
+                new RadixSort().Process(nums);
                 Array.Sort(copy);
                 Assert.Equal(nums, copy);
             }

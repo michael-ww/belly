@@ -1,6 +1,6 @@
 namespace Belly.Algorithm.Tests
 {
-    public class BubbleSortingTest
+    public class BubbleSortTest
     {
         [Fact]
         public void Process_ValidInput_ReturnOrderedArray()

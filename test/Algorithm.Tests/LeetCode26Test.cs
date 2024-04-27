@@ -6,8 +6,8 @@ namespace Belly.Algorithm.Tests
         public void RemoveDuplicates_ValidInput_ReturnLength()
         {
             //Arrange
-            int[] nums1 = new int[] { 1, 1, 2 };
-            int[] nums2 = new int[] { 0, 0, 1, 1, 1, 2, 2, 3, 3, 4 };
+            int[] nums1 = { 1, 1, 2 };
+            int[] nums2 = { 0, 0, 1, 1, 1, 2, 2, 3, 3, 4 };
 
             //Act
             LeetCode26 leetCode26 = new();

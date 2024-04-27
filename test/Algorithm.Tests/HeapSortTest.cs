@@ -1,6 +1,6 @@
 namespace Belly.Algorithm.Tests
 {
-    public class HeapSortingTest
+    public class HeapSortTest
     {
         [Fact]
         public void Process_ValidInput_ReturnOrderedArray()
@@ -9,8 +9,8 @@ namespace Belly.Algorithm.Tests
             int[] nums = { 8, 4, 5, 7, 2, 5, 1, 0, 4, 5, 9 };
 
             //Act
-            HeapSorting heapSorting = new();
-            heapSorting.Process(nums);
+            HeapSort heapSort = new();
+            heapSort.Process(nums);
 
             //Assert
             Assert.Equal(0, nums[0]);

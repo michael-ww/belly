@@ -1,8 +1,6 @@
 namespace Belly.Algorithm
 {
-
-
-    public class QuickSorting
+    public class QuickSort
     {
         public void Process(int[] nums)
         {

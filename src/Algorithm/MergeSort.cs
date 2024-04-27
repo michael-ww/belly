@@ -1,6 +1,6 @@
 namespace Belly.Algorithm
 {
-    public class MergeSorting
+    public class MergeSort
     {
         public void Process(int[] nums)
         {

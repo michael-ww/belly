@@ -18,13 +18,13 @@ namespace Belly.Algorithm.Tests
             int[] answer4 = leetCode349.Intersection2(nums12, nums22);
 
             // Then
-            Assert.Equal(1, answer1.Length);
+            Assert.Single(answer1);
             Assert.Contains(2, answer1);
             Assert.Equal(2, answer2.Length);
             Assert.Contains(9, answer2);
             Assert.Contains(4, answer2);
 
-            Assert.Equal(1, answer3.Length);
+            Assert.Single(answer3);
             Assert.Contains(2, answer3);
             Assert.Equal(2, answer4.Length);
             Assert.Contains(9, answer4);

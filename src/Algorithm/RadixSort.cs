@@ -1,8 +1,6 @@
 namespace Belly.Algorithm
 {
-
-
-    public class RadixSorting
+    public class RadixSort
     {
         public void Process(int[] nums)
         {

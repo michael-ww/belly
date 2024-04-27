@@ -2,7 +2,7 @@ namespace Belly.Algorithm
 {
     //Time Complexity : O(N*N)
     //Space Complexity : O(1)
-    public class BubbleSorting
+    public class InsertionSort
     {
         public void Process(int[] nums)
         {
@@ -11,11 +11,11 @@ namespace Belly.Algorithm
                 return;
             }
 
-            for (int i = nums.Length - 1; i >= 0; i--)
+            for (int i = 1; i < nums.Length; i++)
             {
-                for (int j = 0; j < i; j++)
+                for (int j = i - 1; j >= 0; j--)
                 {
-                    if (nums[j] > nums[j + 1])
+                    if (nums[j + 1] < nums[j])
                     {
                         Utility.Swap(nums, j, j + 1);
                     }
