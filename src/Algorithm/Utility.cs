@@ -7,6 +7,11 @@ public static class Utility
         (nums[i], nums[j]) = (nums[j], nums[i]);
     }
 
+    public static void Swap<T>(IList<T> nums, int i, int j)
+    {
+        (nums[i], nums[j]) = (nums[j], nums[i]);
+    }
+
     public static void Reverse<T>(T[] nums, int startIndex, int endIndex)
     {
         if (startIndex >= endIndex)

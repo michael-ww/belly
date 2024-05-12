@@ -1,9 +1,9 @@
 namespace Belly.Algorithm.Tests
 {
-    public class LeetCode29Test
-    { 
+    public class LeetCode30Test
+    {
         [Fact]
-        public void Divide_ValidInput_Return()
+        public void FindSubstring_ValidInput_ReturnSubstrings()
         {
             // Given
         

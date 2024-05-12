@@ -79,13 +79,12 @@ namespace Belly.Algorithm
 
         public TreeNode DeserializeByInorder(Queue<string> queue)
         {
-            TreeNode left = this.DeserializeByInorder(queue);
-            string element = queue.Dequeue();
-            if (element == "#")
+            if (queue.Peek() == "#")
             {
                 return null;
             }
-            TreeNode parent = new(int.Parse(element, NumberStyles.Integer))
+            TreeNode left = this.DeserializeByInorder(queue);
+            TreeNode parent = new(int.Parse(queue.Dequeue(), NumberStyles.Integer))
             {
                 Right = this.DeserializeByInorder(queue),
                 Left = left
@@ -106,14 +105,13 @@ namespace Belly.Algorithm
 
         public TreeNode DeserializeByPostorder(Stack<string> stack)
         {
-            string nodeValue = stack.Pop();
-            if (nodeValue == "#")
+            if (stack.Pop() == "#")
             {
                 return null;
             }
             TreeNode right = this.DeserializeByPostorder(stack);
             TreeNode left = this.DeserializeByPostorder(stack);
-            TreeNode parent = new(int.Parse(nodeValue, NumberStyles.Integer))
+            TreeNode parent = new(int.Parse(stack.Pop(), NumberStyles.Integer))
             {
                 Left = left,
                 Right = right

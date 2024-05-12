@@ -8,20 +8,20 @@ namespace Belly.Algorithm
             {
                 return string.Empty;
             }
-            return this.PrintCrease(1, n, true).Trim();
+            StringBuilder sb = new();
+            this.PrintCrease(1, n, true, sb);
+            return sb.ToString().Trim();
         }
 
-        public string PrintCrease(int currentDepth, int maxDepth, bool isDown)
+        public void PrintCrease(int currentDepth, int maxDepth, bool isDown, StringBuilder sb)
         {
             if (currentDepth > maxDepth)
             {
-                return string.Empty;
+                return;
             }
-            StringBuilder sb = new();
-            sb.Append(this.PrintCrease(currentDepth + 1, maxDepth, true));
+            this.PrintCrease(currentDepth + 1, maxDepth, true, sb);
             sb.Append(isDown ? " down" : " up");
-            sb.Append(this.PrintCrease(currentDepth + 1, maxDepth, false));
-            return sb.ToString();
+            this.PrintCrease(currentDepth + 1, maxDepth, false, sb);
         }
     }
 }

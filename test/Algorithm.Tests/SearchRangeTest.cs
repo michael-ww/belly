@@ -6,7 +6,7 @@ namespace Belly.Algorithm.Tests
         public void Process_ValidInput_ReturnRange()
         {
             //Arrange
-            int[] nums1 = new int[] { 5, 7, 7, 8, 8, 10 };
+            int[] nums1 = { 5, 7, 7, 8, 8, 10 };
             int[] nums2 = Array.Empty<int>();
             int target1 = 8;
             int target2 = 6;
