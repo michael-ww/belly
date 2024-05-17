@@ -1,10 +1,10 @@
 namespace Belly.Algorithm
 {
-    public class Trie
+    public class LeetCode208
     {
         public TrieNode Root { get; }
 
-        public Trie()
+        public LeetCode208()
         {
             this.Root = new();
         }
@@ -16,7 +16,7 @@ namespace Belly.Algorithm
                 return;
             }
 
-            TrieNode current = this.Root;
+            TrieNode current = Root;
             current.Pass++;
             foreach (var ch in word)
             {
@@ -30,43 +30,43 @@ namespace Belly.Algorithm
             current.End++;
         }
 
-        public int Search(string word)
+        public bool Search(string word)
         {
             if (string.IsNullOrWhiteSpace(word))
             {
-                return 0;
+                return false;
             }
 
-            TrieNode current = this.Root;
+            TrieNode current = Root;
             foreach (var ch in word)
             {
                 if (!current.Nexts.ContainsKey(ch))
                 {
-                    return 0;
+                    return false;
                 }
                 current = current.Nexts[ch];
             }
-            return current.End;
+            return current.End > 0;
         }
 
-        public int StartWith(string prefix)
+        public bool StartsWith(string prefix)
         {
             if (string.IsNullOrWhiteSpace(prefix))
             {
-                return 0;
+                return false;
             }
 
-            TrieNode current = this.Root;
+            TrieNode current = Root;
             foreach (var ch in prefix)
             {
                 if (!current.Nexts.ContainsKey(ch))
                 {
-                    return 0;
+                    return false;
                 }
-
                 current = current.Nexts[ch];
             }
-            return current.Pass;
+
+            return current.Pass > 0;
         }
 
         public void Delete(string word)
@@ -75,21 +75,24 @@ namespace Belly.Algorithm
             {
                 return;
             }
-            if (this.Search(word) > 0)
+
+            if (!this.Search(word))
             {
-                TrieNode current = this.Root;
-                current.Pass--;
-                foreach (var ch in word)
-                {
-                    if (--current.Nexts[ch].Pass <= 0)
-                    {
-                        current.Nexts.Remove(ch);
-                        return;
-                    }
-                    current = current.Nexts[ch];
-                }
-                current.End--;
+                return;
             }
+
+            TrieNode current = Root;
+            Root.Pass--;
+            foreach (var ch in word)
+            {
+                if (--current.Nexts[ch].Pass <= 0)
+                {
+                    current.Nexts[ch] = null;
+                    break;
+                }
+                current = current.Nexts[ch];
+            }
+            current.End--;
         }
     }
 }
