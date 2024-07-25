@@ -15,35 +15,32 @@ namespace Belly.Algorithm
         {
             if (leftIndex < rightIndex)
             {
-                int randomIndex = leftIndex + Random.Shared.Next(rightIndex - leftIndex + 1);
-                Utility.Swap(nums, rightIndex, randomIndex);
-                (int middleLeft, int middleRight) = this.Partition(nums, leftIndex, rightIndex);
-                this.Process(nums, leftIndex, middleLeft - 1);
-                this.Process(nums, middleRight + 1, rightIndex);
+                int pivotIndex = Random.Shared.Next(leftIndex, rightIndex + 1);
+                (int pivotLeftIndex, int pivotRightIndex) = this.Partition(nums, leftIndex, rightIndex, nums[pivotIndex]);
+                this.Process(nums, leftIndex, pivotLeftIndex - 1);
+                this.Process(nums, pivotRightIndex + 1, rightIndex);
             }
         }
 
-        public (int, int) Partition(int[] nums, int leftIndex, int rightIndex)
+        public (int, int) Partition(int[] nums, int leftIndex, int rightIndex, int pivot)
         {
-            int lessIndex = leftIndex - 1;
-            int moreIndex = rightIndex;
-            while (leftIndex < moreIndex)
+            int cursor = leftIndex;
+            while (cursor <= rightIndex)
             {
-                if (nums[leftIndex] > nums[rightIndex])
+                if (nums[cursor] > pivot)
                 {
-                    Utility.Swap(nums, leftIndex, --moreIndex);
+                    Utility.Swap(nums, cursor, rightIndex--);
                 }
-                else if (nums[leftIndex] < nums[rightIndex])
+                else if (nums[cursor] < pivot)
                 {
-                    Utility.Swap(nums, leftIndex++, ++lessIndex);
+                    Utility.Swap(nums, cursor++, leftIndex++);
                 }
                 else
                 {
-                    leftIndex++;
+                    cursor++;
                 }
             }
-            Utility.Swap(nums, rightIndex, moreIndex);
-            return (lessIndex + 1, moreIndex);
+            return (leftIndex, rightIndex);
         }
     }
 }

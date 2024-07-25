@@ -12,23 +12,23 @@ namespace Belly.Algorithm
             PriorityQueue<ListNode, int> pq = new();
             for (int i = 0; i < lists.Length; i++)
             {
-                ListNode current = lists[i];
-                while (current != null)
-                {
-                    pq.Enqueue(current, current.Value);
-                    current = current.Next;
-                }
+                pq.Enqueue(lists[i], lists[i].Value);
             }
 
-            ListNode previous = new(0, null);
-            ListNode tail = previous;
+            ListNode head = pq.Dequeue();
+            pq.Enqueue(head.Next, head.Next.Value);
+            ListNode current = head;
             while (pq.Count > 0)
             {
-                tail.Next = pq.Dequeue();
-                tail = tail.Next;
+                current.Next = pq.Dequeue();
+                if (current.Next.Next != null)
+                {
+                    pq.Enqueue(current.Next.Next, current.Next.Next.Value);
+                }
+                current = current.Next;
             }
 
-            return previous.Next;
+            return head;
         }
     }
 }

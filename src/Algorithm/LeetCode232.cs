@@ -1,12 +1,12 @@
 namespace Belly.Algorithm
 {
-    public class LeetCode232<T>
+    public class MyQueue<T>
     {
         private readonly Stack<T> inStack;
         private readonly Stack<T> outStack;
 
 
-        public LeetCode232()
+        public MyQueue()
         {
             this.inStack = new();
             this.outStack = new();
@@ -15,36 +15,35 @@ namespace Belly.Algorithm
         public void Push(T x)
         {
             this.inStack.Push(x);
-
+            this.InToOut();
         }
 
         public T Pop()
         {
-            if (this.outStack.Count <= 0)
-            {
-                while (this.inStack.Count > 0)
-                {
-                    this.outStack.Push(this.inStack.Pop());
-                }
-            }
+            this.InToOut();
             return this.outStack.Pop();
         }
 
         public T Peek()
         {
-            if (this.outStack.Count <= 0)
-            {
-                while (this.inStack.Count > 0)
-                {
-                    this.outStack.Push(this.inStack.Pop());
-                }
-            }
+            this.InToOut();
             return this.inStack.Peek();
         }
 
         public bool Empty()
         {
             return this.inStack.Count <= 0 && this.outStack.Count <= 0;
+        }
+
+        private void InToOut()
+        {
+            if (this.outStack.Count <= 0)
+            {
+                while (this.inStack.Count > 0)
+                {
+                    this.outStack.Push(this.inStack.Pop());
+                }
+            }
         }
     }
 }

@@ -19,12 +19,12 @@ namespace Belly.Algorithm
             {
                 if (list2 == null || (list1 != null && list1.Value < list2.Value))
                 {
-                    current.Next = new(list1.Value);
+                    current.Next = list1;
                     list1 = list1.Next;
                 }
                 else
                 {
-                    current.Next = new(list2.Value);
+                    current.Next = list2;
                     list2 = list2.Next;
                 }
                 current = current.Next;

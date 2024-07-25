@@ -1,58 +1,58 @@
 namespace Belly.Algorithm
 {
-    public class LeetCode295
+    public class MedianFinder
     {
-        private readonly PriorityQueue<int, int> minRootHeap;
-        private readonly PriorityQueue<int, int> maxRootHeap;
+        private readonly PriorityQueue<int, int> minHeap;
+        private readonly PriorityQueue<int, int> maxHeap;
 
-        public LeetCode295()
+        public MedianFinder()
         {
-            this.minRootHeap = new(Comparer<int>.Default);
-            this.maxRootHeap = new(Comparer<int>.Create((int x, int y) => y - x));
+            this.minHeap = new(Comparer<int>.Default);
+            this.maxHeap = new(Comparer<int>.Create((int x, int y) => y - x));
         }
         public void AddNum(int num)
         {
-            if (this.maxRootHeap.Count <= 0)
+            if (this.maxHeap.Count <= 0 || this.maxHeap.Peek() >= num)
             {
-                this.maxRootHeap.Enqueue(num, num);
+                this.maxHeap.Enqueue(num, num);
             }
             else
             {
-                int maxHeapTop = this.maxRootHeap.Peek();
-                if (num <= maxHeapTop)
-                {
-                    this.maxRootHeap.Enqueue(num, num);
-                }
-                else
-                {
-                    this.minRootHeap.Enqueue(num, num);
-                }
+                this.minHeap.Enqueue(num, num);
             }
-            if (this.maxRootHeap.Count - this.minRootHeap.Count >= 2)
-            {
-                int number = this.maxRootHeap.Dequeue();
-                this.minRootHeap.Enqueue(number, number);
-            }
-            if (this.minRootHeap.Count - this.maxRootHeap.Count >= 2)
-            {
-                int number = this.minRootHeap.Dequeue();
-                this.maxRootHeap.Enqueue(number, number);
-            }
+            this.Balance();
         }
 
         public double FindMedian()
         {
-            if (this.maxRootHeap.Count <= 0 && this.minRootHeap.Count <= 0)
+            if (this.maxHeap.Count <= 0 && this.minHeap.Count <= 0)
             {
                 throw new InvalidOperationException("No Element");
             }
-            if ((this.maxRootHeap.Count + this.minRootHeap.Count) % 2 == 0)
+            if (this.maxHeap.Count == this.minHeap.Count)
             {
-                return (this.maxRootHeap.Dequeue() + this.minRootHeap.Dequeue()) / 2d;
+                return (this.maxHeap.Peek() + this.minHeap.Peek()) / 2d;
             }
             else
             {
-                return this.maxRootHeap.Count > this.minRootHeap.Count ? this.maxRootHeap.Dequeue() : this.minRootHeap.Dequeue();
+                return this.maxHeap.Count > this.minHeap.Count ? this.maxHeap.Peek() : this.minHeap.Peek();
+            }
+        }
+
+        private void Balance()
+        {
+            while (Math.Abs(this.maxHeap.Count - this.minHeap.Count) >= 2)
+            {
+                if (this.maxHeap.Count > this.minHeap.Count)
+                {
+                    int num = this.maxHeap.Dequeue();
+                    this.minHeap.Enqueue(num, num);
+                }
+                else
+                {
+                    int num = this.minHeap.Dequeue();
+                    this.maxHeap.Enqueue(num, num);
+                }
             }
         }
     }

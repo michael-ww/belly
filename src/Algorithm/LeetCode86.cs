@@ -17,39 +17,36 @@ namespace Belly.Algorithm
                     if (moreHead == null)
                     {
                         moreHead = current;
-                        moreTail = current;
                     }
                     else
                     {
                         moreTail.Next = current;
-                        moreTail = current;
                     }
+                    moreTail = current;
                 }
                 else if (current.Value == pivot)
                 {
                     if (equalHead == null)
                     {
                         equalHead = current;
-                        equalTail = current;
                     }
                     else
                     {
                         equalTail.Next = current;
-                        equalTail = current;
                     }
+                    equalTail = current;
                 }
                 else
                 {
                     if (lessHead == null)
                     {
                         lessHead = current;
-                        lessTail = current;
                     }
                     else
                     {
                         lessTail.Next = current;
-                        lessTail = current;
                     }
+                    lessTail = current;
                 }
                 current = current.Next;
             }

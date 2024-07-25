@@ -2,17 +2,17 @@ namespace Belly.Algorithm
 {
     public class LeetCode138
     {
-        public RdmListNode CopyRandomList1(RdmListNode head)
+        public ListNode CopyRandomList1(ListNode head)
         {
             if (head == null)
             {
                 return null;
             }
-            Dictionary<RdmListNode, RdmListNode> dictionary = new();
-            RdmListNode current = head;
+            Dictionary<ListNode, ListNode> dictionary = new();
+            ListNode current = head;
             while (current != null)
             {
-                dictionary.Add(current, new RdmListNode(current.Value));
+                dictionary.Add(current, new ListNode(current.Value));
                 current = current.Next;
             }
             current = head;
@@ -26,17 +26,17 @@ namespace Belly.Algorithm
             return dictionary[head];
         }
 
-        public RdmListNode CopyRandomList2(RdmListNode head)
+        public ListNode CopyRandomList2(ListNode head)
         {
             if (head == null)
             {
                 return null;
             }
-            RdmListNode current = head;
+            ListNode current = head;
             while (current != null)
             {
-                RdmListNode next = current.Next;
-                current.Next = new RdmListNode(current.Value); ;
+                ListNode next = current.Next;
+                current.Next = new ListNode((int)current.Value); ;
                 current.Next.Next = next;
                 current = next;
             }
@@ -48,12 +48,12 @@ namespace Belly.Algorithm
                 current = current.Next?.Next;
             }
 
-            RdmListNode answer = head.Next;
+            ListNode answer = head.Next;
             current = head;
             while (current != null)
             {
-                RdmListNode next = current.Next.Next;
-                RdmListNode copy = current.Next;
+                ListNode next = current.Next.Next;
+                ListNode copy = current.Next;
                 current.Next = next;
                 copy.Next = next.Next;
                 current = next;

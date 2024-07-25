@@ -13,12 +13,9 @@ namespace Belly.Algorithm
 
             for (int i = 1; i < nums.Length; i++)
             {
-                for (int j = i - 1; j >= 0; j--)
+                for (int j = i - 1; j >= 0 && nums[j] > nums[j + 1]; j--)
                 {
-                    if (nums[j + 1] < nums[j])
-                    {
-                        Utility.Swap(nums, j, j + 1);
-                    }
+                    Utility.Swap(nums, j, j + 1);
                 }
             }
         }

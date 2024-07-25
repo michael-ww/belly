@@ -1,14 +1,14 @@
-select
+SELECT
     employee_id
-from
+FROM
     employees
-where
+WHERE
     salary < 30000
-    and manager_id is not in (
-        select
+    AND manager_id IS NOT IN (
+        SELECT
             employee_id
-        from
+        FROM
             employees
     )
-order by
+ORDER BY
     employee_id;

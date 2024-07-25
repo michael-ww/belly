@@ -12,31 +12,31 @@ namespace Belly.Algorithm
             while (leftIndex <= rightIndex)
             {
                 int middleIndex = leftIndex + (rightIndex - leftIndex) / 2;
-                if (nums[middleIndex] > target)
+                if (nums[middleIndex] == target)
                 {
-                    if (nums[leftIndex] < nums[middleIndex] && nums[leftIndex] <= target)
-                    {
-                        rightIndex = middleIndex - 1;
-                    }
-                    else
-                    {
-                        leftIndex = middleIndex + 1;
-                    }
+                    return middleIndex;
                 }
-                else if (nums[middleIndex] < target)
+                if (nums[leftIndex] < nums[middleIndex])
                 {
-                    if (nums[middleIndex] < nums[rightIndex] && nums[rightIndex] >= target)
+                    if (nums[leftIndex] <= target && nums[middleIndex] > target)
                     {
-                        leftIndex = middleIndex + 1;
+                        rightIndex = middleIndex - 1;
                     }
                     else
                     {
-                        rightIndex = middleIndex - 1;
+                        leftIndex = middleIndex + 1;
                     }
                 }
                 else
                 {
-                    return middleIndex;
+                    if (nums[middleIndex] < target && nums[rightIndex] >= target)
+                    {
+                        leftIndex = middleIndex + 1;
+                    }
+                    else
+                    {
+                        rightIndex = middleIndex - 1;
+                    }
                 }
             }
 

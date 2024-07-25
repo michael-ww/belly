@@ -16,7 +16,7 @@ namespace Belly.Algorithm
             (bool isLeftBalanced, int leftHeight) = this.Process(root.Left);
             (bool isRightBalanced, int rightHeight) = this.Process(root.Right);
             int height = Math.Max(leftHeight, rightHeight) + 1;
-            bool isBalanced = isLeftBalanced && isRightBalanced && Math.Abs(leftHeight - rightHeight) < 2;
+            bool isBalanced = isLeftBalanced && isRightBalanced && Math.Abs(leftHeight - rightHeight) <= 1;
             return (isBalanced, height);
         }
     }

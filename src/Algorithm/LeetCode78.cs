@@ -2,7 +2,7 @@ namespace Belly.Algorithm
 {
     public class LeetCode78
     {
-        public List<List<int>> Subsets(int[] nums)
+        public List<List<int>> Subsets1(int[] nums)
         {
             List<List<int>> answer = new();
             if (nums == null || nums.Length <= 0)
@@ -24,6 +24,32 @@ namespace Belly.Algorithm
             }
 
             return answer;
+        }
+
+        public List<List<int>> Subsets2(int[] nums)
+        {
+            List<List<int>> answer = new();
+            if (nums == null || nums.Length <= 0)
+            {
+                return answer;
+            }
+            this.DFS(nums, 0, new List<int>(), answer);
+            return answer;
+        }
+
+        public void DFS(int[] nums, int index, IList<int> path, List<List<int>> answer)
+        {
+            if (index >= nums.Length)
+            {
+                answer.Add(new List<int>(path));
+            }
+            else
+            {
+                path.Add(nums[index]);
+                this.DFS(nums, index + 1, path, answer);
+                path.Remove(nums[index]);
+                this.DFS(nums, index + 1, path, answer);
+            }
         }
     }
 }

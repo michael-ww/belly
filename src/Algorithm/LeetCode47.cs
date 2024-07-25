@@ -2,6 +2,7 @@ namespace Belly.Algorithm
 {
     public class LeetCode47
     {
+        // Time Complexity: O(n!*n)
         public IList<IList<int>> PermuteUnique(int[] nums)
         {
             IList<IList<int>> answer = new List<IList<int>>();
@@ -9,30 +10,29 @@ namespace Belly.Algorithm
             {
                 return answer;
             }
-            Array.Sort(nums);
-            bool[] checking = new bool[nums.Length];
-            this.Backtrack(answer, new List<int>(nums), nums, 0, checking);
+            this.Backtrack(nums, 0, answer);
             return answer;
         }
 
-        private void Backtrack(IList<IList<int>> answer, IList<int> output, int[] nums, int index, bool[] checking)
+        private void Backtrack(int[] nums, int index, IList<IList<int>> answer)
         {
             if (index >= nums.Length)
             {
-                answer.Add(new List<int>(output));
-                return;
+                answer.Add(new List<int>(nums));
             }
-            for (int i = index; i < nums.Length; i++)
+            else
             {
-                if (checking[i] || (i > 0 && nums[i] == nums[i - 1] && !checking[i - 1]))
+                HashSet<int> hs = new();
+                for (int i = index; i < nums.Length; i++)
                 {
-                    continue;
+                    if (!hs.Contains(nums[i]))
+                    {
+                        hs.Add(nums[i]);
+                        Utility.Swap(nums, i, index);
+                        this.Backtrack(nums, index + 1, answer);
+                        Utility.Swap(nums, i, index);
+                    }
                 }
-                output.Add(nums[i]);
-                checking[i] = true;
-                this.Backtrack(answer, output, nums, index + 1, checking);
-                output.Remove(nums[i]);
-                checking[i] = false;
             }
         }
     }

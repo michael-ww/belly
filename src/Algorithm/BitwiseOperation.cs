@@ -3,7 +3,7 @@ namespace Belly.Algorithm
     public class BitwiseOperation
     {
         public int Flip(int n)
-        {
+        {    
             return n ^ 1;
         }
 
@@ -35,6 +35,24 @@ namespace Belly.Algorithm
             int returnA = difabSign * aSign + sameabSign * cSign;
             int returnB = this.Flip(returnA);
             return (a * returnA) + (b * returnB);
+        }
+
+        public string ByteString(int n)
+        {
+            StringBuilder sb = new();
+            for (int i = 31; i >= 0; i--)
+            {
+                if ((n & (1 << i)) == 0)
+                {
+                    sb.Append('0');
+                }
+                else
+                {
+                    sb.Append('1');
+                }
+            }
+
+            return sb.ToString();
         }
     }
 }

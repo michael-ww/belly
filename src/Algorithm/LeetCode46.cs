@@ -11,22 +11,24 @@ namespace Belly.Algorithm
             {
                 return answer;
             }
-            this.Backtrack(nums, 0, new List<int>(nums), answer);
+            this.Backtrack(nums, 0, answer);
             return answer;
         }
 
-        private void Backtrack(int[] nums, int index, IList<int> output, IList<IList<int>> answer)
+        private void Backtrack(int[] nums, int index, IList<IList<int>> answer)
         {
             if (index >= nums.Length)
             {
-                answer.Add(new List<int>(output));
-                return;
+                answer.Add(new List<int>(nums));
             }
-            for (int i = index; i < nums.Length; i++)
+            else
             {
-                Utility.Swap(output, i, index);
-                this.Backtrack(nums, index + 1, output, answer);
-                Utility.Swap(output, i, index);
+                for (int i = index; i < nums.Length; i++)
+                {
+                    Utility.Swap(nums, i, index);
+                    this.Backtrack(nums, index + 1, answer);
+                    Utility.Swap(nums, i, index);
+                }
             }
         }
     }

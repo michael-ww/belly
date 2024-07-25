@@ -9,15 +9,17 @@ namespace Belly.Algorithm
                 return;
             }
 
-            for (int i = 0; i < nums.Length; i++)
+            for (int i = 0, minIndex; i < nums.Length - 1; i++)
             {
+                minIndex = i;
                 for (int j = i + 1; j < nums.Length; j++)
                 {
-                    if (nums[j] < nums[i])
+                    if (nums[j] < nums[minIndex])
                     {
-                        Utility.Swap(nums, i, j);
+                        minIndex = j;
                     }
                 }
+                Utility.Swap(nums, i, minIndex);
             }
         }
     }

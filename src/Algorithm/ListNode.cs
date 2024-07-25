@@ -6,6 +6,10 @@ namespace Belly.Algorithm
 
         public ListNode Next { get; set; }
 
+        public ListNode Last { get; set; }
+
+        public ListNode Random { get; set; }
+
         public ListNode(int value = 0, ListNode next = null)
         {
             this.Value = value;

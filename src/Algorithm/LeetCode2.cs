@@ -13,24 +13,24 @@ namespace Belly.Algorithm
                 return l1;
             }
 
-            ListNode answer = new ListNode(0, null);
+            ListNode answer = new ListNode(0);
             ListNode current = answer;
-            int carryNumber = 0;
+            int carry = 0;
             while (l1 != null || l2 != null)
             {
                 int x = l1 == null ? 0 : l1.Value;
                 int y = l2 == null ? 0 : l2.Value;
-                int z = x + y + carryNumber;
-                current.Next = new(z % 10, null);
-                carryNumber = z / 10;
+                int z = x + y + carry;
+                current.Next = new(z % 10);
+                carry = z / 10;
                 l1 = l1?.Next;
                 l2 = l2?.Next;
                 current = current.Next;
             }
 
-            if (carryNumber > 0)
+            if (carry > 0)
             {
-                current.Next = new(carryNumber, null);
+                current.Next = new(carry);
             }
 
             return answer.Next;

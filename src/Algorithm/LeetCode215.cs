@@ -24,58 +24,46 @@ namespace Belly.Algorithm
 
         private int Select(int[] nums, int leftIndex, int rightIndex, int kthIndex)
         {
-            if (leftIndex == rightIndex)
+            if (leftIndex >= rightIndex)
             {
                 return nums[leftIndex];
             }
-            else if (leftIndex < rightIndex)
+            int pivotIndex = Random.Shared.Next(leftIndex, rightIndex + 1);
+            (int pivotLeftIndex, int pivotRightIndex) = this.Partition(nums, leftIndex, rightIndex, nums[pivotIndex]);
+            if (kthIndex >= pivotLeftIndex && kthIndex <= pivotRightIndex)
             {
-                (int lessIndex, int moreIndex) = this.Partition(nums, leftIndex, rightIndex);
-                if (kthIndex < lessIndex)
-                {
-                    return this.Select(nums, leftIndex, lessIndex - 1, kthIndex);
-                }
-                else if (kthIndex >= lessIndex && kthIndex <= moreIndex)
-                {
-                    return nums[lessIndex];
-                }
-                else
-                {
-                    return this.Select(nums, moreIndex + 1, rightIndex, kthIndex);
-                }
+                return nums[pivotLeftIndex];
+            }
+            else if (kthIndex < pivotLeftIndex)
+            {
+                return this.Select(nums, leftIndex, pivotLeftIndex - 1, kthIndex);
             }
             else
             {
-                throw new IndexOutOfRangeException();
+                return this.Select(nums, pivotRightIndex + 1, rightIndex, kthIndex);
             }
+
         }
 
-        private (int, int) Partition(int[] nums, int leftIndex, int rightIndex)
+        private (int, int) Partition(int[] nums, int leftIndex, int rightIndex, int pivot)
         {
-            int lessPosition = leftIndex - 1;
-            int morePosition = rightIndex;
-            int pivotIndex = leftIndex + Random.Shared.Next(rightIndex - leftIndex + 1);
-            Utility.Swap(nums, rightIndex, pivotIndex);
-            while (leftIndex < morePosition)
+            int cursor = leftIndex;
+            while (cursor <= rightIndex)
             {
-                if (nums[leftIndex] < nums[rightIndex])
+                if (nums[cursor] < pivot)
                 {
-                    lessPosition++;
-                    Utility.Swap(nums, leftIndex, lessPosition);
-                    leftIndex++;
+                    Utility.Swap(nums, cursor++, leftIndex++);
                 }
-                else if (nums[leftIndex] > nums[rightIndex])
+                else if (nums[cursor] > pivot)
                 {
-                    morePosition--;
-                    Utility.Swap(nums, leftIndex, morePosition);
+                    Utility.Swap(nums, cursor, rightIndex--);
                 }
                 else
                 {
-                    leftIndex++;
+                    cursor++;
                 }
             }
-            Utility.Swap(nums, morePosition, rightIndex);
-            return (lessPosition + 1, morePosition);
+            return (leftIndex, rightIndex);
         }
 
         public int FindKthLargest3(int[] nums, int k)

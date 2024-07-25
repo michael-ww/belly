@@ -6,43 +6,35 @@ namespace Belly.Algorithm
         {
             ArgumentNullException.ThrowIfNull(nums);
             ArgumentOutOfRangeException.ThrowIfNegativeOrZero(nums.Length);
-            if (nums.Length == 1)
+            if (nums.Length == 1 || nums[0] > nums[1])
             {
-                return nums[0];
+                return 0;
             }
-            else if (nums.Length == 2)
+            if (nums[^1] > nums[^2])
             {
-                return nums[0] > nums[1] ? nums[0] : nums[1];
+                return nums.Length - 1;
             }
-            else
+            int leftIndex = 1, rightIndex = nums.Length - 2;
+            while (leftIndex <= rightIndex)
             {
-                if (nums[0] > nums[1])
+                int middleIndex = leftIndex + ((rightIndex - leftIndex) >> 1);
+                if (nums[middleIndex] < nums[middleIndex - 1])
                 {
-                    return nums[0];
+                    rightIndex = middleIndex - 1;
                 }
-                else if (nums[^1] > nums[^2])
+                else if (nums[middleIndex] < nums[middleIndex + 1])
                 {
-                    return nums[^1];
+                    leftIndex = middleIndex + 1;
                 }
                 else
                 {
-                    int leftIndex = 0, rightIndex = nums.Length - 1;
-                    while (leftIndex < rightIndex)
-                    {
-                        int middleIndex = leftIndex + ((rightIndex - leftIndex) >> 1);
-                        if (nums[middleIndex] < nums[middleIndex + 1])
-                        {
-                            leftIndex = middleIndex + 1;
-                        }
-                        else
-                        {
-                            rightIndex = middleIndex;
-                        }
-                    }
-
-                    return leftIndex;
+                    return middleIndex;
                 }
             }
+
+            return -1;
         }
+
+
     }
 }

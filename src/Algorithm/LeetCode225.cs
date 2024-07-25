@@ -1,10 +1,10 @@
 namespace Belly.Algorithm
 {
-    public class LeetCode225<T>
+    public class MyStack<T>
     {
         private readonly Queue<T> queue;
 
-        public LeetCode225()
+        public MyStack()
         {
             this.queue = new();
         }
