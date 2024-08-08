@@ -2,7 +2,7 @@ namespace Belly.Algorithm
 {
     public class Trie
     {
-        public TrieNode Root { get; }
+        private TrieNode Root { get; }
 
         public Trie()
         {

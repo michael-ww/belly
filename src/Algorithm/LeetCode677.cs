@@ -16,7 +16,6 @@ namespace Belly.Algorithm
                 return;
             }
             TrieNode current = root;
-            current.Pass++;
             foreach (var ch in key)
             {
                 if (!current.Nexts.ContainsKey(ch))
@@ -24,10 +23,8 @@ namespace Belly.Algorithm
                     current.Nexts.Add(ch, new TrieNode());
                 }
                 current = current.Nexts[ch];
-                current.Pass++;
             }
-            current.End++;
-            current.Value = val;
+            current.Value = val.ToString();
         }
 
         public int Sum(string prefix)
@@ -51,7 +48,7 @@ namespace Belly.Algorithm
             return answer;
         }
 
-        private void DFS(Dictionary<char, TrieNode> Nexts, ref int answer)
+        private void DFS(Dictionary<int, TrieNode> Nexts, ref int answer)
         {
             if (Nexts == null || Nexts.Count <= 0)
             {
@@ -60,7 +57,7 @@ namespace Belly.Algorithm
 
             foreach (var item in Nexts)
             {
-                answer += item.Value.Value.GetValueOrDefault();
+                answer += Convert.ToInt32(item.Value.Value);
                 this.DFS(item.Value.Nexts, ref answer);
             }
         }

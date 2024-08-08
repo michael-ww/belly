@@ -2,7 +2,7 @@ namespace Belly.Algorithm
 {
     public class LeetCode208
     {
-        public TrieNode Root { get; }
+        private TrieNode Root { get; }
 
         public LeetCode208()
         {

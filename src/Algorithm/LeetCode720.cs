@@ -7,15 +7,11 @@ namespace Belly.Algorithm
             ArgumentNullException.ThrowIfNull(words);
             ArgumentOutOfRangeException.ThrowIfNegativeOrZero(words.Length);
 
-            Trie trie = new();
-            foreach (var item in words)
-            {
-                trie.Insert(item);
-            }
+            TrieNode root = this.BuildTrie(words);
             string answer = string.Empty;
             foreach (var item in words)
             {
-                if (this.Search(trie.Root, item))
+                if (this.Search(root, item))
                 {
                     if (item.Length > answer.Length)
                     {
@@ -42,6 +38,27 @@ namespace Belly.Algorithm
                 current = current.Nexts[ch];
             }
             return current.End > 0;
+        }
+
+        private TrieNode BuildTrie(string[] words)
+        {
+            TrieNode root = new();
+            TrieNode current = root;
+            foreach (var word in words)
+            {
+                current.Pass++;
+                foreach (var item in word)
+                {
+                    if (!current.Nexts.ContainsKey(item))
+                    {
+                        current.Nexts.Add(item, new TrieNode());
+                    }
+                    current = current.Nexts[item];
+                }
+                current.End++;
+                current.Value = word;
+            }
+            return root;
         }
     }
 }

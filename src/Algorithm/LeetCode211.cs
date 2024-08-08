@@ -17,7 +17,6 @@ namespace Belly.Algorithm
             }
 
             TrieNode current = root;
-            current.Pass++;
             foreach (var ch in word)
             {
                 if (!current.Nexts.ContainsKey(ch))
@@ -25,7 +24,6 @@ namespace Belly.Algorithm
                     current.Nexts.Add(ch, new TrieNode());
                 }
                 current = current.Nexts[ch];
-                current.Pass++;
             }
             current.End++;
         }

@@ -6,15 +6,15 @@ namespace Belly.Algorithm
 
         public int End { get; set; }
 
-        public int? Value { get; set; }
+        public string Value { get; set; }
 
-        public Dictionary<char, TrieNode> Nexts { get; set; }
+        public Dictionary<int, TrieNode> Nexts { get; set; }
 
         public TrieNode()
         {
             this.Pass = 0;
             this.End = 0;
-            this.Nexts = new Dictionary<char, TrieNode>();
+            this.Nexts = new Dictionary<int, TrieNode>();
         }
     }
 }

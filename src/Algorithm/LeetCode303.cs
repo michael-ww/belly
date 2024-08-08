@@ -3,6 +3,7 @@ namespace Belly.Algorithm
     public class LeetCode303
     {
         private readonly int[] sums;
+
         public LeetCode303(int[] nums)
         {
             this.sums = new int[nums.Length + 1];
