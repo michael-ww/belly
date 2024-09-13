@@ -2,26 +2,23 @@ namespace Belly.Algorithm
 {
     public class LeetCode3
     {
-        public string LongestDistinctSubstring(string s)
+        public int LengthOfLongestSubstring(string s)
         {
             if (string.IsNullOrEmpty(s))
             {
-                return string.Empty;
+                return 0;
             }
-            string answer = string.Empty;
-            Dictionary<char, int> dictionary = new();
-            int leftIndex = 0, rightIndex = 0;
-            while (rightIndex < s.Length)
+
+            int answer = int.MinValue;
+            int[] lastIndexes = new int[256];
+            Array.Fill(lastIndexes, -1);
+            for (int leftIndex = 0, rightIndex = 0; rightIndex < s.Length; rightIndex++)
             {
-                if (dictionary.TryGetValue(s[rightIndex], out int index))
-                {
-                    answer = answer.Length < (rightIndex - leftIndex) ? s.Substring(leftIndex, rightIndex - leftIndex) : answer;
-                    leftIndex = index + 1;
-                    dictionary.Remove(s[rightIndex]);
-                }
-                dictionary.Add(s[rightIndex], rightIndex);
-                rightIndex++;
+                leftIndex = Math.Max(leftIndex, lastIndexes[s[rightIndex]] + 1);
+                answer = Math.Max(answer, rightIndex - leftIndex + 1);
+                lastIndexes[s[rightIndex]] = rightIndex;
             }
+
             return answer;
         }
     }

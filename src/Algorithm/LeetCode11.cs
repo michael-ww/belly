@@ -9,12 +9,12 @@ namespace Belly.Algorithm
             {
                 return 0;
             }
-            int left = 0, right = height.Length - 1, area = 0;
+            int answer = 0, left = 0, right = height.Length - 1;
             while (left < right)
             {
-                area = height[left] > height[right] ? Math.Max(area, (right - left) * height[right--]) : Math.Max(area, (right - left) * height[left++]);
+                answer = height[left] > height[right] ? Math.Max(answer, (right - left) * height[right--]) : Math.Max(answer, (right - left) * height[left++]);
             }
-            return area;
+            return answer;
         }
     }
 }
