@@ -9,7 +9,7 @@ namespace Belly.Algorithm
                 return false;
             }
 
-            int[] factors = { 2, 3, 5 };
+            int[] factors = [2, 3, 5];
             foreach (var item in factors)
             {
                 while (n % item == 0)
