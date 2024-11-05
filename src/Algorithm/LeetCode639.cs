@@ -12,7 +12,7 @@ namespace Belly.Algorithm
         {
             if (index >= s.Length)
             {
-                return 0;
+                return 1;
             }
 
             if (s[index] == '0')
@@ -29,14 +29,7 @@ namespace Belly.Algorithm
                 }
                 else if (s[index] == '*' && s[index + 1] != '*')
                 {
-                    if (s[index + 1] <= 6)
-                    {
-                        answer += 2 * this.NumDecodings(s, index + 2);
-                    }
-                    else
-                    {
-                        answer += this.NumDecodings(s, index + 2);
-                    }
+                    answer += this.NumDecodings(s, index + 2) * ((s[index + 1] - '0') > 6 ? 1 : 2);
                 }
                 else if (s[index] != '*' && s[index + 1] == '*')
                 {
@@ -88,31 +81,28 @@ namespace Belly.Algorithm
             {
                 if (s[index] == '*' && s[index + 1] == '*')
                 {
-                    answer += 15 * this.NumDecodings(s, index + 2);
+                    answer += 15 * this.NumDecodings(s, index + 2, dp);
                 }
                 else if (s[index] == '*' && s[index + 1] != '*')
                 {
-                    if (s[index + 1] <= 6)
-                    {
-                        answer += 2 * this.NumDecodings(s, index + 2);
-                    }
+                    answer += 2 * this.NumDecodings(s, index + 2, dp) * ((s[index + 1] - '0') > 6 ? 1 : 6);
                 }
                 else if (s[index] != '*' && s[index + 1] == '*')
                 {
                     if (s[index] == '1')
                     {
-                        answer += 9 * this.NumDecodings(s, index + 2);
+                        answer += 9 * this.NumDecodings(s, index + 2, dp);
                     }
                     else if (s[index] == '2')
                     {
-                        answer += 6 * this.NumDecodings(s, index + 2);
+                        answer += 6 * this.NumDecodings(s, index + 2, dp);
                     }
                 }
                 else
                 {
                     if (((s[index] - '0') * 10 + (s[index + 1] - '0')) <= 26)
                     {
-                        answer += this.NumDecodings(s, index + 2);
+                        answer += this.NumDecodings(s, index + 2, dp);
                     }
                 }
             }
@@ -124,33 +114,35 @@ namespace Belly.Algorithm
         public int NumDecodings3(string s)
         {
             ArgumentException.ThrowIfNullOrEmpty(s);
-            long[] dp = new long[s.Length + 1];
+            int[] dp = new int[s.Length + 1];
             dp[s.Length] = 1;
             for (int i = s.Length - 1; i >= 0; i--)
             {
-                dp[i] = dp[i + 1] * s[i] == '*' ? 9 : 1;
+                if (s[i] == '0')
+                {
+                    dp[i] = 0;
+                    continue;
+                }
+                dp[i] = dp[i + 1] * (s[i] == '*' ? 9 : 1);
                 if (i + 1 < s.Length)
                 {
                     if (s[i] == '*' && s[i + 1] == '*')
                     {
-                        dp[i] += 15 * dp[i + 2];
+                        dp[i] += dp[i + 2] * 15;
                     }
                     else if (s[i] == '*' && s[i + 1] != '*')
                     {
-                        if (s[i + 1] <= 6)
-                        {
-                            dp[i] += 2 * dp[i + 2];
-                        }
+                        dp[i] += dp[i + 2] * ((s[i + 1] - '0') > 6 ? 1 : 2);
                     }
                     else if (s[i] != '*' && s[i + 1] == '*')
                     {
                         if (s[i] == '1')
                         {
-                            dp[i] += 9 * dp[i + 2];
+                            dp[i] += dp[i + 2] * 9;
                         }
                         else if (s[i] == '2')
                         {
-                            dp[i] += 6 * dp[i + 2];
+                            dp[i] += dp[i + 2] * 6;
                         }
                     }
                     else
@@ -164,45 +156,49 @@ namespace Belly.Algorithm
                 dp[i] %= 1000000007;
             }
 
-            return (int)dp[0];
+            return dp[0];
         }
 
         public int NumDecodings4(string s)
         {
             ArgumentException.ThrowIfNullOrEmpty(s);
-            long current = 0, next = 1, nnext = 0;
-            for (int i = s.Length - 1; i >= 0; i--)
+            int next = 1, nnext = 0;
+            for (int i = s.Length - 1, current; i >= 0; i--)
             {
-                current = next * s[i] == '*' ? 9 : 1;
-                if (i + 1 < s.Length)
+                if (s[i] == '0')
                 {
-                    if (s[i] == '*' && s[i + 1] == '*')
+                    current = 0;
+                }
+                else
+                {
+                    current = next * (s[i] == '*' ? 9 : 1);
+                    if (i + 1 < s.Length)
                     {
-                        current += 15 * nnext;
-                    }
-                    else if (s[i] == '*' && s[i + 1] != '*')
-                    {
-                        if (s[i + 1] <= 6)
+                        if (s[i] == '*' && s[i + 1] == '*')
                         {
-                            current += 2 * nnext;
+                            current += 15 * nnext;
                         }
-                    }
-                    else if (s[i] != '*' && s[i + 1] == '*')
-                    {
-                        if (s[i] == '1')
+                        else if (s[i] == '*' && s[i + 1] != '*')
                         {
-                            current += 9 * nnext;
+                            current += nnext * ((s[i + 1] - '0' > 6) ? 1 : 2);
                         }
-                        else if (s[i] == '2')
+                        else if (s[i] != '*' && s[i + 1] == '*')
                         {
-                            current += 6 * nnext;
+                            if (s[i] == '1')
+                            {
+                                current += 9 * nnext;
+                            }
+                            else if (s[i] == '2')
+                            {
+                                current += 6 * nnext;
+                            }
                         }
-                    }
-                    else
-                    {
-                        if (((s[i] - '0') * 10 + (s[i + 1] - '0')) <= 26)
+                        else
                         {
-                            current += nnext;
+                            if (((s[i] - '0') * 10 + (s[i + 1] - '0')) <= 26)
+                            {
+                                current += nnext;
+                            }
                         }
                     }
                 }
