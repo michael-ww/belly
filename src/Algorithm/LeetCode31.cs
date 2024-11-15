@@ -10,7 +10,7 @@ namespace Belly.Algorithm
             }
 
             int i = nums.Length - 2, j = nums.Length - 1;
-            while (i >= 0 && nums[i] > nums[j])
+            while (i >= 0 && nums[i] >= nums[j])
             {
                 i--;
                 j--;
@@ -19,7 +19,7 @@ namespace Belly.Algorithm
             if (i >= 0)
             {
                 int k = nums.Length - 1;
-                while (k >= j && nums[i] > nums[k])
+                while (k >= j && nums[i] >= nums[k])
                 {
                     k--;
                 }

@@ -30,12 +30,7 @@ namespace Belly.Algorithm
                 return 0;
             }
 
-            return this.GCD(max, min);
-        }
-
-        private int GCD(int a, int b)
-        {
-            return b == 0 ? a : this.GCD(b, a % b);
+            return Utility.GreatestCommonDivisor(max, min);
         }
     }
 }

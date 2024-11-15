@@ -28,9 +28,9 @@ namespace Belly.Algorithm
             }
             else
             {
-                this.head.Last = new(value);
-                this.head.Last.Next = this.head;
-                this.head = this.head.Last;
+                this.head.Previous = new(value);
+                this.head.Previous.Next = this.head;
+                this.head = this.head.Previous;
             }
             this.size++;
             return true;
@@ -50,7 +50,7 @@ namespace Belly.Algorithm
             else
             {
                 this.tail.Next = new(value);
-                this.tail.Next.Last = this.tail;
+                this.tail.Next.Previous = this.tail;
                 this.tail = this.tail.Next;
             }
             this.size++;
@@ -65,7 +65,7 @@ namespace Belly.Algorithm
             }
             ListNode next = this.head.Next;
             this.head.Next = null;
-            next.Last = null;
+            next.Previous = null;
             this.head = next;
             this.size--;
             return true;
@@ -77,8 +77,8 @@ namespace Belly.Algorithm
             {
                 return false;
             }
-            ListNode last = this.tail.Last;
-            this.tail.Last = null;
+            ListNode last = this.tail.Previous;
+            this.tail.Previous = null;
             last.Next = null;
             this.tail = last;
             this.size--;

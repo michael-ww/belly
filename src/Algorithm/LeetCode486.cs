@@ -4,33 +4,26 @@ namespace Belly.Algorithm
     {
         public bool PredictTheWinner1(int[] nums)
         {
-            if (nums == null || nums.Length <= 2)
-            {
-                return true;
-            }
-            return this.PredictTheWinner1(nums, 0, nums.Length - 1) >= 0;
+            ArgumentNullException.ThrowIfNull(nums);
+            return this.PredictTheWinner(nums, 0, nums.Length - 1) >= 0;
         }
 
-        private int PredictTheWinner1(int[] nums, int leftIndex, int rightIndex)
+        private int PredictTheWinner(int[] nums, int leftIndex, int rightIndex)
         {
-            if (leftIndex > rightIndex)
+            if (leftIndex >= rightIndex)
             {
-                return 0;
+                return nums[leftIndex];
             }
 
-            int leftScore = nums[leftIndex] - this.PredictTheWinner1(nums, leftIndex + 1, rightIndex);
-            int rightScore = nums[rightIndex] - this.PredictTheWinner1(nums, leftIndex, rightIndex - 1);
+            int leftScore = nums[leftIndex] - this.PredictTheWinner(nums, leftIndex + 1, rightIndex);
+            int rightScore = nums[rightIndex] - this.PredictTheWinner(nums, leftIndex, rightIndex - 1);
             return Math.Max(leftScore, rightScore);
         }
 
 
         public bool PredictTheWinner2(int[] nums)
         {
-            if (nums == null || nums.Length < 2)
-            {
-                return true;
-            }
-
+            ArgumentNullException.ThrowIfNull(nums);
             int[,] dp = new int[nums.Length, nums.Length];
             for (int i = 0; i < nums.Length; i++)
             {
@@ -40,14 +33,14 @@ namespace Belly.Algorithm
                 }
             }
 
-            return this.PredictTheWinner2(nums, 0, nums.Length - 1, dp) >= 0;
+            return this.PredictTheWinner(nums, 0, nums.Length - 1, dp) >= 0;
         }
 
-        public int PredictTheWinner2(int[] nums, int leftIndex, int rightIndex, int[,] dp)
+        private int PredictTheWinner(int[] nums, int leftIndex, int rightIndex, int[,] dp)
         {
-            if (leftIndex > rightIndex)
+            if (leftIndex >= rightIndex)
             {
-                return 0;
+                return nums[leftIndex];
             }
 
             if (dp[leftIndex, rightIndex] != -1)
@@ -55,8 +48,8 @@ namespace Belly.Algorithm
                 return dp[leftIndex, rightIndex];
             }
 
-            int leftScore = nums[leftIndex] - this.PredictTheWinner2(nums, leftIndex + 1, rightIndex, dp);
-            int rightScore = nums[rightIndex] - this.PredictTheWinner2(nums, leftIndex, rightIndex - 1, dp);
+            int leftScore = nums[leftIndex] - this.PredictTheWinner(nums, leftIndex + 1, rightIndex, dp);
+            int rightScore = nums[rightIndex] - this.PredictTheWinner(nums, leftIndex, rightIndex - 1, dp);
             dp[leftIndex, rightIndex] = Math.Max(leftScore, rightScore);
 
             return dp[leftIndex, rightIndex];
@@ -64,11 +57,7 @@ namespace Belly.Algorithm
 
         public bool PredictTheWinner3(int[] nums)
         {
-            if (nums == null || nums.Length < 2)
-            {
-                return true;
-            }
-
+            ArgumentNullException.ThrowIfNull(nums);
             int[,] dp = new int[nums.Length, nums.Length];
             for (int i = 0; i < nums.Length; i++)
             {

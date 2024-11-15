@@ -161,37 +161,5 @@ namespace Belly.Algorithm.Tests
             Assert.Equal(-1, leftIndex);
             Assert.Equal(-1, rightIndex);
         }
-
-        [Fact]
-        public void TwoSum3_ValidInput_ReturnValidIndexes()
-        {
-            //Arrange
-            int[] nums = new int[] { 1, 3, 6, 9, 22 };
-            int target = 9;
-
-            //Act
-            LeetCode1 leetCode1 = new();
-            (int leftIndex, int rightIndex) = leetCode1.TowSum3(nums, target);
-
-            //Assert
-            Assert.Equal(1, leftIndex);
-            Assert.Equal(2, rightIndex);
-        }
-
-        [Fact]
-        public void TwoSum3_ValidInput_ReturnInvalidIndexes()
-        {
-            //Arrange
-            int[] nums = new int[] { 1, 3, 6, 9, 22 };
-            int target = 11;
-
-            //Act
-            LeetCode1 leetCode1 = new();
-            (int leftIndex, int rightIndex) = leetCode1.TowSum3(nums, target);
-
-            //Assert
-            Assert.Equal(-1, leftIndex);
-            Assert.Equal(-1, rightIndex);
-        }
     }
 }

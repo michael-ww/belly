@@ -1,24 +1,20 @@
 namespace Belly.Algorithm
 {
-    public class ListNode : IComparable<ListNode>
+    public class ListNode
     {
         public int Value { get; set; }
 
         public ListNode Next { get; set; }
 
-        public ListNode Last { get; set; }
+        public ListNode Previous { get; set; }
 
         public ListNode Random { get; set; }
 
-        public ListNode(int value = 0, ListNode next = null)
+        public ListNode(int value = default, ListNode next = null)
         {
             this.Value = value;
             this.Next = next;
         }
 
-        public int CompareTo(ListNode other)
-        {
-            return this.Value - other.Value;
-        }
     }
 }

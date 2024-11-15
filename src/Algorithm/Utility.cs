@@ -45,4 +45,32 @@ public static class Utility
         }
         return previous;
     }
+
+    public static bool IsPrime(int n)
+    {
+        if (n < 2) return false;
+        int r = (int)Math.Sqrt(n);
+        for (int d = 2; d <= r; d++)
+        {
+            if (n % d == 0) return false;
+        }
+        return true;
+    }
+
+    public static bool IsPalindrome(int n)
+    {
+        if (n < 0) return false;
+        int reversed = 0;
+        while (n > reversed)
+        {
+            reversed = reversed * 10 + n % 10;
+            n /= 10;
+        }
+        return n == reversed || n == reversed / 10;
+    }
+
+    public static int GreatestCommonDivisor(int x, int y)
+    {
+        return y == 0 ? x : GreatestCommonDivisor(y, x % y);
+    }
 }

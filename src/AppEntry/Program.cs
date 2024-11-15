@@ -6,9 +6,11 @@
     {
         static void Main(string[] args)
         {
-
-            Console.WriteLine("Hello World!");
-
+            string line;
+            while ((line = System.Console.ReadLine()) != null)
+            {
+                System.Console.WriteLine(line);
+            }
         }
     }
 }

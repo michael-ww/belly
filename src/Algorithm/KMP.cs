@@ -44,7 +44,7 @@ namespace Belly.Algorithm
             char[] charactors = pattern.ToCharArray();
             if (charactors.Length == 1)
             {
-                return new int[] { -1 };
+                return [-1];
             }
             else
             {

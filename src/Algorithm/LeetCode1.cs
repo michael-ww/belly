@@ -9,7 +9,7 @@ namespace Belly.Algorithm
                 return (-1, -1);
             }
 
-            for (int i = 0; i < nums.Length; i++)
+            for (int i = 0; i < nums.Length - 1; i++)
             {
                 for (int j = i + 1; j < nums.Length; j++)
                 {
@@ -40,34 +40,6 @@ namespace Belly.Algorithm
                 else
                 {
                     cache.Add(nums[i], i);
-                }
-            }
-
-            return (-1, -1);
-        }
-
-        public (int, int) TowSum3(int[] nums, int target)
-        {
-            if (nums == null || nums.Length < 2)
-            {
-                return (-1, -1);
-            }
-
-            Array.Sort(nums);
-            int leftIndex = 0, rightIndex = nums.Length - 1;
-            while (leftIndex < rightIndex)
-            {
-                if (nums[leftIndex] + nums[rightIndex] == target)
-                {
-                    return (leftIndex, rightIndex);
-                }
-                else if (nums[leftIndex] + nums[rightIndex] > target)
-                {
-                    rightIndex--;
-                }
-                else
-                {
-                    leftIndex++;
                 }
             }
 

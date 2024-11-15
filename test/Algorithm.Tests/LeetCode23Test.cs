@@ -18,10 +18,10 @@ namespace Belly.Algorithm.Tests
             ListNode ln32 = new(6);
             ListNode ln31 = new(2, ln32);
 
-            ListNode[] listNodes = new ListNode[] { ln11, ln21, ln31 };
+            ListNode[] ListNodes = new ListNode[] { ln11, ln21, ln31 };
 
             // When
-            ListNode answer = new LeetCode23().MergeKLists(listNodes);
+            ListNode answer = new LeetCode23().MergeKLists(ListNodes);
 
             // Then
             Assert.Equal(1, answer.Value);
