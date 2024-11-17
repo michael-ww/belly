@@ -1,0 +1,6 @@
+<Project Sdk="Microsoft.Net.Sdk">
+    <PropertyGroup>
+        <RootNamespace>Belly.Orm.Test</RootNamespace>
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+</Project>
