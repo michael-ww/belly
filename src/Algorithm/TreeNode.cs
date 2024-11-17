@@ -1,6 +1,6 @@
 namespace Belly.Algorithm
 {
-    public class TreeNode : IComparable<TreeNode>
+    public class TreeNode
     {
         public int Value { get; set; }
 
@@ -11,11 +11,5 @@ namespace Belly.Algorithm
         public TreeNode Next { get; set; }
 
         public TreeNode(int value) { this.Value = value; }
-
-
-        public int CompareTo(TreeNode other)
-        {
-            return this.Value - other.Value;
-        }
     }
 }

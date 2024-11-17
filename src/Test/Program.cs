@@ -1,4 +1,4 @@
-﻿namespace AppEntry
+﻿namespace Belly.Test
 {
     using System;
 

@@ -1,0 +1,5 @@
+<Project Sdk="Microsoft.Net.Sdk">
+    <PropertyGroup>
+        <RootNamespace>Belly.Orm</RootNamespace>
+    </PropertyGroup>
+</Project>
