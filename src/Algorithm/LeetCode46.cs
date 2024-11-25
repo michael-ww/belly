@@ -6,7 +6,7 @@ namespace Belly.Algorithm
         // Space Complexity: O(n)
         public IList<IList<int>> Permute(int[] nums)
         {
-            List<IList<int>> answer = new();
+            List<IList<int>> answer = [];
             if (nums == null || nums.Length <= 0)
             {
                 return answer;
@@ -19,7 +19,7 @@ namespace Belly.Algorithm
         {
             if (index >= nums.Length)
             {
-                answer.Add(new List<int>(nums));
+                answer.Add([.. nums]);
             }
             else
             {

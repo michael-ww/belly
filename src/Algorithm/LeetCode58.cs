@@ -1,6 +1,5 @@
 namespace Belly.Algorithm
 {
-
     public class LeetCode58
     {
         public int LengthOfLastWord1(string s)
@@ -9,7 +8,7 @@ namespace Belly.Algorithm
             {
                 return 0;
             }
-            return s.Split(' ', System.StringSplitOptions.RemoveEmptyEntries)[^1].Length;
+            return s.Split(' ', StringSplitOptions.RemoveEmptyEntries)[^1].Length;
         }
 
         public int LengthOfLastWord2(string s)

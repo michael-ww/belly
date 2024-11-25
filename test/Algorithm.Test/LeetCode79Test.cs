@@ -6,7 +6,7 @@ namespace Belly.Algorithm.Test
         public void Exist_ValidInput_ReturBool()
         {
             // Given
-            char[][] board = [['A', 'B', 'C', 'E'], ['S', 'F', 'C', 'S'], ['A', 'D', 'E', 'E']];
+            char[,] board = { { 'A', 'B', 'C', 'E' }, { 'S', 'F', 'C', 'S' }, { 'A', 'D', 'E', 'E' } };
 
             // When
             LeetCode79 leetCode79 = new();

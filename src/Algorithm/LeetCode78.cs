@@ -33,7 +33,7 @@ namespace Belly.Algorithm
             {
                 return answer;
             }
-            this.DFS(nums, 0, new List<int>(), answer);
+            this.DFS(nums, 0, [], answer);
             return answer;
         }
 
