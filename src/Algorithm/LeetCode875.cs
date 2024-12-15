@@ -4,28 +4,19 @@ namespace Belly.Algorithm
     {
         public int MinEatingSpeed(int[] piles, int h)
         {
-            ArgumentNullException.ThrowIfNull(piles);
-            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(h);
-
-            int low = 1, high = 0;
-            foreach (var item in piles)
-            {
-                high = Math.Max(high, item);
-            }
-
-            int answer = 0;
+            int low = 1, high = piles.Max(), answer = 0;
             while (low <= high)
             {
-                int middle = low + ((high - low) >> 1);
-                int hour = this.GetTime(piles, middle);
+                int speed = low + ((high - low) >> 1);
+                int hour = this.GetTime(piles, speed);
                 if (hour <= h)
                 {
-                    answer = middle;
-                    high = middle - 1;
+                    answer = speed;
+                    high = speed - 1;
                 }
                 else
                 {
-                    low = middle + 1;
+                    low = speed + 1;
                 }
             }
 
@@ -35,9 +26,9 @@ namespace Belly.Algorithm
         private int GetTime(int[] piles, int speed)
         {
             int time = 0;
-            foreach (var item in piles)
+            foreach (var pile in piles)
             {
-                time += (item + speed - 1) / speed;
+                time += (pile + speed - 1) / speed;
             }
             return time;
         }

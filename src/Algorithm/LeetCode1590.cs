@@ -1,6 +1,5 @@
 namespace Belly.Algorithm
 {
-
     public class LeetCode1590
     {
         public int MinSubarray(int[] nums, int p)
@@ -10,13 +9,13 @@ namespace Belly.Algorithm
                 return -1;
             }
 
-            int reminder = 0;
+            int remainder = 0;
             foreach (var item in nums)
             {
-                reminder = (reminder + item) % p;
+                remainder = (remainder + item) % p;
             }
 
-            if (reminder == 0)
+            if (remainder == 0)
             {
                 return 0;
             }
@@ -26,7 +25,7 @@ namespace Belly.Algorithm
             for (int i = 0, current = 0, find; i < nums.Length; i++)
             {
                 current = (current + nums[i]) % p;
-                find = (current + p - reminder) % p;
+                find = (current + p - remainder) % p;
                 if (ris.ContainsKey(find))
                 {
                     answer = Math.Min(answer, i - ris[find]);

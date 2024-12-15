@@ -16,8 +16,8 @@ namespace Belly.Algorithm
                     total += (num >> i) & 1;
                 }
 
-                int reminder = total % 3;
-                if (reminder != 0)
+                int remainder = total % 3;
+                if (remainder != 0)
                 {
                     answer |= 1 << i;
                 }

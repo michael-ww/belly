@@ -4,7 +4,7 @@ namespace Belly.Algorithm
     {
         public IList<(int, int, int)> ThreeSum1(int[] nums)
         {
-            List<(int, int, int)> answer = new();
+            List<(int, int, int)> answer = [];
             if (nums == null || nums.Length <= 3)
             {
                 return answer;
@@ -36,8 +36,8 @@ namespace Belly.Algorithm
 
         public IList<(int, int, int)> ThreeSum2(int[] nums)
         {
-            List<(int, int, int)> answer = new();
-            if (nums == null || nums.Length <= 3)
+            List<(int, int, int)> answer = [];
+            if (nums == null || nums.Length < 3)
             {
                 return answer;
             }

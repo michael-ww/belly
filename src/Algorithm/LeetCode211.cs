@@ -23,6 +23,7 @@ namespace Belly.Algorithm
                 {
                     current.Nexts.Add(ch, new TrieNode());
                 }
+                current.Pass++;
                 current = current.Nexts[ch];
             }
             current.End++;

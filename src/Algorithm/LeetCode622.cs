@@ -2,11 +2,11 @@ namespace Belly.Algorithm
 {
     public class MyCircularQueue
     {
-        private int[] queue;
+        private readonly int[] queue;
         private int leftIndex;
         private int rightIndex;
         private int size;
-        private int limit;
+        private readonly int limit;
 
         public MyCircularQueue(int k)
         {

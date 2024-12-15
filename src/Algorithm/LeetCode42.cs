@@ -4,7 +4,7 @@ namespace Belly.Algorithm
     {
         public int Trap1(int[] height)
         {
-            if (height == null || height.Length < 3)
+            if (height == null || height.Length < 2)
             {
                 return 0;
             }
@@ -34,7 +34,7 @@ namespace Belly.Algorithm
 
         public int Trap2(int[] height)
         {
-            if (height == null || height.Length < 3)
+            if (height == null || height.Length < 2)
             {
                 return 0;
             }

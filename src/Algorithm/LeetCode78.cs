@@ -4,15 +4,10 @@ namespace Belly.Algorithm
     {
         public List<List<int>> Subsets1(int[] nums)
         {
-            List<List<int>> answer = new();
-            if (nums == null || nums.Length <= 0)
-            {
-                return answer;
-            }
-
+            List<List<int>> answer = [];
             for (int mask = 0; mask < (1 << nums.Length); mask++)
             {
-                List<int> subset = new();
+                List<int> subset = [];
                 for (int i = 0; i < nums.Length; i++)
                 {
                     if ((mask & (1 << i)) != 0)
@@ -28,11 +23,7 @@ namespace Belly.Algorithm
 
         public List<List<int>> Subsets2(int[] nums)
         {
-            List<List<int>> answer = new();
-            if (nums == null || nums.Length <= 0)
-            {
-                return answer;
-            }
+            List<List<int>> answer = [];
             this.DFS(nums, 0, [], answer);
             return answer;
         }

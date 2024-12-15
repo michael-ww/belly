@@ -30,18 +30,13 @@ public static class Utility
 
     public static ListNode Reverse(ListNode head)
     {
-        if (head == null || head.Next == null)
+        ListNode previous = null;
+        while (head != null)
         {
-            return head;
-        }
-
-        ListNode current = head, previous = null;
-        while (current != null)
-        {
-            ListNode temp = current.Next;
-            current.Next = previous;
-            previous = current;
-            current = temp;
+            ListNode next = head.Next;
+            head.Next = previous;
+            previous = head;
+            head = next;
         }
         return previous;
     }

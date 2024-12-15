@@ -1,5 +1,4 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -20,6 +19,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net.Test", "test\Net.Test\Net.Test.csproj", "{8EDDA7BE-1406-4B6D-8391-C632006D6E00}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orm.Test", "test\Orm.Test\Orm.Test.csproj", "{A5F050C4-331B-46A9-9BBB-C46CE1F4B1A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ioc", "src\Ioc\Ioc.csproj", "{6E07CC57-4952-4781-901D-60E1CD77233E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -118,6 +119,18 @@ Global
 		{A5F050C4-331B-46A9-9BBB-C46CE1F4B1A4}.Release|x64.Build.0 = Release|Any CPU
 		{A5F050C4-331B-46A9-9BBB-C46CE1F4B1A4}.Release|x86.ActiveCfg = Release|Any CPU
 		{A5F050C4-331B-46A9-9BBB-C46CE1F4B1A4}.Release|x86.Build.0 = Release|Any CPU
+		{6E07CC57-4952-4781-901D-60E1CD77233E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E07CC57-4952-4781-901D-60E1CD77233E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E07CC57-4952-4781-901D-60E1CD77233E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6E07CC57-4952-4781-901D-60E1CD77233E}.Debug|x64.Build.0 = Debug|Any CPU
+		{6E07CC57-4952-4781-901D-60E1CD77233E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6E07CC57-4952-4781-901D-60E1CD77233E}.Debug|x86.Build.0 = Debug|Any CPU
+		{6E07CC57-4952-4781-901D-60E1CD77233E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E07CC57-4952-4781-901D-60E1CD77233E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E07CC57-4952-4781-901D-60E1CD77233E}.Release|x64.ActiveCfg = Release|Any CPU
+		{6E07CC57-4952-4781-901D-60E1CD77233E}.Release|x64.Build.0 = Release|Any CPU
+		{6E07CC57-4952-4781-901D-60E1CD77233E}.Release|x86.ActiveCfg = Release|Any CPU
+		{6E07CC57-4952-4781-901D-60E1CD77233E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7445F5ED-A0E2-4A7D-9893-5CA69D037BEC} = {0FA40D25-F365-4410-BD31-C0B62EBCF545}
@@ -127,5 +140,6 @@ Global
 		{2CF45F23-859B-4797-8A38-215D608E5DD5} = {C9359540-A66F-4F32-92C4-0B14B790062C}
 		{8EDDA7BE-1406-4B6D-8391-C632006D6E00} = {C9359540-A66F-4F32-92C4-0B14B790062C}
 		{A5F050C4-331B-46A9-9BBB-C46CE1F4B1A4} = {C9359540-A66F-4F32-92C4-0B14B790062C}
+		{6E07CC57-4952-4781-901D-60E1CD77233E} = {0FA40D25-F365-4410-BD31-C0B62EBCF545}
 	EndGlobalSection
 EndGlobal

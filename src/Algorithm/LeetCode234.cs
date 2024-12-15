@@ -37,26 +37,26 @@ namespace Belly.Algorithm
                 return false;
             }
 
-            ListNode fastNode = head, slowNode = head;
-            while (fastNode.Next != null && fastNode.Next.Next != null)
+            ListNode fast = head, slow = head;
+            while (fast.Next != null && fast.Next.Next != null)
             {
-                slowNode = slowNode.Next;
-                fastNode = fastNode.Next.Next;
+                slow = slow.Next;
+                fast = fast.Next.Next;
             }
-            ListNode endNode = Utility.Reverse(slowNode.Next);
-            ListNode leftNode = head, rightNode = endNode;
+            ListNode end = Utility.Reverse(slow.Next);
+            ListNode left = head, right = end;
             bool answer = true;
-            while (rightNode != null)
+            while (right != null)
             {
-                if (rightNode.Value != leftNode.Value)
+                if (right.Value != left.Value)
                 {
                     answer = false;
                     break;
                 }
-                leftNode = leftNode.Next;
-                rightNode = rightNode.Next;
+                left = left.Next;
+                right = right.Next;
             }
-            slowNode.Next = Utility.Reverse(endNode);
+            slow.Next = Utility.Reverse(end);
             return answer;
         }
     }

@@ -1,23 +1,23 @@
 namespace Belly.Algorithm
 {
-    public class LRUCache
+    public class LRUCache<K, V> where K : notnull
     {
-        private readonly Dictionary<int, int> cache;
+        private readonly Dictionary<K, V> cache;
 
-        private readonly LinkedList<int> visited;
+        private readonly LinkedList<K> visited;
 
         private int capacity;
 
         public LRUCache(int capacity)
         {
-            this.cache = new Dictionary<int, int>(capacity);
-            this.visited = new LinkedList<int>();
+            this.cache = new Dictionary<K, V>(2 * capacity - 1);
+            this.visited = new LinkedList<K>();
             this.capacity = capacity;
         }
 
-        public int Get(int key)
+        public V Get(K key)
         {
-            if (this.cache.TryGetValue(key, out int value))
+            if (this.cache.TryGetValue(key, out V value))
             {
                 this.visited.Remove(key);
                 this.visited.AddFirst(key);
@@ -25,31 +25,28 @@ namespace Belly.Algorithm
             }
             else
             {
-                return -1;
+                return default;
             }
         }
 
-        public void Put(int key, int value)
+        public void Put(K key, V value)
         {
             if (this.cache.ContainsKey(key))
             {
                 this.visited.Remove(key);
-                this.visited.AddFirst(key);
                 this.cache[key] = value;
+                this.visited.AddFirst(key);
             }
             else
             {
                 if (this.cache.Count >= capacity)
                 {
-                    this.visited.RemoveLast();
-                    this.cache.Add(key, value);
-                    this.visited.AddFirst(key);
+                    K deleted = this.visited.Last();
+                    this.cache.Remove(deleted);
+                    this.visited.Remove(deleted);
                 }
-                else
-                {
-                    this.cache.Add(key, value);
-                    this.visited.AddFirst(key);
-                }
+                this.cache.Add(key, value);
+                this.visited.AddFirst(key);
             }
         }
     }

@@ -10,6 +10,8 @@ namespace Belly.Algorithm
 
         public TreeNode Next { get; set; }
 
+        public TreeNode Parent{ get; set; }
+
         public TreeNode(int value) { this.Value = value; }
     }
 }

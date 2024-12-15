@@ -13,7 +13,7 @@ namespace Belly.Algorithm
                 {
                     left++;
                 }
-                else if (nums[left] <= left || nums[left] > right || nums[left] == nums[nums[left] - 1])
+                else if (nums[left] <= left || nums[left] > right || nums[left] != nums[nums[left] - 1])
                 {
                     Utility.Swap(nums, left, --right);
                 }

@@ -18,25 +18,25 @@ namespace Belly.Algorithm
             }
             else
             {
-                int previous = nums[0];
-                int current1 = Math.Max(nums[0], nums[1]);
-                for (int i = 2; i < nums.Length - 1; i++)
+                int pprevious = nums[0];
+                int previous1 = Math.Max(nums[0], nums[1]);
+                for (int i = 2, current; i < nums.Length - 1; i++)
                 {
-                    int robbing = Math.Max(nums[i] + previous, current1);
-                    previous = current1;
-                    current1 = robbing;
+                    current = Math.Max(nums[i] + pprevious, previous1);
+                    pprevious = previous1;
+                    previous1 = current;
                 }
 
-                previous = nums[1];
-                int current2 = Math.Max(nums[1], nums[2]);
-                for (int i = 3; i < nums.Length; i++)
+                pprevious = nums[1];
+                int previous2 = Math.Max(nums[1], nums[2]);
+                for (int i = 3, current; i < nums.Length; i++)
                 {
-                    int robbing = Math.Max(nums[i] + previous, current2);
-                    previous = current2;
-                    current2 = robbing;
+                    current = Math.Max(nums[i] + pprevious, previous2);
+                    pprevious = previous2;
+                    previous2 = current;
                 }
 
-                return Math.Max(current1, current2);
+                return Math.Max(previous1, previous2);
             }
         }
     }

@@ -27,27 +27,13 @@ namespace Belly.Algorithm
                 }
                 ListNode next = tail.Next;
                 tail.Next = null;
-                previous.Next = this.Reverse(head);
+                previous.Next = Utility.Reverse(head);
                 head.Next = next;
                 previous = head;
                 head = next;
             }
 
             return dummy.Next;
-        }
-
-        private ListNode Reverse(ListNode head)
-        {
-            ListNode previous = null;
-            while (head != null)
-            {
-                ListNode next = head.Next;
-                head.Next = previous;
-                previous = head;
-                head = next;
-            }
-
-            return previous;
         }
     }
 }
