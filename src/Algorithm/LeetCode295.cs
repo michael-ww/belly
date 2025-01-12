@@ -2,56 +2,56 @@ namespace Belly.Algorithm
 {
     public class MedianFinder
     {
-        private readonly PriorityQueue<int, int> minHeap;
-        private readonly PriorityQueue<int, int> maxHeap;
+        private readonly PriorityQueue<int, int> smallRootHeap;
+        private readonly PriorityQueue<int, int> bigRootHeap;
 
         public MedianFinder()
         {
-            this.minHeap = new(Comparer<int>.Default);
-            this.maxHeap = new(Comparer<int>.Create((int x, int y) => y - x));
+            this.smallRootHeap = new(Comparer<int>.Default);
+            this.bigRootHeap = new(Comparer<int>.Create((int x, int y) => y - x));
         }
         public void AddNum(int num)
         {
-            if (this.maxHeap.Count <= 0 || this.maxHeap.Peek() >= num)
+            if (this.bigRootHeap.Count <= 0 || this.bigRootHeap.Peek() >= num)
             {
-                this.maxHeap.Enqueue(num, num);
+                this.bigRootHeap.Enqueue(num, num);
             }
             else
             {
-                this.minHeap.Enqueue(num, num);
+                this.smallRootHeap.Enqueue(num, num);
             }
             this.Balance();
         }
 
         public double FindMedian()
         {
-            if (this.maxHeap.Count <= 0 && this.minHeap.Count <= 0)
+            if (this.bigRootHeap.Count <= 0 && this.smallRootHeap.Count <= 0)
             {
                 throw new InvalidOperationException("No Element");
             }
-            if (this.maxHeap.Count == this.minHeap.Count)
+            if (this.bigRootHeap.Count == this.smallRootHeap.Count)
             {
-                return (this.maxHeap.Peek() + this.minHeap.Peek()) / 2d;
+                return (this.bigRootHeap.Peek() + this.smallRootHeap.Peek()) / 2d;
             }
             else
             {
-                return this.maxHeap.Count > this.minHeap.Count ? this.maxHeap.Peek() : this.minHeap.Peek();
+                return this.bigRootHeap.Count > this.smallRootHeap.Count ? this.bigRootHeap.Peek() : this.smallRootHeap.Peek();
             }
         }
 
         private void Balance()
         {
-            while (Math.Abs(this.maxHeap.Count - this.minHeap.Count) >= 2)
+            while (Math.Abs(this.bigRootHeap.Count - this.smallRootHeap.Count) > 1)
             {
-                if (this.maxHeap.Count > this.minHeap.Count)
+                if (this.bigRootHeap.Count > this.smallRootHeap.Count)
                 {
-                    int num = this.maxHeap.Dequeue();
-                    this.minHeap.Enqueue(num, num);
+                    int num = this.bigRootHeap.Dequeue();
+                    this.smallRootHeap.Enqueue(num, num);
                 }
                 else
                 {
-                    int num = this.minHeap.Dequeue();
-                    this.maxHeap.Enqueue(num, num);
+                    int num = this.smallRootHeap.Dequeue();
+                    this.bigRootHeap.Enqueue(num, num);
                 }
             }
         }

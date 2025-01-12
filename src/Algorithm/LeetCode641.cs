@@ -28,8 +28,10 @@ namespace Belly.Algorithm
             }
             else
             {
-                this.head.Previous = new(value);
-                this.head.Previous.Next = this.head;
+                this.head.Previous = new(value)
+                {
+                    Next = this.head
+                };
                 this.head = this.head.Previous;
             }
             this.size++;
@@ -49,8 +51,10 @@ namespace Belly.Algorithm
             }
             else
             {
-                this.tail.Next = new(value);
-                this.tail.Next.Previous = this.tail;
+                this.tail.Next = new(value)
+                {
+                    Previous = this.tail
+                };
                 this.tail = this.tail.Next;
             }
             this.size++;

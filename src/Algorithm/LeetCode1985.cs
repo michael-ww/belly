@@ -4,19 +4,7 @@ namespace Belly.Algorithm
     {
         public string KthLargestNumber(string[] nums, int k)
         {
-            ArgumentNullException.ThrowIfNull(nums);
-            Array.Sort(nums, (string s1, string s2) =>
-            {
-                if (s1.Length != s2.Length)
-                {
-                    return s1.Length - s2.Length;
-                }
-                else
-                {
-                    return string.Compare(s1, s2);
-                }
-            });
-            return nums[^k];
+            return this.FindKthLargestNumber(nums, 0, nums.Length - 1, nums.Length - k);
         }
 
         private string FindKthLargestNumber(string[] nums, int leftIndex, int rightIndex, int kthIndex)

@@ -4,11 +4,6 @@ namespace Belly.Algorithm
     {
         public int LengthOfLongestSubstring(string s)
         {
-            if (string.IsNullOrEmpty(s))
-            {
-                return 0;
-            }
-
             int answer = int.MinValue;
             int[] lastIndexes = new int[256];
             Array.Fill(lastIndexes, -1);

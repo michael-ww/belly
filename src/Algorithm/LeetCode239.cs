@@ -15,7 +15,7 @@ namespace Belly.Algorithm
                 {
                     this.HeapInsert(nums, i);
                 }
-                return new int[] { nums[0] };
+                return [nums[0]];
             }
 
             int[] answer = new int[nums.Length - k + 1];
@@ -84,6 +84,34 @@ namespace Belly.Algorithm
                     pq.Dequeue();
                 }
                 answer[i - k + 1] = nums[pq.Peek()];
+            }
+            return answer;
+        }
+
+        public int[] MaxSlidingWindow3(int[] nums, int k)
+        {
+            LinkedList<int> deque = [];
+            for (int i = 0; i < k - 1; i++)
+            {
+                while (deque.Count > 0 && nums[deque.Last()] <= nums[i])
+                {
+                    deque.RemoveLast();
+                }
+                deque.AddLast(i);
+            }
+            int[] answer = new int[nums.Length - k + 1];
+            for (int left = 0, right = k - 1; right < nums.Length; left++, right++)
+            {
+                while (deque.Count > 0 && nums[deque.Last()] <= nums[right])
+                {
+                    deque.RemoveLast();
+                }
+                deque.AddLast(right);
+                answer[left] = nums[deque.First()];
+                if (deque.First() == left)
+                {
+                    deque.RemoveFirst();
+                }
             }
             return answer;
         }

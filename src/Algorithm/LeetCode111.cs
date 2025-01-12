@@ -8,9 +8,20 @@ namespace Belly.Algorithm
             {
                 return 0;
             }
-            int leftMinDepth = this.MinDepth(root.Left);
-            int rightMinDepth = this.MinDepth(root.Right);
-            return Math.Min(leftMinDepth, rightMinDepth) + 1;
+            if (root.Left == null && root.Right == null)
+            {
+                return 1;
+            }
+            int left = int.MaxValue, right = int.MaxValue;
+            if (root.Left != null)
+            {
+                left = this.MinDepth(root.Left);
+            }
+            if (root.Right != null)
+            {
+                right = this.MinDepth(root.Right);
+            }
+            return Math.Min(left, right) + 1;
         }
     }
 }

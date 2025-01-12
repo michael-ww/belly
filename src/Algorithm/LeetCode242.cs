@@ -14,7 +14,7 @@ namespace Belly.Algorithm
                 return false;
             }
 
-            Dictionary<char, int> sd = new();
+            Dictionary<char, int> sd = [];
             for (int i = 0; i < s.Length; i++)
             {
                 if (sd.TryGetValue(s[i], out int count))
@@ -27,7 +27,7 @@ namespace Belly.Algorithm
                 }
             }
 
-            Dictionary<char, int> td = new();
+            Dictionary<char, int> td = [];
             for (int i = 0; i < t.Length; i++)
             {
                 if (td.TryGetValue(t[i], out int count))

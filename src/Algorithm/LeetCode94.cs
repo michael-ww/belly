@@ -4,29 +4,29 @@ namespace Belly.Algorithm
     {
         public IList<int> InorderTraversal1(TreeNode root)
         {
-            List<int> answer = new();
+            List<int> answer = [];
             if (root == null)
             {
                 return answer;
             }
-            this.InorderTraversal(answer, root);
+            this.InorderTraversal1(answer, root);
             return answer;
         }
 
-        private void InorderTraversal(IList<int> list, TreeNode root)
+        private void InorderTraversal1(IList<int> list, TreeNode root)
         {
             if (root == null)
             {
                 return;
             }
-            this.InorderTraversal(list, root.Left);
+            this.InorderTraversal1(list, root.Left);
             list.Add(root.Value);
-            this.InorderTraversal(list, root.Right);
+            this.InorderTraversal1(list, root.Right);
         }
 
         public IList<int> InorderTraversal2(TreeNode root)
         {
-            List<int> answer = new();
+            List<int> answer = [];
             if (root == null)
             {
                 return answer;
@@ -53,7 +53,7 @@ namespace Belly.Algorithm
 
         public IList<int> InorderTraversal3(TreeNode root)
         {
-            List<int> answer = new();
+            List<int> answer = [];
             if (root == null)
             {
                 return answer;

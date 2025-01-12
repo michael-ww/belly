@@ -4,7 +4,7 @@ namespace Belly.Algorithm
     {
         public IList<int> PostorderTraversal1(TreeNode root)
         {
-            List<int> answer = new();
+            List<int> answer = [];
             if (root == null)
             {
                 return answer;

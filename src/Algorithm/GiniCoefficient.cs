@@ -14,7 +14,7 @@ namespace Belly.Algorithm
                     {
                         continue;
                     }
-                    int recipient = j;
+                    int recipient;
                     do
                     {
                         recipient = Random.Shared.Next(population);

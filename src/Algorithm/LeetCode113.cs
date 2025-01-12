@@ -4,26 +4,32 @@ namespace Belly.Algorithm
     {
         public IList<IList<int>> PathSum(TreeNode root, int target)
         {
-            ArgumentNullException.ThrowIfNull(root);
-            List<IList<int>> answer = new();
-            List<int> path = new();
-            this.PathSum(answer, path, root, target);
+            List<IList<int>> answer = [];
+            this.PathSum(answer, [], root, target);
             return answer;
         }
 
         private void PathSum(List<IList<int>> answer, IList<int> path, TreeNode root, int target)
         {
-            if (root == null)
-            {
-                return;
-            }
             path.Add(root.Value);
-            if (root.Left == null && root.Right == null && root.Value == target)
+            if (root.Left == null && root.Right == null)
             {
-                answer.Add(new List<int>(path));
+                if (root.Value == target)
+                {
+                    answer.Add([.. path]);
+                }
             }
-            this.PathSum(answer, path, root.Left, target - root.Value);
-            this.PathSum(answer, path, root.Right, target - root.Value);
+            else
+            {
+                if (root.Left != null)
+                {
+                    this.PathSum(answer, path, root.Left, target - root.Value);
+                }
+                if (root.Right != null)
+                {
+                    this.PathSum(answer, path, root.Right, target - root.Value);
+                }
+            }
             path.RemoveAt(path.Count - 1);
         }
     }

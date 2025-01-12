@@ -5,16 +5,12 @@ namespace Belly.Algorithm
         public IList<IList<int>> LevelOrder1(TreeNode root)
         {
             IList<IList<int>> answer = new List<IList<int>>();
-            if (root == null)
-            {
-                return answer;
-            }
             Queue<TreeNode> queue = new();
             queue.Enqueue(root);
             while (queue.Count > 0)
             {
                 int nodeCount = queue.Count;
-                List<int> nodes = new();
+                List<int> nodes = [];
                 for (int i = 0; i < nodeCount; i++)
                 {
                     TreeNode node = queue.Dequeue();
@@ -34,18 +30,13 @@ namespace Belly.Algorithm
 
         public IList<IList<int>> LevelOrder2(TreeNode root)
         {
-            IList<IList<int>> answer = new List<IList<int>>();
-            if (root == null)
-            {
-                return answer;
-            }
-
+            IList<IList<int>> answer = [];
+            List<int> level = [];
             TreeNode currentEnd = root, nextEnd = null;
             Queue<TreeNode> queue = new();
             queue.Enqueue(root);
             while (queue.Count > 0)
             {
-                List<int> level = new();
                 TreeNode node = queue.Dequeue();
                 level.Add(node.Value);
                 if (node.Left is not null)
@@ -62,6 +53,8 @@ namespace Belly.Algorithm
                 {
                     answer.Add(level);
                     currentEnd = nextEnd;
+                    nextEnd = null;
+                    level.Clear();
                 }
             }
 

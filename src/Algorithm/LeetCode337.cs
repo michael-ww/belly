@@ -4,8 +4,8 @@ namespace Belly.Algorithm
     {
         public int Rob(TreeNode root)
         {
-            (int robbing, int notRobbing) = this.Process(root);
-            return Math.Max(notRobbing, robbing);
+            (int robbed, int notRobbing) = this.Process(root);
+            return Math.Max(notRobbing, robbed);
         }
 
         private (int, int) Process(TreeNode current)

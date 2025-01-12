@@ -1,7 +1,16 @@
 namespace Belly.Algorithm.Test
 {
+    using Xunit.Abstractions;
+
     public class GiniCoefficientTest
     {
+        private readonly ITestOutputHelper output;
+
+        public GiniCoefficientTest(ITestOutputHelper output)
+        {
+            this.output = output;
+        }
+
         [Fact]
         public void Caculate_ValidInput_ReturnGiniCoefficient()
         {
@@ -9,11 +18,11 @@ namespace Belly.Algorithm.Test
             int population = 100, round = 1000000;
 
             // When
-            GiniCoefficient giniCoefficient = new GiniCoefficient();
+            GiniCoefficient giniCoefficient = new();
             double answer = giniCoefficient.Experiment(population, round);
 
             // Then
-            Console.WriteLine($"Population:{population},Round:{round},Gini:{answer}");
+            this.output.WriteLine($"Population:{population},Round:{round},Gini:{answer}");
         }
     }
 }

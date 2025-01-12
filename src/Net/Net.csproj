@@ -1,5 +1,6 @@
 <Project Sdk="Microsoft.Net.Sdk">
     <PropertyGroup>
+        <OutputType>Library</OutputType>
         <RootNamespace>Belly.Net</RootNamespace>
     </PropertyGroup>
 </Project>

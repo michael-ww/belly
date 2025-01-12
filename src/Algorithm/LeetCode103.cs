@@ -5,7 +5,7 @@ namespace Belly.Algorithm
         public IList<IList<int>> ZigzagLevelOrder(TreeNode root)
         {
             ArgumentNullException.ThrowIfNull(root);
-            List<IList<int>> answer = new();
+            List<IList<int>> answer = [];
             Queue<TreeNode> queue = new();
             queue.Enqueue(root);
             bool leftToRight = true;
@@ -35,7 +35,7 @@ namespace Belly.Algorithm
                     }
                 }
                 leftToRight = !leftToRight;
-                answer.Add(level.ToArray());
+                answer.Add([.. level]);
             }
             return answer;
         }

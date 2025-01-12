@@ -29,10 +29,5 @@ namespace Belly.Algorithm
             }
             return (isBst, bstSize, max, min);
         }
-
-        private bool IsLeaf(TreeNode node)
-        {
-            return node.Left == null && node.Right == null;
-        }
     }
 }

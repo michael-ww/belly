@@ -4,8 +4,6 @@ namespace Belly.Algorithm
     {
         public string Convert(string s, int numRows)
         {
-            ArgumentException.ThrowIfNullOrEmpty(s);
-            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(numRows);
             if (numRows < 2)
             {
                 return s;

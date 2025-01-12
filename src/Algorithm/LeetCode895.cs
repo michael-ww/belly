@@ -8,22 +8,29 @@ namespace Belly.Algorithm
 
         public FrequencyStack()
         {
-            this.group = new();
-            this.frequency = new();
+            this.group = [];
+            this.frequency = [];
             this.maxFrequency = 0;
         }
 
         public void Push(int val)
         {
-            if (!this.frequency.ContainsKey(val))
+            if (this.frequency.TryGetValue(val, out int times))
+            {
+                this.frequency[val] = times + 1;
+            }
+            else
             {
                 this.frequency.Add(val, 1);
             }
-            if (!this.group.ContainsKey(this.frequency[val]))
+            if (this.group.TryGetValue(this.frequency[val], out Stack<int> stack))
+            {
+                stack.Push(val);
+            }
+            else
             {
                 this.group.Add(this.frequency[val], new Stack<int>());
             }
-            this.group[this.frequency[val]].Push(val);
             this.maxFrequency = Math.Max(this.maxFrequency, this.frequency[val]);
         }
 

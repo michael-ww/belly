@@ -1,10 +1,10 @@
-SELECT
+select
     actor_id,
     director_id
-FROM
+from
     ActorDirector
-GROUP BY
+group by
     actor_id,
     director_id
-HAVING
+having
     count(timestamp) >= 3;

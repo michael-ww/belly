@@ -4,9 +4,6 @@ namespace Belly.Algorithm
     {
         public int LongestAlternatingSubarray1(int[] nums, int threshold)
         {
-            ArgumentNullException.ThrowIfNull(nums);
-            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(nums.Length);
-
             int answer = 0;
             for (int left = 0; left < nums.Length; left++)
             {
@@ -40,7 +37,7 @@ namespace Belly.Algorithm
 
         public int LongestAlternatingSubarray2(int[] nums, int threshold)
         {
-            int res = 0, dp = 0;
+            int answer = 0, dp = 0;
             for (int l = nums.Length - 1; l >= 0; l--)
             {
                 if (nums[l] > threshold)
@@ -57,10 +54,10 @@ namespace Belly.Algorithm
                 }
                 if (nums[l] % 2 == 0)
                 {
-                    res = Math.Max(res, dp);
+                    answer = Math.Max(answer, dp);
                 }
             }
-            return res;
+            return answer;
         }
     }
 }

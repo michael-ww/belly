@@ -4,10 +4,6 @@ namespace Belly.Algorithm
     {
         public int RomanToInt(string s)
         {
-            if (string.IsNullOrWhiteSpace(s))
-            {
-                return 0;
-            }
             int answer = 0;
             for (int i = 0; i < s.Length; i++)
             {

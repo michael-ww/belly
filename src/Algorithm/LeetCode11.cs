@@ -4,11 +4,6 @@ namespace Belly.Algorithm
     {
         public int MaxArea(int[] height)
         {
-            ArgumentNullException.ThrowIfNull(height);
-            if (height.Length < 2)
-            {
-                return 0;
-            }
             int answer = 0, left = 0, right = height.Length - 1;
             while (left < right)
             {

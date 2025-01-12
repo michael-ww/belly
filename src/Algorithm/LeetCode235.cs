@@ -4,11 +4,6 @@ namespace Belly.Algorithm
     {
         public TreeNode LowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q)
         {
-            if (root == null || p == null || q == null)
-            {
-                return null;
-            }
-
             while (root != p && root != q)
             {
                 if (root.Value > Math.Min(p.Value, q.Value) && root.Value < Math.Max(p.Value, q.Value))

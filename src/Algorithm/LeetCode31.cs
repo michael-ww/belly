@@ -4,11 +4,6 @@ namespace Belly.Algorithm
     {
         public void NextPermutation(int[] nums)
         {
-            if (nums == null || nums.Length <= 0)
-            {
-                return;
-            }
-
             int i = nums.Length - 2, j = nums.Length - 1;
             while (i >= 0 && nums[i] >= nums[j])
             {

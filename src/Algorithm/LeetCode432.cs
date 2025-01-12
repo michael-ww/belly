@@ -8,7 +8,7 @@ namespace Belly.Algorithm
 
         public AllOne()
         {
-            this.frequency = new();
+            this.frequency = [];
             this.head = new(0, "");
             this.tail = new(int.MaxValue, "");
             this.head.Next = this.tail;

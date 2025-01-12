@@ -2,16 +2,15 @@ namespace Belly.Algorithm
 {
     public class LeetCode374
     {
-        private int number;
 
         public int GuessNumber(int n)
         {
-            this.number = Random.Shared.Next(n + 1);
+            int number = Random.Shared.Next(n + 1);
             int left = 1, right = n, answer = 0;
             while (left <= right)
             {
                 int middle = left + ((right - left) >> 1);
-                int comparing = this.guess(middle);
+                int comparing = number.CompareTo(middle);
                 if (comparing > 0)
                 {
                     left = middle + 1;
@@ -27,11 +26,6 @@ namespace Belly.Algorithm
                 }
             }
             return answer;
-        }
-
-        private int guess(int num)
-        {
-            return this.number.CompareTo(num);
         }
     }
 }

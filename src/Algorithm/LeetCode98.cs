@@ -4,34 +4,30 @@ namespace Belly.Algorithm
     {
         public bool IsValidBST1(TreeNode root)
         {
-            if (root == null)
-            {
-                return false;
-            }
             int minValue = int.MinValue;
             return this.IsValidBST(root, ref minValue);
         }
 
-        private bool IsValidBST(TreeNode root, ref int previousValue)
+        private bool IsValidBST(TreeNode root, ref int previous)
         {
             if (root == null)
             {
                 return true;
             }
-            bool isLeftValidBST = this.IsValidBST(root.Left, ref previousValue);
+            bool isLeftValidBST = this.IsValidBST(root.Left, ref previous);
             if (!isLeftValidBST)
             {
                 return false;
             }
-            if (root.Value <= previousValue)
+            if (root.Value <= previous)
             {
                 return false;
             }
             else
             {
-                previousValue = root.Value;
+                previous = root.Value;
             }
-            return this.IsValidBST(root.Right, ref previousValue);
+            return this.IsValidBST(root.Right, ref previous);
         }
 
         public bool IsValidBST2(TreeNode root)
@@ -42,19 +38,19 @@ namespace Belly.Algorithm
             }
 
             Stack<TreeNode> stack = new();
-            int previousValue = int.MinValue;
+            int previous = int.MinValue;
             while (stack.Count > 0 || root != null)
             {
                 if (root == null)
                 {
                     root = stack.Pop();
-                    if (root.Value <= previousValue)
+                    if (root.Value <= previous)
                     {
                         return false;
                     }
                     else
                     {
-                        previousValue = root.Value;
+                        previous = root.Value;
                     }
                     root = root.Right;
                 }

@@ -4,8 +4,6 @@ namespace Belly.Algorithm
     {
         public int MinDistance1(string word1, string word2)
         {
-            ArgumentNullException.ThrowIfNull(word1);
-            ArgumentNullException.ThrowIfNull(word2);
             return this.MinDistance(word1, word1.Length, word2, word2.Length, 1, 1, 1);
         }
 
@@ -31,8 +29,6 @@ namespace Belly.Algorithm
 
         public int MinDistance2(string word1, string word2)
         {
-            ArgumentNullException.ThrowIfNull(word1);
-            ArgumentNullException.ThrowIfNull(word2);
             int[,] dp = new int[word1.Length + 1, word2.Length + 1];
             for (int i = 0; i <= word1.Length; i++)
             {
@@ -73,8 +69,6 @@ namespace Belly.Algorithm
 
         public int MinDistance3(string word1, string word2)
         {
-            ArgumentNullException.ThrowIfNull(word1);
-            ArgumentNullException.ThrowIfNull(word2);
             int[,] dp = new int[word1.Length + 1, word2.Length + 1];
             for (int i = 0, insert = 1, delete = 1, replace = 1; i <= word1.Length; i++)
             {
@@ -110,8 +104,6 @@ namespace Belly.Algorithm
 
         public int MinDistance4(string word1, string word2)
         {
-            ArgumentNullException.ThrowIfNull(word1);
-            ArgumentNullException.ThrowIfNull(word2);
             int[] dp = new int[word2.Length + 1];
             for (int i = 0, insert = 1, delete = 1, replace = 1, leftUp, backup; i <= word1.Length; i++)
             {

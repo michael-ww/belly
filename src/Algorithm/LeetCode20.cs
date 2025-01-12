@@ -1,7 +1,5 @@
 namespace Belly.Algorithm
 {
-
-
     public class LeetCode20
     {
         public bool IsValid(string s)

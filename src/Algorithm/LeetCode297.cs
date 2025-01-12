@@ -7,7 +7,7 @@ namespace Belly.Algorithm
         {
             if (root is null)
             {
-                return "#,";
+                return "null,";
             }
             string answer = $"{root.Value},";
             answer += this.SerializeByPreorder(root.Left);
@@ -15,23 +15,11 @@ namespace Belly.Algorithm
             return answer;
         }
 
-        public string SerializeByInorder(TreeNode root)
-        {
-            if (root is null)
-            {
-                return "#,";
-            }
-            string answer = this.SerializeByInorder(root.Left);
-            answer += $"{root.Value},";
-            answer += this.SerializeByInorder(root.Right);
-            return answer;
-        }
-
         public string SerializeByPostorder(TreeNode root)
         {
             if (root is null)
             {
-                return "#,";
+                return "null,";
             }
             string answer = this.SerializeByPostorder(root.Left);
             answer += this.SerializeByPostorder(root.Right);
@@ -53,7 +41,7 @@ namespace Belly.Algorithm
         public TreeNode DeserializeByPreorder(Queue<string> queue)
         {
             string node = queue.Dequeue();
-            if (node == "#")
+            if (node == "null")
             {
                 return null;
             }
@@ -65,53 +53,27 @@ namespace Belly.Algorithm
             return root;
         }
 
-        public TreeNode DeserializeByInorder(string data)
-        {
-            if (string.IsNullOrWhiteSpace(data))
-            {
-                return null;
-            }
-
-            string[] nodes = data.Split(',', StringSplitOptions.RemoveEmptyEntries);
-            Queue<string> queue = new(nodes);
-            return this.DeserializeByInorder(queue);
-        }
-
-        public TreeNode DeserializeByInorder(Queue<string> queue)
-        {
-            if (queue.Peek() == "#")
-            {
-                return null;
-            }
-            TreeNode left = this.DeserializeByInorder(queue);
-            TreeNode parent = new(int.Parse(queue.Dequeue(), NumberStyles.Integer))
-            {
-                Right = this.DeserializeByInorder(queue),
-                Left = left
-            };
-            return parent;
-        }
-
         public TreeNode DeserializeByPostorder(string data)
         {
             if (string.IsNullOrWhiteSpace(data))
             {
                 return null;
             }
-            string[] nodes = data.Split('#', StringSplitOptions.RemoveEmptyEntries);
+            string[] nodes = data.Split(',', StringSplitOptions.RemoveEmptyEntries);
             Stack<string> stack = new(nodes);
             return this.DeserializeByPostorder(stack);
         }
 
         public TreeNode DeserializeByPostorder(Stack<string> stack)
         {
-            if (stack.Pop() == "#")
+            string item = stack.Pop();
+            if (item == "null")
             {
                 return null;
             }
             TreeNode right = this.DeserializeByPostorder(stack);
             TreeNode left = this.DeserializeByPostorder(stack);
-            TreeNode parent = new(int.Parse(stack.Pop(), NumberStyles.Integer))
+            TreeNode parent = new(int.Parse(item, NumberStyles.Integer))
             {
                 Left = left,
                 Right = right
@@ -121,11 +83,6 @@ namespace Belly.Algorithm
 
         public string SerializeByLevelOrder(TreeNode root)
         {
-            if (root is null)
-            {
-                return string.Empty;
-            }
-
             Queue<TreeNode> queue = new();
             queue.Enqueue(root);
             StringBuilder sb = new();
@@ -134,7 +91,7 @@ namespace Belly.Algorithm
                 TreeNode tn = queue.Dequeue();
                 if (tn is null)
                 {
-                    sb.Append("#,");
+                    sb.Append("null,");
                 }
                 else
                 {
@@ -149,11 +106,6 @@ namespace Belly.Algorithm
 
         public TreeNode DeserializeByLevelOrder(string data)
         {
-            if (string.IsNullOrWhiteSpace(data))
-            {
-                return null;
-            }
-
             string[] elements = data.Split(',', StringSplitOptions.RemoveEmptyEntries);
             Queue<string> nodes = new(elements);
             string rootValue = nodes.Dequeue();
@@ -164,13 +116,13 @@ namespace Belly.Algorithm
             {
                 TreeNode parent = treeNodes.Dequeue();
                 string leftValue = nodes.Dequeue();
-                string rightValue = nodes.Dequeue();
-                if (leftValue != "#")
+                if (leftValue != "null")
                 {
                     parent.Left = new(int.Parse(leftValue, NumberStyles.Integer));
                     treeNodes.Enqueue(parent.Left);
                 }
-                if (rightValue != "#")
+                string rightValue = nodes.Dequeue();
+                if (rightValue != "null")
                 {
                     parent.Right = new(int.Parse(rightValue, NumberStyles.Integer));
                     treeNodes.Enqueue(parent.Right);

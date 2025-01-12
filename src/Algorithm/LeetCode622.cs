@@ -3,18 +3,18 @@ namespace Belly.Algorithm
     public class MyCircularQueue
     {
         private readonly int[] queue;
-        private int leftIndex;
-        private int rightIndex;
+        private int left;
+        private int right;
         private int size;
-        private readonly int limit;
+        private readonly int capacity;
 
         public MyCircularQueue(int k)
         {
             this.queue = new int[k];
-            this.leftIndex = 0;
-            this.rightIndex = 0;
+            this.left = 0;
+            this.right = 0;
             this.size = 0;
-            this.limit = k;
+            this.capacity = k;
         }
 
         public bool Enqueue(int value)
@@ -23,13 +23,10 @@ namespace Belly.Algorithm
             {
                 return false;
             }
-            else
-            {
-                this.queue[rightIndex] = value;
-                this.rightIndex = this.rightIndex == this.limit - 1 ? 0 : (this.rightIndex + 1);
-                this.size++;
-                return true;
-            }
+            this.queue[right] = value;
+            this.right = this.right == this.capacity - 1 ? 0 : (this.right + 1);
+            this.size++;
+            return true;
         }
 
         public bool Dequeue()
@@ -38,14 +35,10 @@ namespace Belly.Algorithm
             {
                 return false;
             }
-            else
-            {
-                int pivot = this.queue[this.leftIndex];
-                leftIndex = leftIndex == this.limit - 1 ? 0 : leftIndex++;
-                this.size--;
-                return true;
-
-            }
+            int pivot = this.queue[this.left];
+            left = left == this.capacity - 1 ? 0 : left++;
+            this.size--;
+            return true;
         }
 
         public int Front()
@@ -54,10 +47,7 @@ namespace Belly.Algorithm
             {
                 return -1;
             }
-            else
-            {
-                return this.queue[this.leftIndex];
-            }
+            return this.queue[this.left];
         }
 
         public int Rear()
@@ -66,11 +56,8 @@ namespace Belly.Algorithm
             {
                 return -1;
             }
-            else
-            {
-                int last = this.rightIndex == 0 ? (this.limit - 1) : (this.rightIndex - 1);
-                return this.queue[last];
-            }
+            int last = this.right == 0 ? (this.capacity - 1) : (this.right - 1);
+            return this.queue[last];
         }
 
         public bool IsEmpty()
@@ -80,7 +67,7 @@ namespace Belly.Algorithm
 
         public bool IsFull()
         {
-            return this.size == this.limit;
+            return this.size == this.capacity;
         }
     }
 }

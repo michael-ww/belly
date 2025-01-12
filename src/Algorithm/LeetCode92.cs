@@ -2,84 +2,30 @@ namespace Belly.Algorithm
 {
     public class LeetCode92
     {
-        public ListNode ReverseBetween1(ListNode head, int left, int right)
+        public ListNode ReverseBetween(ListNode head, int left, int right)
         {
-            if (head == null || head.Next == null || left > right)
+            if (head == null || head.Next == null || left >= right || left < 0 || right < 0)
             {
                 return head;
             }
-            left = left < 1 ? 1 : left;
-            ListNode precursor = null, leftNode = null, previousNode = null, currentNode = head;
-            int nodePosition = 0;
-            while (currentNode != null)
+            ListNode dummy = new(0);
+            dummy.Next = head;
+            ListNode previous = dummy;
+            for (int i = 0; i < left - 1; i++)
             {
-                nodePosition++;
-                if (nodePosition == left)
-                {
-                    leftNode = currentNode;
-                }
-                if (nodePosition < left)
-                {
-                    precursor = currentNode;
-                    currentNode = currentNode.Next;
-                }
-                else if (nodePosition >= left && nodePosition <= right)
-                {
-                    ListNode tempNextNode = currentNode.Next;
-                    currentNode.Next = previousNode;
-                    previousNode = currentNode;
-                    currentNode = tempNextNode;
-                }
-                else
-                {
-                    break;
-                }
-            }
-            leftNode.Next = currentNode;
-            if (left > 1)
-            {
-                precursor.Next = previousNode;
-                return head;
-            }
-            else
-            {
-                return previousNode;
-            }
-        }
-
-        public ListNode ReverseBetween2(ListNode head, int left, int right)
-        {
-            if (head == null || head.Next == null || left > right)
-            {
-                return head;
+                previous = previous.Next;
             }
 
-            ListNode currentNode = head, leftPreviousNode = new(-1, head), previousNode = head;
-            int nodePosition = 0;
-            while (currentNode != null)
+            ListNode current = previous.Next;
+            for (int i = 0; i < right - left; i++)
             {
-                nodePosition++;
-                if (nodePosition < left)
-                {
-                    leftPreviousNode = currentNode;
-                    previousNode = currentNode.Next;
-                    currentNode = currentNode.Next;
-                }
-                else if (nodePosition >= left && nodePosition <= right)
-                {
-                    ListNode nextNode = currentNode.Next;
-                    ListNode leftNode = leftPreviousNode.Next;
-                    leftPreviousNode.Next = currentNode;
-                    currentNode.Next = leftNode;
-                    previousNode.Next = nextNode;
-                    currentNode = nextNode;
-                }
-                else
-                {
-                    break;
-                }
+                ListNode next = current.Next;
+                current.Next = next.Next;
+                next.Next = previous.Next;
+                previous.Next = next;
             }
-            return left == 1 ? leftPreviousNode.Next : head;
+
+            return dummy.Next;
         }
     }
 }

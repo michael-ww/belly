@@ -2,20 +2,19 @@ namespace Belly.Algorithm.Test
 {
     public class LeetCode162Test
     {
-        [Fact]
-        public void FindPeakElement_ValidInput_ReturnMaximum()
+        [Theory]
+        [InlineData(new int[] { 1, 2, 3, 1 }, 2)]
+        [InlineData(new int[] { 1, 2, 1, 3, 5, 6, 4 }, 5)]
+        public void FindPeakElement_ValidInput_ReturnMaximum(int[] nums, int expected)
         {
-            // Given
-            int[] nums1 = [1, 2, 3, 1], nums2 = [1, 2, 1, 3, 5, 6, 4];
-
-            // When
+            // Arrange
             LeetCode162 leetCode162 = new();
-            int answer1 = leetCode162.FindPeakElement(nums1);
-            int answer2 = leetCode162.FindPeakElement(nums2);
 
-            // Then
-            Assert.Equal(2, answer1);
-            Assert.Equal(5, answer2);
+            // Act
+            int result = leetCode162.FindPeakElement(nums);
+
+            // Assert
+            Assert.Equal(expected, result);
         }
     }
 }
