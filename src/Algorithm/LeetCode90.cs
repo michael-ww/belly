@@ -4,13 +4,13 @@ namespace Belly.Algorithm
     {
         public IList<IList<int>> SubsetsWithDup(int[] nums)
         {
-            List<IList<int>> answer = new();
+            List<IList<int>> answer = [];
             if (nums == null || nums.Length <= 0)
             {
                 return answer;
             }
             Array.Sort(nums);
-            this.DFS(nums, 0, new List<int>(), answer);
+            this.DFS(nums, 0, [], answer);
             return answer;
         }
 
@@ -18,21 +18,19 @@ namespace Belly.Algorithm
         {
             if (index >= nums.Length)
             {
-                answer.Add(new List<int>(path));
+                answer.Add([.. path]);
             }
             else
             {
-                int nextIndex = index;
-                while (nextIndex < nums.Length && nums[nextIndex] == nums[index])
+                path.Add(nums[index]);
+                this.DFS(nums, index + 1, path, answer);
+                path.RemoveAt(path.Count - 1);
+                int next = index + 1;
+                while (next < nums.Length && nums[next] == nums[index])
                 {
-                    nextIndex++;
+                    next++;
                 }
-                this.DFS(nums, nextIndex, path, answer);
-                for (int i = index; i < nextIndex; i++)
-                {
-                    path.Add(nums[i]);
-                    this.DFS(nums, nextIndex, path, answer);
-                }
+                this.DFS(nums, next, path, answer);
             }
         }
     }

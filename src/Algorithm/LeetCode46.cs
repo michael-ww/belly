@@ -7,10 +7,6 @@ namespace Belly.Algorithm
         public IList<IList<int>> Permute(int[] nums)
         {
             List<IList<int>> answer = [];
-            if (nums == null || nums.Length <= 0)
-            {
-                return answer;
-            }
             this.Backtrack(nums, 0, answer);
             return answer;
         }

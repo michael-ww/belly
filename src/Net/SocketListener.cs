@@ -1,24 +1,67 @@
-namespace Belly.Net
+namespace Belly.Net;
+
+using System;
+using System.Net;
+using System.Net.Sockets;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
+
+internal class SocketListener(SocketServerConfig config, ILogger logger) : IListener
 {
-    using System.Net;
-    using System.Net.Sockets;
+    private readonly SocketServerConfig config = config;
+    private readonly ILogger logger = logger;
+    private Socket listener;
+    public event Action<Socket> OnNewClientConnected;
 
-    public class SocketListener
+    public void Start()
     {
-        private Socket socket;
-
-        private readonly IPEndPoint localEndPoint;
-
-        public SocketListener(string ip, int port)
+        try
         {
-            this.localEndPoint = new IPEndPoint(IPAddress.Parse(ip), port);
+            this.listener = new Socket(SocketType.Stream, ProtocolType.Tcp);
+            this.listener.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.KeepAlive, true);
+            this.listener.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, false);
+            this.listener.LingerState = new LingerOption(false, 0);
+            this.listener.Bind(new IPEndPoint(string.IsNullOrEmpty(this.config.IP) ? IPAddress.Any : IPAddress.Parse(this.config.IP), this.config.Port));
+            this.listener.Listen(100);
+            Task.Run(() => this.AcceptAsync());
+            this.logger.LogInformation($"the socket listener[{this.listener.LocalEndPoint}] started");
+        }
+        catch (Exception ex)
+        {
+            this.logger.LogError(ex, $"the socket listener[{this}] failed to start");
         }
 
-        public void Start()
+    }
+
+    public void Stop()
+    {
+        try
         {
-            this.socket = new Socket(this.localEndPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-            this.socket.Bind(this.localEndPoint);
-            this.socket.Listen(100);
+            this.listener?.Shutdown(SocketShutdown.Both);
+        }
+        catch
+        {
+        }
+        finally
+        {
+            this.listener?.Close();
+        }
+    }
+
+    private async Task AcceptAsync()
+    {
+        while (true)
+        {
+            try
+            {
+                Socket socket = await this.listener.AcceptAsync();
+                this.OnNewClientConnected?.Invoke(socket);
+            }
+            catch (Exception ex)
+            {
+                this.logger.LogError(ex, $"the socket listener[{this.listener.LocalEndPoint}] failed to accept");
+                break;
+            }
         }
     }
 }

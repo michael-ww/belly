@@ -4,7 +4,7 @@ namespace Belly.Algorithm
     {
         public IList<int> FindSubstring(string s, string[] words)
         {
-            List<int> answer = new();
+            List<int> answer = [];
             if (string.IsNullOrWhiteSpace(s) || words == null || words.Length <= 0)
             {
                 return answer;

@@ -32,7 +32,7 @@ namespace Belly.Algorithm
         {
             if (index >= nums.Length)
             {
-                answer.Add(new List<int>(path));
+                answer.Add([.. path]);
             }
             else
             {
